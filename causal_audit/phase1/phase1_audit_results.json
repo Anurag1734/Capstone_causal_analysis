@@ -1,0 +1,252 @@
+{
+  "dataset": {
+    "train_rows": 262813,
+    "validation_rows": 56319,
+    "test_rows": 56798,
+    "combined_rows": 375930,
+    "splits": {
+      "train": 262813,
+      "validation": 56319,
+      "test": 56798
+    },
+    "subject_count": 99256,
+    "admission_count": 191369,
+    "ecg_count": 375930
+  },
+  "causal_unit_summary": {
+    "n_patients": 99256,
+    "n_admissions": 191369,
+    "n_ecgs": 375930,
+    "admissions_per_patient": {
+      "min": 1,
+      "max": 72,
+      "mean": 1.9280345772547756,
+      "median": 1.0,
+      "quantiles": {
+        "0.01": 1.0,
+        "0.05": 1.0,
+        "0.1": 1.0,
+        "0.25": 1.0,
+        "0.5": 1.0,
+        "0.75": 2.0,
+        "0.9": 4.0,
+        "0.95": 5.0,
+        "0.99": 11.0
+      }
+    },
+    "ecgs_per_patient": {
+      "min": 1,
+      "max": 186,
+      "mean": 3.787478842588861,
+      "median": 2.0,
+      "quantiles": {
+        "0.01": 1.0,
+        "0.05": 1.0,
+        "0.1": 1.0,
+        "0.25": 1.0,
+        "0.5": 2.0,
+        "0.75": 4.0,
+        "0.9": 8.0,
+        "0.95": 12.0,
+        "0.99": 27.0
+      }
+    },
+    "ecgs_per_admission": {
+      "min": 1,
+      "max": 107,
+      "mean": 1.96442475009014,
+      "median": 1.0,
+      "quantiles": {
+        "0.01": 1.0,
+        "0.05": 1.0,
+        "0.1": 1.0,
+        "0.25": 1.0,
+        "0.5": 1.0,
+        "0.75": 2.0,
+        "0.9": 4.0,
+        "0.95": 5.0,
+        "0.99": 9.0
+      },
+      "prop_gt_1": 0.4473504068057
+    },
+    "patient_admission_repeat": {
+      "fraction_with_multiple_admissions": 0.34884540984927864,
+      "fraction_with_multiple_ecgs": 0.6216047392600951,
+      "n_patients_with_multiple_admissions": 34625,
+      "n_patients_with_multiple_ecgs": 61698
+    },
+    "repeated_ecg_within_admission": {
+      "n_admissions_with_multiple_ecgs": 85609,
+      "fraction_admissions_with_multiple_ecgs": 0.4473504068057,
+      "count_distribution": {
+        "1": 105760,
+        "2": 45666,
+        "3": 18721,
+        "4": 8908,
+        "5": 4755,
+        "6": 2583,
+        "7": 1605,
+        "8": 1066,
+        "9": 658,
+        "10": 472,
+        "11": 309,
+        "12": 197,
+        "13": 153,
+        "14": 113,
+        "15": 81,
+        "16": 70,
+        "17": 45,
+        "18": 31,
+        "19": 31,
+        "20": 20,
+        "21": 26,
+        "22": 15,
+        "23": 13,
+        "24": 9,
+        "25": 10,
+        "26": 4,
+        "27": 5,
+        "28": 7,
+        "29": 6,
+        "30": 1,
+        "31": 6,
+        "32": 3,
+        "33": 3,
+        "34": 2,
+        "35": 4,
+        "36": 3,
+        "38": 2,
+        "39": 3,
+        "43": 1,
+        "64": 1,
+        "107": 1
+      }
+    },
+    "patients_with_repeated_admissions": {
+      "n": 34625,
+      "top_counts": {
+        "1": 64631,
+        "2": 16991,
+        "3": 7096,
+        "4": 3583,
+        "5": 2117,
+        "6": 1378,
+        "7": 884,
+        "8": 631,
+        "9": 432,
+        "10": 311
+      }
+    }
+  },
+  "time_diff_summary": {
+    "n_valid_pairs": 48230,
+    "missing_index_mi_time": 327700,
+    "time_diff_hours": {
+      "min": -4599.716666666666,
+      "max": 5637.633333333333,
+      "mean": 43.19509053839242,
+      "median": 0.1666666666666666,
+      "std": 242.9786050197059,
+      "quantiles": {
+        "0.01": -453.28649999999993,
+        "0.05": -122.02583333333332,
+        "0.1": -43.30333333333331,
+        "0.25": -9.916666666666666,
+        "0.5": 0.1666666666666666,
+        "0.75": 53.37916666666666,
+        "0.9": 201.2,
+        "0.95": 344.70333333333303,
+        "0.99": 833.6188333333333
+      },
+      "n_positive": 24531,
+      "n_negative": 23658,
+      "n_approx_zero": 41
+    },
+    "timestamp_math_check": {
+      "max_abs_difference_hours": 9.094947017729282e-13,
+      "median_abs_difference_hours": 0.0,
+      "fraction_exact_match": 1.0,
+      "fraction_close_within_1min": 1.0
+    },
+    "timezone_assumption": "UTC inferred from pd.to_datetime(..., utc=True); all timestamps were treated as timezone-aware timestamps in UTC. The data appear to be stored in ISO strings without timezone offsets, so UTC is a safe explicit assumption for arithmetic."
+  },
+  "temporal_relation_summary": {
+    "counts": {
+      "ECG after MI": 21917,
+      "ECG before MI": 20287,
+      "ECG approximately at MI": 6026
+    },
+    "percentages": {
+      "ECG after MI": 0.4544267053701016,
+      "ECG before MI": 0.42063031308314325,
+      "ECG approximately at MI": 0.12494298154675514
+    },
+    "label_vs_temporal_relation": {
+      "ECG after MI": {
+        "Control_Symptomatic": 21917,
+        "MI_Acute_Presentation": 0,
+        "MI_Pre-Incident": 0
+      },
+      "ECG approximately at MI": {
+        "Control_Symptomatic": 3428,
+        "MI_Acute_Presentation": 2598,
+        "MI_Pre-Incident": 0
+      },
+      "ECG before MI": {
+        "Control_Symptomatic": 12382,
+        "MI_Acute_Presentation": 1953,
+        "MI_Pre-Incident": 5952
+      }
+    }
+  },
+  "repeated_ecg_summary": {
+    "admission_level": {
+      "n_ecgs_per_admission_min": 1,
+      "n_ecgs_per_admission_max": 107,
+      "n_ecgs_per_admission_mean": 1.96442475009014,
+      "n_ecgs_per_admission_median": 1.0,
+      "proportion_admissions_gt_1_ecg": 0.4473504068057,
+      "n_admissions_with_gt_1_ecg": 85609
+    },
+    "patient_level": {
+      "n_admissions_per_subject_min": 1,
+      "n_admissions_per_subject_max": 72,
+      "n_ecgs_per_subject_min": 1,
+      "n_ecgs_per_subject_max": 186,
+      "fraction_subjects_with_multiple_admissions": 0.34884540984927864,
+      "fraction_subjects_with_multiple_ecgs": 0.6216047392600951
+    },
+    "mi_cases_with_multiple_ecgs_near_index": {
+      "n_mi_rows": 13558,
+      "n_mi_hadm_ids_with_multiple_ecgs": 3251,
+      "n_mi_subjects_with_multiple_ecgs": 3167
+    }
+  },
+  "candidate_index_ecg_rules": {
+    "A_first_ecg_within_admission": {
+      "eligible": 191369,
+      "excluded": 184561,
+      "MI_retained": 7362,
+      "control_retained": 184007
+    },
+    "B_first_before_MI": {
+      "eligible": 11707,
+      "excluded": 36523,
+      "MI_retained": 4521,
+      "control_retained": 0
+    },
+    "C_closest_before_MI": {
+      "eligible": 11707,
+      "excluded": 36523,
+      "MI_retained": 4521,
+      "control_retained": 0
+    },
+    "D_first_clinically_eligible": {
+      "eligible": "Not directly identifiable without an explicit clinical eligibility criterion",
+      "excluded": "No data-defined rule; cannot be implemented from the current parquet files alone",
+      "MI_retained": "Undefined without a pre-specified eligibility definition",
+      "control_retained": "Undefined without a pre-specified eligibility definition"
+    }
+  },
+  "phase_1_status": "Admission-level is the primary observational unit; ECG time is not yet established as causal time zero; index ECG selection remains unresolved pending the Phase 2 treatment-timing audit."
+}

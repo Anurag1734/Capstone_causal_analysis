@@ -1,0 +1,45 @@
+{
+  "admissions": {
+    "total_admissions": 431231,
+    "total_patients": 180733,
+    "single_admission_patients": 101198,
+    "multi_admission_patients": 79535,
+    "with_deathtime": 8598,
+    "with_edregtime": 299282,
+    "discharge_before_admit_errors": 139
+  },
+  "patients": {
+    "total_patients": 299712,
+    "with_dod": 29076,
+    "gender_M": 141159,
+    "gender_F": 158553,
+    "age_min": 18,
+    "age_max": 91,
+    "age_median": 48
+  },
+  "diagnoses": {
+    "total_diagnosis_rows": 4756326,
+    "mi_diagnosis_rows": 26824,
+    "admissions_with_mi": 25755,
+    "patients_with_mi": 14905,
+    "patients_single_mi": 10297,
+    "patients_multi_mi": 4608
+  },
+  "observation_end": {
+    "total_patients": 180733,
+    "with_dod": 27980,
+    "with_in_hospital_death": 8592,
+    "known_dead": 27980,
+    "alive_or_censored": 152753
+  },
+  "cohort_linkage": {
+    "cohort_patients": 99256,
+    "cohort_hadm_ids": 191369,
+    "total_admissions_for_cohort": 311633,
+    "single_admission_patients": 42784,
+    "multi_admission_patients": 56472,
+    "patients_with_any_mi": 12250,
+    "patients_nonmi_then_later_mi": 5460,
+    "subsequent_mi_admissions": 11223
+  }
+}

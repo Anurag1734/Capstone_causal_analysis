@@ -1,0 +1,22 @@
+{
+  "treatment": "statin_before",
+  "source_table": "MIMIC-IV hosp/prescriptions.csv",
+  "source_semantics": "prescription/order records, not validated administration events",
+  "key_fields": [
+    "subject_id",
+    "hadm_id",
+    "starttime",
+    "stoptime",
+    "drug",
+    "drug_type",
+    "route",
+    "dose_val_rx",
+    "form_rx",
+    "order_provider_id"
+  ],
+  "class_identification": "statin medications identified via drug name mapping such as atorvastatin, simvastatin, rosuvastatin, pravastatin, lovastatin, fluvastatin, pitavastatin",
+  "window_logic": "recent pre-admission window approximately bounded by prior discharge to admission anchor; project docs state this is a prescription-based historical indicator rather than verified outpatient baseline use",
+  "exposure_definition": "binary admission-level indicator for recent statin prescription before admission anchor",
+  "current_design_status": "NOT READY",
+  "reason": "no validated treatment time zero; no guaranteed pre-treatment ECG ordering; exposure is a prescription-window summary, not exact treatment initiation"
+}

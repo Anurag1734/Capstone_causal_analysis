@@ -1,0 +1,1851 @@
+{
+  "audit_name": "Aspirin Rule-A ECG temporal eligibility audit",
+  "status": "AUDIT ONLY — no master data modification, no final discovery matrix, no causal discovery",
+  "rule_a_selection": {
+    "total_admissions": 191369,
+    "admissions_with_valid_rule_a_ecg": 191369,
+    "admissions_without_valid_ecg": 0,
+    "selection_method": "Earliest valid ecg_time within each hadm_id; ties broken by smallest study_id.",
+    "selection_is_unique_by_hadm_id": true,
+    "selected_study_id_unique": true,
+    "admissions_with_duplicate_earliest_ecg_time": 141,
+    "distribution_of_ecgs_per_admission_after_selection": {
+      "1": 191369
+    },
+    "selected_rule_a_rows": 191369,
+    "selection_does_not_use_outcome_or_treatment": true
+  },
+  "feature_block": {
+    "feature_columns": [
+      "QRS_Dur_Global",
+      "QRS_Dur_Global_iqr",
+      "QRS_Dur_Global_count",
+      "RR_Mean_Global",
+      "RR_Mean_Global_iqr",
+      "S_Amp_V1",
+      "S_Amp_V1_iqr",
+      "S_Amp_V2",
+      "S_Amp_V2_iqr",
+      "S_Amp_V3",
+      "S_Amp_V3_iqr",
+      "Q_Amp_I",
+      "Q_Amp_I_iqr",
+      "R_Amp_I",
+      "R_Amp_I_iqr",
+      "T_Amp_I",
+      "T_Amp_I_iqr",
+      "ST_Elev_I",
+      "Q_Amp_II",
+      "Q_Amp_II_iqr",
+      "R_Amp_II",
+      "R_Amp_II_iqr",
+      "T_Amp_II",
+      "T_Amp_II_iqr",
+      "ST_Elev_II",
+      "Q_Amp_III",
+      "Q_Amp_III_iqr",
+      "R_Amp_III",
+      "R_Amp_III_iqr",
+      "T_Amp_III",
+      "T_Amp_III_iqr",
+      "ST_Elev_III",
+      "Q_Amp_aVR",
+      "Q_Amp_aVR_iqr",
+      "R_Amp_aVR",
+      "R_Amp_aVR_iqr",
+      "T_Amp_aVR",
+      "T_Amp_aVR_iqr",
+      "ST_Elev_aVR",
+      "Q_Amp_aVL",
+      "Q_Amp_aVL_iqr",
+      "R_Amp_aVL",
+      "R_Amp_aVL_iqr",
+      "T_Amp_aVL",
+      "T_Amp_aVL_iqr",
+      "ST_Elev_aVL",
+      "Q_Amp_aVF",
+      "Q_Amp_aVF_iqr",
+      "R_Amp_aVF",
+      "R_Amp_aVF_iqr",
+      "T_Amp_aVF",
+      "T_Amp_aVF_iqr",
+      "ST_Elev_aVF",
+      "Q_Amp_V1",
+      "Q_Amp_V1_iqr",
+      "R_Amp_V1",
+      "R_Amp_V1_iqr",
+      "T_Amp_V1",
+      "T_Amp_V1_iqr",
+      "ST_Elev_V1",
+      "Q_Amp_V2",
+      "Q_Amp_V2_iqr",
+      "R_Amp_V2",
+      "R_Amp_V2_iqr",
+      "T_Amp_V2",
+      "T_Amp_V2_iqr",
+      "ST_Elev_V2",
+      "Q_Amp_V3",
+      "Q_Amp_V3_iqr",
+      "R_Amp_V3",
+      "R_Amp_V3_iqr",
+      "T_Amp_V3",
+      "T_Amp_V3_iqr",
+      "ST_Elev_V3",
+      "Q_Amp_V4",
+      "Q_Amp_V4_iqr",
+      "R_Amp_V4",
+      "R_Amp_V4_iqr",
+      "T_Amp_V4",
+      "T_Amp_V4_iqr",
+      "ST_Elev_V4",
+      "Q_Amp_V5",
+      "Q_Amp_V5_iqr",
+      "R_Amp_V5",
+      "R_Amp_V5_iqr",
+      "T_Amp_V5",
+      "T_Amp_V5_iqr",
+      "ST_Elev_V5",
+      "Q_Amp_V6",
+      "Q_Amp_V6_iqr",
+      "R_Amp_V6",
+      "R_Amp_V6_iqr",
+      "T_Amp_V6",
+      "T_Amp_V6_iqr",
+      "ST_Elev_V6"
+    ],
+    "feature_count": 95,
+    "feature_block_status": "ASSUMED PRE-TREATMENT UNDER RULE A",
+    "technical_availability_at_rule_a_ecg": "All selected Rule-A ECG rows carry the engineered ECG feature block.",
+    "temporal_status": "Rule A is an assumed/fallback index-ECG rule and does not establish verified pre-treatment timing.",
+    "summary": {
+      "QRS_Dur_Global": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 9361,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "QRS_Dur_Global_iqr": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 101,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "QRS_Dur_Global_count": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 20,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "RR_Mean_Global": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 11616,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "RR_Mean_Global_iqr": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 1174,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "S_Amp_V1": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189832,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "S_Amp_V1_iqr": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190639,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "S_Amp_V2": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189682,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "S_Amp_V2_iqr": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190604,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "S_Amp_V3": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189755,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "S_Amp_V3_iqr": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190606,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "Q_Amp_I": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189458,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "Q_Amp_I_iqr": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190495,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "R_Amp_I": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189556,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "R_Amp_I_iqr": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190511,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "T_Amp_I": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189607,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "T_Amp_I_iqr": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190518,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "ST_Elev_I": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189765,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "Q_Amp_II": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189546,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "Q_Amp_II_iqr": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190486,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "R_Amp_II": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189294,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "R_Amp_II_iqr": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190565,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "T_Amp_II": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189858,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "T_Amp_II_iqr": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190525,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "ST_Elev_II": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189799,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "Q_Amp_III": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189586,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "Q_Amp_III_iqr": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190533,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "R_Amp_III": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189441,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "R_Amp_III_iqr": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190550,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "T_Amp_III": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189748,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "T_Amp_III_iqr": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190551,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "ST_Elev_III": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189828,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "Q_Amp_aVR": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189365,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "Q_Amp_aVR_iqr": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190519,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "R_Amp_aVR": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189482,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "R_Amp_aVR_iqr": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190604,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "T_Amp_aVR": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189627,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "T_Amp_aVR_iqr": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190565,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "ST_Elev_aVR": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189782,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "Q_Amp_aVL": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189593,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "Q_Amp_aVL_iqr": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190522,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "R_Amp_aVL": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189354,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "R_Amp_aVL_iqr": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190554,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "T_Amp_aVL": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189783,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "T_Amp_aVL_iqr": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190550,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "ST_Elev_aVL": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189836,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "Q_Amp_aVF": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189450,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "Q_Amp_aVF_iqr": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190490,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "R_Amp_aVF": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189513,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "R_Amp_aVF_iqr": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190537,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "T_Amp_aVF": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189655,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "T_Amp_aVF_iqr": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190565,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "ST_Elev_aVF": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189772,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "Q_Amp_V1": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189696,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "Q_Amp_V1_iqr": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190622,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "R_Amp_V1": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189820,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "R_Amp_V1_iqr": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190606,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "T_Amp_V1": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189796,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "T_Amp_V1_iqr": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190615,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "ST_Elev_V1": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189743,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "Q_Amp_V2": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189644,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "Q_Amp_V2_iqr": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190618,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "R_Amp_V2": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189774,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "R_Amp_V2_iqr": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190643,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "T_Amp_V2": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189951,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "T_Amp_V2_iqr": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190569,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "ST_Elev_V2": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189810,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "Q_Amp_V3": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189580,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "Q_Amp_V3_iqr": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190553,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "R_Amp_V3": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189715,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "R_Amp_V3_iqr": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190577,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "T_Amp_V3": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189935,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "T_Amp_V3_iqr": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190549,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "ST_Elev_V3": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189778,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "Q_Amp_V4": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189575,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "Q_Amp_V4_iqr": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190479,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "R_Amp_V4": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189714,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "R_Amp_V4_iqr": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190551,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "T_Amp_V4": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189933,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "T_Amp_V4_iqr": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190599,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "ST_Elev_V4": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189821,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "Q_Amp_V5": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189570,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "Q_Amp_V5_iqr": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190507,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "R_Amp_V5": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189734,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "R_Amp_V5_iqr": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190596,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "T_Amp_V5": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189848,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "T_Amp_V5_iqr": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190549,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "ST_Elev_V5": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189841,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "Q_Amp_V6": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189610,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "Q_Amp_V6_iqr": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190520,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "R_Amp_V6": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189720,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "R_Amp_V6_iqr": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190609,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "T_Amp_V6": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189832,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "T_Amp_V6_iqr": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190561,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "ST_Elev_V6": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 189833,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      }
+    }
+  },
+  "z_ecg_block": {
+    "z_columns": [
+      "z_ecg_1",
+      "z_ecg_2",
+      "z_ecg_3",
+      "z_ecg_4",
+      "z_ecg_5",
+      "z_ecg_6",
+      "z_ecg_7",
+      "z_ecg_8",
+      "z_ecg_9",
+      "z_ecg_10",
+      "z_ecg_11",
+      "z_ecg_12",
+      "z_ecg_13",
+      "z_ecg_14",
+      "z_ecg_15",
+      "z_ecg_16",
+      "z_ecg_17",
+      "z_ecg_18",
+      "z_ecg_19",
+      "z_ecg_20",
+      "z_ecg_21",
+      "z_ecg_22",
+      "z_ecg_23",
+      "z_ecg_24",
+      "z_ecg_25",
+      "z_ecg_26",
+      "z_ecg_27",
+      "z_ecg_28",
+      "z_ecg_29",
+      "z_ecg_30",
+      "z_ecg_31",
+      "z_ecg_32",
+      "z_ecg_33",
+      "z_ecg_34",
+      "z_ecg_35",
+      "z_ecg_36",
+      "z_ecg_37",
+      "z_ecg_38",
+      "z_ecg_39",
+      "z_ecg_40",
+      "z_ecg_41",
+      "z_ecg_42",
+      "z_ecg_43",
+      "z_ecg_44",
+      "z_ecg_45",
+      "z_ecg_46",
+      "z_ecg_47",
+      "z_ecg_48",
+      "z_ecg_49",
+      "z_ecg_50",
+      "z_ecg_51",
+      "z_ecg_52",
+      "z_ecg_53",
+      "z_ecg_54",
+      "z_ecg_55",
+      "z_ecg_56",
+      "z_ecg_57",
+      "z_ecg_58",
+      "z_ecg_59",
+      "z_ecg_60",
+      "z_ecg_61",
+      "z_ecg_62",
+      "z_ecg_63",
+      "z_ecg_64"
+    ],
+    "z_count": 64,
+    "z_block_status": "TEMPORALLY UNRESOLVED",
+    "provenance_status": "DISTINCT BLOCKER: VAE provenance remains unresolved even if the Rule-A linkage itself is technically valid.",
+    "technical_availability_at_rule_a_ecg": "All z_ecg columns are technically available for the selected Rule-A ECG rows.",
+    "temporal_status": "Technical availability does not establish causally verified pre-treatment status.",
+    "provenance": {
+      "vae_training_membership_unresolved": true,
+      "checkpoint_provenance_unresolved": true,
+      "waveform_preprocessing_unresolved": true,
+      "train_only_preprocessing_fit_unresolved": true,
+      "validation_test_optimization_exposure_unresolved": true,
+      "post_mi_ecg_exposure_during_vae_training_unresolved": true,
+      "treatment_outcome_independence_unresolved": true
+    },
+    "summary": {
+      "z_ecg_1": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190942,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_2": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190958,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_3": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 191031,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_4": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190965,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_5": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 191019,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_6": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 191025,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_7": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190990,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_8": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 191018,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_9": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190953,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_10": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190979,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_11": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190998,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_12": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190972,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_13": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190988,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_14": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190966,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_15": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190991,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_16": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190882,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_17": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190966,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_18": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190950,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_19": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190920,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_20": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190845,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_21": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190963,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_22": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190986,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_23": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 191038,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_24": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190992,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_25": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190989,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_26": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190919,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_27": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190976,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_28": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190973,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_29": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 191018,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_30": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190979,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_31": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190920,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_32": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190883,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_33": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190923,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_34": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 191038,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_35": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 191067,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_36": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 191003,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_37": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 191056,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_38": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190961,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_39": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190882,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_40": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190949,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_41": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 191053,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_42": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 191014,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_43": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190992,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_44": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190972,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_45": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190978,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_46": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190943,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_47": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190989,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_48": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190863,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_49": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 191070,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_50": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 191007,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_51": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 191010,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_52": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190936,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_53": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190877,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_54": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190970,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_55": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 191003,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_56": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190967,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_57": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 191025,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_58": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190916,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_59": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190927,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_60": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 191023,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_61": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 191027,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_62": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190972,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_63": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190971,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      },
+      "z_ecg_64": {
+        "missing_count": 0,
+        "finite_count": 191369,
+        "non_finite_count": 0,
+        "unique_values": 190958,
+        "constant_or_near_constant": false,
+        "all_attached_to_selected_ecg": true
+      }
+    }
+  },
+  "baseline_variables": {
+    "anchor_age": {
+      "availability_in_selected_rule_a_rows": 191369,
+      "missing_count_in_selected_rule_a_rows": 0,
+      "within_admission_inconsistency_over_all_rows": 0,
+      "known_before_rule_a_ecg": "Likely yes for age/sex at admission-level; history variables require source-window verification",
+      "temporal_status": "potentially eligible",
+      "baseline_role_status": "potentially eligible for design, not yet confirmed as a valid causal baseline variable"
+    },
+    "sex_male": {
+      "availability_in_selected_rule_a_rows": 191369,
+      "missing_count_in_selected_rule_a_rows": 0,
+      "within_admission_inconsistency_over_all_rows": 0,
+      "known_before_rule_a_ecg": "Likely yes for age/sex at admission-level; history variables require source-window verification",
+      "temporal_status": "potentially eligible",
+      "baseline_role_status": "potentially eligible for design, not yet confirmed as a valid causal baseline variable"
+    },
+    "diabetes": {
+      "availability_in_selected_rule_a_rows": 191369,
+      "missing_count_in_selected_rule_a_rows": 0,
+      "within_admission_inconsistency_over_all_rows": 0,
+      "known_before_rule_a_ecg": "Not independently established from the available project documentation for this aspirin causal baseline",
+      "temporal_status": "temporally unresolved",
+      "baseline_role_status": "treatment-specific baseline status unresolved"
+    },
+    "hypertension": {
+      "availability_in_selected_rule_a_rows": 191369,
+      "missing_count_in_selected_rule_a_rows": 0,
+      "within_admission_inconsistency_over_all_rows": 0,
+      "known_before_rule_a_ecg": "Not independently established from the available project documentation for this aspirin causal baseline",
+      "temporal_status": "temporally unresolved",
+      "baseline_role_status": "treatment-specific baseline status unresolved"
+    },
+    "ckd": {
+      "availability_in_selected_rule_a_rows": 191369,
+      "missing_count_in_selected_rule_a_rows": 0,
+      "within_admission_inconsistency_over_all_rows": 0,
+      "known_before_rule_a_ecg": "Not independently established from the available project documentation for this aspirin causal baseline",
+      "temporal_status": "temporally unresolved",
+      "baseline_role_status": "treatment-specific baseline status unresolved"
+    },
+    "prior_mi": {
+      "availability_in_selected_rule_a_rows": 191369,
+      "missing_count_in_selected_rule_a_rows": 0,
+      "within_admission_inconsistency_over_all_rows": 0,
+      "known_before_rule_a_ecg": "Not independently established from the available project documentation for this aspirin causal baseline",
+      "temporal_status": "temporally unresolved",
+      "baseline_role_status": "treatment-specific baseline status unresolved"
+    }
+  },
+  "treatment_variables": {
+    "aspirin_before": {
+      "available_in_master": true,
+      "exposed_count": 14927,
+      "unexposed_count": 176442,
+      "missing_count": 0,
+      "exposure_percentage": 0.07800113916047009,
+      "status": "pre-admission/window-coded treatment indicator according to master documentation",
+      "eligible_for_aspirin_discovery": false,
+      "specific_note": "aspirin_before is a pre-admission/window-coded treatment indicator in project documentation; it is not verified administration before Rule-A ECG."
+    },
+    "aspirin_during": {
+      "available_in_master": true,
+      "exposed_count": 68655,
+      "unexposed_count": 122714,
+      "missing_count": 0,
+      "exposure_percentage": 0.358757165476122,
+      "status": "downstream or acute episode marker; not a verified pre-treatment baseline",
+      "eligible_for_aspirin_discovery": false,
+      "specific_note": "Not eligible as a pre-treatment baseline for the aspirin causal question without a verified treatment assignment time."
+    },
+    "vasopressor_during": {
+      "available_in_master": true,
+      "exposed_count": 11284,
+      "unexposed_count": 180085,
+      "missing_count": 0,
+      "exposure_percentage": 0.05896461809383965,
+      "status": "downstream or acute episode marker; not a verified pre-treatment baseline",
+      "eligible_for_aspirin_discovery": false,
+      "specific_note": "Not eligible as a pre-treatment baseline for the aspirin causal question without a verified treatment assignment time."
+    },
+    "mech_vent_during": {
+      "available_in_master": true,
+      "exposed_count": 21397,
+      "unexposed_count": 169972,
+      "missing_count": 0,
+      "exposure_percentage": 0.11181016779102153,
+      "status": "downstream or acute episode marker; not a verified pre-treatment baseline",
+      "eligible_for_aspirin_discovery": false,
+      "specific_note": "Not eligible as a pre-treatment baseline for the aspirin causal question without a verified treatment assignment time."
+    }
+  },
+  "outcome_variables": {
+    "is_MI": {
+      "available_in_master": true,
+      "missing_count": 0,
+      "non_missing_count": 191369,
+      "status": "candidate outcome; provenance remains unresolved"
+    },
+    "Label_Troponin": {
+      "available_in_master": true,
+      "missing_count": 0,
+      "non_missing_count": 191369,
+      "status": "cohort/label metadata; not a feature"
+    },
+    "index_mi_time": {
+      "available_in_master": true,
+      "missing_count": 176810,
+      "non_missing_count": 14559,
+      "status": "event-time variable; not baseline covariate"
+    },
+    "time_diff_hours": {
+      "available_in_master": true,
+      "missing_count": 0,
+      "non_missing_count": 191369,
+      "status": "not a universal MI clock; for controls uses admission-time anchor/fallback"
+    }
+  },
+  "leakage_audit": {
+    "outcome_leakage": "No direct use of is_MI, Label_Troponin, index_mi_time, or time_diff_hours in Rule-A selection; still, the outcome provenance remains unresolved.",
+    "treatment_leakage": "No direct use of aspirin_before in Rule-A ECG selection; the exposure label remains temporally unresolved and cannot be treated as verified pre-treatment timing.",
+    "post_treatment_ecg_information": "No exclusion or filtering based on post-treatment ECGs was applied. Rule A is a fallback index selection, not a verified treatment-specific baseline.",
+    "troponin_leakage": "Label_Troponin is not used as a Rule-A selection variable and is not used as a baseline feature.",
+    "mi_time_feature_leakage": "index_mi_time and time_diff_hours are not used to select Rule A or to define the ECG baseline.",
+    "vae_provenance_leakage": "VAE provenance remains unresolved; the latent z_ecg block is not treated as verified baseline evidence.",
+    "preprocessing_leakage": "No preprocessing fit or scaling was performed in this audit. No new transformation pipeline was created."
+  },
+  "eligibility_table": [
+    {
+      "Variable/group": "anchor_age",
+      "Role": "demographic",
+      "Rule-A availability": "Yes",
+      "Temporal status": "potentially eligible",
+      "Provenance status": "Phase F master schema; age/sex from demographics joined on SubjectID; prior-history variables from clinical history join.",
+      "Leakage status": "No direct outcome leakage in Rule-A selection.",
+      "Eligible for aspirin discovery?": "Potentially eligible for design-only use; not yet causal baseline evidence.",
+      "Reason": "Available at admission level and not used to choose Rule A, but causal baseline role is not yet verified for the aspirin question."
+    },
+    {
+      "Variable/group": "sex_male",
+      "Role": "demographic",
+      "Rule-A availability": "Yes",
+      "Temporal status": "potentially eligible",
+      "Provenance status": "Phase F master schema; age/sex from demographics joined on SubjectID; prior-history variables from clinical history join.",
+      "Leakage status": "No direct outcome leakage in Rule-A selection.",
+      "Eligible for aspirin discovery?": "Potentially eligible for design-only use; not yet causal baseline evidence.",
+      "Reason": "Available at admission level and not used to choose Rule A, but causal baseline role is not yet verified for the aspirin question."
+    },
+    {
+      "Variable/group": "diabetes",
+      "Role": "prior-history",
+      "Rule-A availability": "Yes",
+      "Temporal status": "temporally unresolved",
+      "Provenance status": "Phase F master schema; age/sex from demographics joined on SubjectID; prior-history variables from clinical history join.",
+      "Leakage status": "No direct outcome leakage in Rule-A selection.",
+      "Eligible for aspirin discovery?": "Potentially eligible for design-only use; not yet causal baseline evidence.",
+      "Reason": "Available at admission level and not used to choose Rule A, but causal baseline role is not yet verified for the aspirin question."
+    },
+    {
+      "Variable/group": "hypertension",
+      "Role": "prior-history",
+      "Rule-A availability": "Yes",
+      "Temporal status": "temporally unresolved",
+      "Provenance status": "Phase F master schema; age/sex from demographics joined on SubjectID; prior-history variables from clinical history join.",
+      "Leakage status": "No direct outcome leakage in Rule-A selection.",
+      "Eligible for aspirin discovery?": "Potentially eligible for design-only use; not yet causal baseline evidence.",
+      "Reason": "Available at admission level and not used to choose Rule A, but causal baseline role is not yet verified for the aspirin question."
+    },
+    {
+      "Variable/group": "ckd",
+      "Role": "prior-history",
+      "Rule-A availability": "Yes",
+      "Temporal status": "temporally unresolved",
+      "Provenance status": "Phase F master schema; age/sex from demographics joined on SubjectID; prior-history variables from clinical history join.",
+      "Leakage status": "No direct outcome leakage in Rule-A selection.",
+      "Eligible for aspirin discovery?": "Potentially eligible for design-only use; not yet causal baseline evidence.",
+      "Reason": "Available at admission level and not used to choose Rule A, but causal baseline role is not yet verified for the aspirin question."
+    },
+    {
+      "Variable/group": "prior_mi",
+      "Role": "prior-history",
+      "Rule-A availability": "Yes",
+      "Temporal status": "temporally unresolved",
+      "Provenance status": "Phase F master schema; age/sex from demographics joined on SubjectID; prior-history variables from clinical history join.",
+      "Leakage status": "No direct outcome leakage in Rule-A selection.",
+      "Eligible for aspirin discovery?": "Potentially eligible for design-only use; not yet causal baseline evidence.",
+      "Reason": "Available at admission level and not used to choose Rule A, but causal baseline role is not yet verified for the aspirin question."
+    },
+    {
+      "Variable/group": "aspirin_before",
+      "Role": "treatment exposure",
+      "Rule-A availability": "Yes",
+      "Temporal status": "treatment-specific baseline status unresolved",
+      "Provenance status": "Pre-admission/window-coded indicator in project documentation; not verified administration before Rule-A ECG.",
+      "Leakage status": "No direct timing leakage; exact assignment time remains unresolved.",
+      "Eligible for aspirin discovery?": "No",
+      "Reason": "Documented as a pre-admission/window-coded indicator, not as verified aspirin administration before the Rule-A ECG."
+    },
+    {
+      "Variable/group": "95 ECG feature block",
+      "Role": "ECG-derived features",
+      "Rule-A availability": "Yes",
+      "Temporal status": "ASSUMED PRE-TREATMENT UNDER RULE A",
+      "Provenance status": "ECG feature pipeline provenance remains outside the current local workspace audit.",
+      "Leakage status": "No direct leakage from outcome or treatment timing in selection, but Rule-A temporal assumption is fallback-only.",
+      "Eligible for aspirin discovery?": "No",
+      "Reason": "Technically available at the Rule-A ECG, but not causally verified as pre-treatment; temporal status remains assumed/fallback."
+    },
+    {
+      "Variable/group": "64 z_ecg block",
+      "Role": "latent ECG representation",
+      "Rule-A availability": "Yes",
+      "Temporal status": "TEMPORALLY UNRESOLVED",
+      "Provenance status": "VAE provenance unresolved; training/checkpoint/preprocessing status remains unresolved.",
+      "Leakage status": "No direct leakage in selection, but provenance and treatment-time uncertainty remain unresolved.",
+      "Eligible for aspirin discovery?": "No",
+      "Reason": "Technical availability at Rule-A ECG does not establish causally verified pre-treatment status or provenance quality."
+    },
+    {
+      "Variable/group": "is_MI",
+      "Role": "outcome/temporal",
+      "Rule-A availability": "Yes",
+      "Temporal status": "outcome-derived / not baseline",
+      "Provenance status": "Label_Troponin/is_MI provenance unresolved; index_mi_time and time_diff_hours are not baseline covariates.",
+      "Leakage status": "Not used in Rule-A selection.",
+      "Eligible for aspirin discovery?": "No",
+      "Reason": "Outcome and temporal variables are not valid baseline adjustment variables and are excluded from a treatment-specific rule-A design."
+    },
+    {
+      "Variable/group": "Label_Troponin",
+      "Role": "outcome/temporal",
+      "Rule-A availability": "Yes",
+      "Temporal status": "outcome-derived / not baseline",
+      "Provenance status": "Label_Troponin/is_MI provenance unresolved; index_mi_time and time_diff_hours are not baseline covariates.",
+      "Leakage status": "Not used in Rule-A selection.",
+      "Eligible for aspirin discovery?": "No",
+      "Reason": "Outcome and temporal variables are not valid baseline adjustment variables and are excluded from a treatment-specific rule-A design."
+    },
+    {
+      "Variable/group": "index_mi_time",
+      "Role": "outcome/temporal",
+      "Rule-A availability": "Yes",
+      "Temporal status": "outcome-derived / not baseline",
+      "Provenance status": "Label_Troponin/is_MI provenance unresolved; index_mi_time and time_diff_hours are not baseline covariates.",
+      "Leakage status": "Not used in Rule-A selection.",
+      "Eligible for aspirin discovery?": "No",
+      "Reason": "Outcome and temporal variables are not valid baseline adjustment variables and are excluded from a treatment-specific rule-A design."
+    },
+    {
+      "Variable/group": "time_diff_hours",
+      "Role": "outcome/temporal",
+      "Rule-A availability": "Yes",
+      "Temporal status": "outcome-derived / not baseline",
+      "Provenance status": "Label_Troponin/is_MI provenance unresolved; index_mi_time and time_diff_hours are not baseline covariates.",
+      "Leakage status": "Not used in Rule-A selection.",
+      "Eligible for aspirin discovery?": "No",
+      "Reason": "Outcome and temporal variables are not valid baseline adjustment variables and are excluded from a treatment-specific rule-A design."
+    },
+    {
+      "Variable/group": "aspirin_during",
+      "Role": "downstream/acute treatment",
+      "Rule-A availability": "Yes",
+      "Temporal status": "downstream or acute episode marker; not a verified pre-treatment baseline",
+      "Provenance status": "Available in master schema but not a pre-treatment aspirin baseline for the causal question.",
+      "Leakage status": "Not used in rule-A selection; should not be treated as baseline treatment.",
+      "Eligible for aspirin discovery?": "No",
+      "Reason": "These variables are downstream or acute clinical markers and are not a valid pre-treatment baseline for aspirin-specific design."
+    },
+    {
+      "Variable/group": "aspirin_after",
+      "Role": "downstream/acute treatment",
+      "Rule-A availability": "No",
+      "Temporal status": "downstream or acute episode marker; not a verified pre-treatment baseline",
+      "Provenance status": "Available in master schema but not a pre-treatment aspirin baseline for the causal question.",
+      "Leakage status": "Not used in rule-A selection; should not be treated as baseline treatment.",
+      "Eligible for aspirin discovery?": "No",
+      "Reason": "These variables are downstream or acute clinical markers and are not a valid pre-treatment baseline for aspirin-specific design."
+    },
+    {
+      "Variable/group": "vasopressor_during",
+      "Role": "downstream/acute treatment",
+      "Rule-A availability": "Yes",
+      "Temporal status": "downstream or acute episode marker; not a verified pre-treatment baseline",
+      "Provenance status": "Available in master schema but not a pre-treatment aspirin baseline for the causal question.",
+      "Leakage status": "Not used in rule-A selection; should not be treated as baseline treatment.",
+      "Eligible for aspirin discovery?": "No",
+      "Reason": "These variables are downstream or acute clinical markers and are not a valid pre-treatment baseline for aspirin-specific design."
+    },
+    {
+      "Variable/group": "mech_vent_during",
+      "Role": "downstream/acute treatment",
+      "Rule-A availability": "Yes",
+      "Temporal status": "downstream or acute episode marker; not a verified pre-treatment baseline",
+      "Provenance status": "Available in master schema but not a pre-treatment aspirin baseline for the causal question.",
+      "Leakage status": "Not used in rule-A selection; should not be treated as baseline treatment.",
+      "Eligible for aspirin discovery?": "No",
+      "Reason": "These variables are downstream or acute clinical markers and are not a valid pre-treatment baseline for aspirin-specific design."
+    }
+  ],
+  "integrity_validation": {
+    "master_hashes_unchanged": true,
+    "phase_artifact_hashes_unchanged": true,
+    "rule_a_selection_uses_no_outcome_or_treatment": true,
+    "no_preprocessing_fitted": true,
+    "selected_rule_a_ecg_uses_earliest_valid_ecg_time_only": true,
+    "protected_hashes_before": {
+      "master\\test.parquet": "f514cd2eb62eadb9f08a0f59be27e712a2916c1636c1b22a6219c33f61900c85",
+      "master\\train.parquet": "f4299d7cbeeb4fb11adc8060fec13dd982edb52b3000992a48a5db4943f9992f",
+      "master\\validation.parquet": "1f02a6d1feb24d264cf3c40aa00d7813405968ff184fc0f8b58b3d71dabf58cc",
+      "phase1_audit_results.json": "c871a9f357dad077c50d7bab8756073963e04039a7d2bd00e47d69c431e5e09f",
+      "phase1_causal_unit_audit.py": "a7412cf6fa8f50a10deed82ce64b1eaabd938767fe2ea5b6583aab5a95c97bf7",
+      "phase1_causal_unit_temporal_framework_audit.ipynb": "30566eca0f3ffb2b1241ba663ac0a9f1add62ce3bc7694ee68c0d4afffb73801",
+      "phase1_fix_notebook.py": "6b6bbaaa49f22190ad3d46be6720c45fc56709b4c8392fd88e8718c02277e344",
+      "phase2_aspirin_rule_a_temporal_eligibility_audit.py": "e955ee68cf2948f46b0d0f70055017f13fe5f6fe044a93f6beb404ff17b88302",
+      "phase2_aspirin_timestamp_recovery.py": "15b34c62b3541d95db95f34e6e929dd865b11b84ecef391c152d100dc7fe55b1",
+      "phase2_audit_results.json": "38f966fd40c9e9a8cc7049e53ce35e270f474da6a6f072daadc43006de888358",
+      "phase2_treatment_outcome_audit.ipynb": "1e983f185c0d2175e9bab38af6115e5599c85f95ef7d0fe411a668c3d7c1da7b",
+      "phase2_treatment_outcome_audit.py": "cc250b5f4f53b12d4761b6e9ad96918a7c418796e3f25d1c95bf927430e71cda",
+      "phase3_audit_results.json": "41dbb0fb00b0237eafb5d0c8ef557f5aedd66c04661e5d0d0f2f47c60c41dc96",
+      "phase3_baseline_covariate_audit.ipynb": "7a82c022bb70ccf11d4de0616a5f7768eb52c5bc237e77c3744e470574ba87de",
+      "phase3_baseline_covariate_audit.py": "405810558d56149e8ce9997a52259143502cbcce98447ea8aa9e37b7d1b85ebf",
+      "phase4_discovery_ready_dataset.ipynb": "0eae384ae4e009c93e1fafdb01d83dbc6374ee4d5b77133b5ab9f52b388d993a",
+      "phase4_discovery_ready_dataset.py": "11b99fa96c152f0b5f1a069f31917372e8508363fd3b64e6ec714c67bfa2e7ef",
+      "phase4_discovery_ready_dataset_report.md": "174281b2319182437401e62c81360c643bc4651deec91d4d4e7785421dc78e76",
+      "phase4_discovery_ready_dataset_results.json": "b4ae5d35d8f2eb10646c60669f174f31b1009a12c80d43c1db61d7623532e383",
+      "phase5_z_ecg_causal_role_audit.ipynb": "cb6327aeec4f57b44d387ca2775d895d2326afb7f9f18406ab889908dbda53e9",
+      "phase5_z_ecg_causal_role_audit.py": "0f1f1c2fa04bf703ce3dd6a0566a2b6a155cec184bb77072cac2af41c8be0df1",
+      "phase5_z_ecg_causal_role_audit_report.md": "7b0cef8120e8ee1a3f3bcdee11c73fb33618464f40074e0cdfc2f01b6eb22afb",
+      "phase5_z_ecg_causal_role_audit_results.json": "6d17d1727d29bcde0365f3c048c432d8291f07b9d5feb33c28344172f2c4e0d7",
+      "phase6_background_causal_constraints.ipynb": "1a45a298d417ff9a4d2c3d895788a125e0d15dda117d20ac4cff5dccec0ac228",
+      "phase6_background_causal_constraints.py": "44332ce7b4d0ccadffa22e0acde61775ea3019978e4b3d9304e427ba4a682169",
+      "phase6_background_causal_constraints_report.md": "ea711b7fa98af1cfbad0c9d507c73cba9e05d1099e5cdf8f1b458557c4afb71f",
+      "phase6_background_causal_constraints_results.json": "b81a8b224719905410b5bb74e6e0ddd24d9dbd8e6227ba82a6f2fff09c1c101c",
+      "phase7_causal_discovery.ipynb": "c3487aa2485541450f62f624a80a3001550e727e47e25d74d3d5b4e5d5c8229c",
+      "phase7_causal_discovery.py": "d8e32d542d608a2c86ed0cc676a3b3a5900c44b9f9abc98d57d65272a0501100",
+      "phase7_causal_discovery_report.md": "0d868d7292cb0fac614c48f36b0293aaf8830accca6b0ce3dd65ea01ef458f5c",
+      "phase7_causal_discovery_results.json": "96f22dba78b7b9b7d8d7e11c35ad24184c3bce88fa9113db3b3b62d90eb3466a"
+    },
+    "protected_hashes_after": {
+      "master\\test.parquet": "f514cd2eb62eadb9f08a0f59be27e712a2916c1636c1b22a6219c33f61900c85",
+      "master\\train.parquet": "f4299d7cbeeb4fb11adc8060fec13dd982edb52b3000992a48a5db4943f9992f",
+      "master\\validation.parquet": "1f02a6d1feb24d264cf3c40aa00d7813405968ff184fc0f8b58b3d71dabf58cc",
+      "phase1_audit_results.json": "c871a9f357dad077c50d7bab8756073963e04039a7d2bd00e47d69c431e5e09f",
+      "phase1_causal_unit_audit.py": "a7412cf6fa8f50a10deed82ce64b1eaabd938767fe2ea5b6583aab5a95c97bf7",
+      "phase1_causal_unit_temporal_framework_audit.ipynb": "30566eca0f3ffb2b1241ba663ac0a9f1add62ce3bc7694ee68c0d4afffb73801",
+      "phase1_fix_notebook.py": "6b6bbaaa49f22190ad3d46be6720c45fc56709b4c8392fd88e8718c02277e344",
+      "phase2_aspirin_rule_a_temporal_eligibility_audit.py": "e955ee68cf2948f46b0d0f70055017f13fe5f6fe044a93f6beb404ff17b88302",
+      "phase2_aspirin_timestamp_recovery.py": "15b34c62b3541d95db95f34e6e929dd865b11b84ecef391c152d100dc7fe55b1",
+      "phase2_audit_results.json": "38f966fd40c9e9a8cc7049e53ce35e270f474da6a6f072daadc43006de888358",
+      "phase2_treatment_outcome_audit.ipynb": "1e983f185c0d2175e9bab38af6115e5599c85f95ef7d0fe411a668c3d7c1da7b",
+      "phase2_treatment_outcome_audit.py": "cc250b5f4f53b12d4761b6e9ad96918a7c418796e3f25d1c95bf927430e71cda",
+      "phase3_audit_results.json": "41dbb0fb00b0237eafb5d0c8ef557f5aedd66c04661e5d0d0f2f47c60c41dc96",
+      "phase3_baseline_covariate_audit.ipynb": "7a82c022bb70ccf11d4de0616a5f7768eb52c5bc237e77c3744e470574ba87de",
+      "phase3_baseline_covariate_audit.py": "405810558d56149e8ce9997a52259143502cbcce98447ea8aa9e37b7d1b85ebf",
+      "phase4_discovery_ready_dataset.ipynb": "0eae384ae4e009c93e1fafdb01d83dbc6374ee4d5b77133b5ab9f52b388d993a",
+      "phase4_discovery_ready_dataset.py": "11b99fa96c152f0b5f1a069f31917372e8508363fd3b64e6ec714c67bfa2e7ef",
+      "phase4_discovery_ready_dataset_report.md": "174281b2319182437401e62c81360c643bc4651deec91d4d4e7785421dc78e76",
+      "phase4_discovery_ready_dataset_results.json": "b4ae5d35d8f2eb10646c60669f174f31b1009a12c80d43c1db61d7623532e383",
+      "phase5_z_ecg_causal_role_audit.ipynb": "cb6327aeec4f57b44d387ca2775d895d2326afb7f9f18406ab889908dbda53e9",
+      "phase5_z_ecg_causal_role_audit.py": "0f1f1c2fa04bf703ce3dd6a0566a2b6a155cec184bb77072cac2af41c8be0df1",
+      "phase5_z_ecg_causal_role_audit_report.md": "7b0cef8120e8ee1a3f3bcdee11c73fb33618464f40074e0cdfc2f01b6eb22afb",
+      "phase5_z_ecg_causal_role_audit_results.json": "6d17d1727d29bcde0365f3c048c432d8291f07b9d5feb33c28344172f2c4e0d7",
+      "phase6_background_causal_constraints.ipynb": "1a45a298d417ff9a4d2c3d895788a125e0d15dda117d20ac4cff5dccec0ac228",
+      "phase6_background_causal_constraints.py": "44332ce7b4d0ccadffa22e0acde61775ea3019978e4b3d9304e427ba4a682169",
+      "phase6_background_causal_constraints_report.md": "ea711b7fa98af1cfbad0c9d507c73cba9e05d1099e5cdf8f1b458557c4afb71f",
+      "phase6_background_causal_constraints_results.json": "b81a8b224719905410b5bb74e6e0ddd24d9dbd8e6227ba82a6f2fff09c1c101c",
+      "phase7_causal_discovery.ipynb": "c3487aa2485541450f62f624a80a3001550e727e47e25d74d3d5b4e5d5c8229c",
+      "phase7_causal_discovery.py": "d8e32d542d608a2c86ed0cc676a3b3a5900c44b9f9abc98d57d65272a0501100",
+      "phase7_causal_discovery_report.md": "0d868d7292cb0fac614c48f36b0293aaf8830accca6b0ce3dd65ea01ef458f5c",
+      "phase7_causal_discovery_results.json": "96f22dba78b7b9b7d8d7e11c35ad24184c3bce88fa9113db3b3b62d90eb3466a"
+    }
+  }
+}

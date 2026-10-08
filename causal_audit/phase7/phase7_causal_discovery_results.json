@@ -1,0 +1,4254 @@
+{
+  "phase": "Phase 7 — Causal Discovery Readiness Gate",
+  "scope": "The requested gate was evaluated. Causal discovery was not run because every treatment-specific analysis is BLOCKED by frozen unresolved prerequisites.",
+  "frozen_inputs": {
+    "phase_files": {
+      "phase1": "C:\\Users\\anura\\OneDrive\\Desktop\\capstone2\\phase1_audit_results.json",
+      "phase2": "C:\\Users\\anura\\OneDrive\\Desktop\\capstone2\\phase2_audit_results.json",
+      "phase3": "C:\\Users\\anura\\OneDrive\\Desktop\\capstone2\\phase3_audit_results.json",
+      "phase4": "C:\\Users\\anura\\OneDrive\\Desktop\\capstone2\\phase4_discovery_ready_dataset_results.json",
+      "phase5": "C:\\Users\\anura\\OneDrive\\Desktop\\capstone2\\phase5_z_ecg_causal_role_audit_results.json",
+      "phase6": "C:\\Users\\anura\\OneDrive\\Desktop\\capstone2\\phase6_background_causal_constraints_results.json"
+    },
+    "phase0_artifact_available": false,
+    "master_document": "C:\\Users\\anura\\OneDrive\\Desktop\\capstone2\\docs\\Phase F — Master Dataset.md",
+    "causal_unit": "admission",
+    "split_rows": {
+      "train": 262813,
+      "validation": 56319,
+      "test": 56798
+    },
+    "combined_ecg_rows": 375930,
+    "admissions": 191369,
+    "patients": 99256,
+    "repeated_ecg_admissions": 85609,
+    "patients_with_repeated_admissions": 34625,
+    "phase2_treatment_time_zero": "UNRESOLVED for aspirin, statin, beta blocker, and ACE inhibitor because exact treatment assignment time is unavailable.",
+    "phase2_outcome_definition": "Current definition: binary `is_MI` linked to the categorical Label_Troponin cohort labels. The master dataset contains zero MI_Post-Incident rows because that category was intentionally excluded during modeling-data construction.",
+    "phase6_hard_constraint_count": 60,
+    "phase6_soft_constraint_count": 109,
+    "phase6_required_edge_count": 0
+  },
+  "readiness_assessment": {
+    "overall_status": "BLOCKED",
+    "per_treatment": {
+      "aspirin": "BLOCKED",
+      "statin": "BLOCKED",
+      "beta_blocker": "BLOCKED",
+      "acei": "BLOCKED"
+    },
+    "checks": [
+      {
+        "id": "causal_unit",
+        "status": "PARTIALLY_READY",
+        "finding": "Admission-level observational unit is frozen; repeated admissions require dependence-aware analysis.",
+        "evidence": "Phase 1/4 decision; 34,625 patients have repeated admissions. Preserve SubjectID for dependence, not as a causal feature; handling is unresolved.",
+        "blocks_causal_discovery": true,
+        "treatment_specific_status": {
+          "aspirin": "BLOCKED",
+          "statin": "BLOCKED",
+          "beta_blocker": "BLOCKED",
+          "acei": "BLOCKED"
+        }
+      },
+      {
+        "id": "treatment_specific_time_zero",
+        "status": "BLOCKED",
+        "finding": "Exact treatment assignment time is absent for aspirin, statin, beta blocker, and ACE inhibitor.",
+        "evidence": "UNRESOLVED for aspirin, statin, beta blocker, and ACE inhibitor because exact treatment assignment time is unavailable.",
+        "blocks_causal_discovery": true,
+        "treatment_specific_status": {
+          "aspirin": "BLOCKED",
+          "statin": "BLOCKED",
+          "beta_blocker": "BLOCKED",
+          "acei": "BLOCKED"
+        }
+      },
+      {
+        "id": "index_ecg_rule",
+        "status": "BLOCKED",
+        "finding": "No final causal index ECG is selected; first ECG or MI-relative rules are not validated treatment baselines.",
+        "evidence": [
+          "BLOCKED — no final causal ECG-level selection without treatment-specific time zero.",
+          "BLOCKED — raw ECG and z_ecg temporal eligibility cannot be established.",
+          "BLOCKED — cannot verify train-only preprocessing fitting from local scripts/artifacts."
+        ],
+        "blocks_causal_discovery": true,
+        "treatment_specific_status": {
+          "aspirin": "BLOCKED",
+          "statin": "BLOCKED",
+          "beta_blocker": "BLOCKED",
+          "acei": "BLOCKED"
+        }
+      },
+      {
+        "id": "outcome_definition",
+        "status": "BLOCKED",
+        "finding": "MI outcome definition and post-treatment follow-up horizon are unresolved.",
+        "evidence": "Current definition: binary `is_MI` linked to the categorical Label_Troponin cohort labels. The master dataset contains zero MI_Post-Incident rows because that category was intentionally excluded during modeling-data construction.",
+        "blocks_causal_discovery": true,
+        "treatment_specific_status": {
+          "aspirin": "BLOCKED",
+          "statin": "BLOCKED",
+          "beta_blocker": "BLOCKED",
+          "acei": "BLOCKED"
+        }
+      },
+      {
+        "id": "ecg_temporal_eligibility",
+        "status": "BLOCKED",
+        "finding": "Neither z_ecg nor engineered ECG features are established before treatment-specific time zero.",
+        "evidence": "Phase 3 eligibility and Phase 5 treatment-relative temporal status are unresolved.",
+        "blocks_causal_discovery": true,
+        "treatment_specific_status": {
+          "aspirin": "BLOCKED",
+          "statin": "BLOCKED",
+          "beta_blocker": "BLOCKED",
+          "acei": "BLOCKED"
+        }
+      },
+      {
+        "id": "treatment_timestamp_availability",
+        "status": "BLOCKED",
+        "finding": "Master schema provides window-coded flags only; exact medication time fields are absent.",
+        "evidence": [],
+        "blocks_causal_discovery": true,
+        "treatment_specific_status": {
+          "aspirin": "BLOCKED",
+          "statin": "BLOCKED",
+          "beta_blocker": "BLOCKED",
+          "acei": "BLOCKED"
+        }
+      },
+      {
+        "id": "z_ecg_provenance",
+        "status": "BLOCKED",
+        "finding": "The 64 embeddings exist and are complete in the master table, but waveform join, checkpoint, training membership, and leakage independence are unverified.",
+        "evidence": "NO FINAL REPRESENTATION DECISION YET. Keep all 64 dimensions identified as one quarantined z_ecg block in the schema; do not use the block as a causal discovery input until provenance and the target treatment-specific time zero are established.",
+        "blocks_causal_discovery": true,
+        "treatment_specific_status": {
+          "aspirin": "BLOCKED",
+          "statin": "BLOCKED",
+          "beta_blocker": "BLOCKED",
+          "acei": "BLOCKED"
+        }
+      },
+      {
+        "id": "engineered_feature_provenance",
+        "status": "BLOCKED",
+        "finding": "Upstream engineered ECG preprocessing and fit scope are not verified.",
+        "evidence": "Phase 4 reports documented transforms but no local scripts/fitted transformer artifacts to verify train-only scope.",
+        "blocks_causal_discovery": true,
+        "treatment_specific_status": {
+          "aspirin": "BLOCKED",
+          "statin": "BLOCKED",
+          "beta_blocker": "BLOCKED",
+          "acei": "BLOCKED"
+        }
+      },
+      {
+        "id": "preprocessing_provenance",
+        "status": "BLOCKED",
+        "finding": "Train-only preprocessing scope is unresolved for engineered ECG features and VAE inputs/embeddings.",
+        "evidence": "Phase 4/5 frozen audit results.",
+        "blocks_causal_discovery": true,
+        "treatment_specific_status": {
+          "aspirin": "BLOCKED",
+          "statin": "BLOCKED",
+          "beta_blocker": "BLOCKED",
+          "acei": "BLOCKED"
+        }
+      },
+      {
+        "id": "missingness_handling",
+        "status": "PARTIALLY_READY",
+        "finding": "Missingness counts exist in frozen Phase 4 inventory, but no strategy is authorized until a valid treatment-specific matrix is defined.",
+        "evidence": "Candidate matrix variable-level counts will be reported; no imputation/complete-case processing performed.",
+        "blocks_causal_discovery": true,
+        "treatment_specific_status": {
+          "aspirin": "BLOCKED",
+          "statin": "BLOCKED",
+          "beta_blocker": "BLOCKED",
+          "acei": "BLOCKED"
+        }
+      },
+      {
+        "id": "treatment_prevalence_positivity",
+        "status": "PARTIALLY_READY",
+        "finding": "Marginal admission prevalence is reported; conditional positivity in a finalized eligible cohort and covariate strata is unknown.",
+        "evidence": "Phase 2 admission-level exposure counts; stratified positivity is not audited for any selected baseline cohort.",
+        "blocks_causal_discovery": true,
+        "treatment_specific_status": {
+          "aspirin": "BLOCKED",
+          "statin": "BLOCKED",
+          "beta_blocker": "BLOCKED",
+          "acei": "BLOCKED"
+        }
+      },
+      {
+        "id": "phase6_constraints",
+        "status": "READY",
+        "finding": "Phase 6 provides machine-readable hard, soft, forbidden, permitted, and unresolved constraints; soft relationships must remain nonbinding.",
+        "evidence": "Specification present; 60 hard constraint records and 109 soft relationship records.",
+        "blocks_causal_discovery": false,
+        "treatment_specific_status": {
+          "aspirin": "BLOCKED",
+          "statin": "BLOCKED",
+          "beta_blocker": "BLOCKED",
+          "acei": "BLOCKED"
+        }
+      }
+    ],
+    "phase0_artifact": "NOT AVAILABLE locally; estimand/problem definition not reconstructed.",
+    "repeated_patient_dependence": {
+      "patients": 99256,
+      "admissions": 191369,
+      "patients_with_multiple_admissions": 34625,
+      "fraction_patients_with_multiple_admissions": 0.34884540984927864,
+      "effective_sample_size": "UNRESOLVED — requires within-patient dependence/ICC and target cohort."
+    },
+    "decision": "Do not run PC, GES, FCI, discovery configurations, or bootstrap stability analysis. For all four treatments, missing time zero, outcome horizon, baseline ECG eligibility, and unresolved provenance prevent a defensible causal discovery matrix. Any forced run would be exploratory association structure and would not satisfy the requested causal discovery objective."
+  },
+  "treatment_specific_readiness": {
+    "aspirin": {
+      "readiness": "BLOCKED",
+      "candidate_treatment": "aspirin_before",
+      "candidate_outcome": "is_MI (provisional; causal endpoint/horizon unresolved)",
+      "time_zero_status": "BLOCKED — UNRESOLVED",
+      "index_ecg_status": "BLOCKED — no final index ECG rule",
+      "outcome_status": "BLOCKED — causal outcome definition/horizon unresolved",
+      "baseline_covariate_status": "BLOCKED — Phase 3 has no clearly eligible baseline covariates.",
+      "treatment_timestamp_status": "BLOCKED — exact timestamp unavailable",
+      "ecg_temporal_eligibility_status": "BLOCKED — cannot establish ECG before treatment assignment",
+      "z_ecg_provenance_status": "BLOCKED — Phase 5 unresolved/partially verified",
+      "engineered_ecg_provenance_status": "BLOCKED — upstream preprocessing provenance unresolved",
+      "missingness_status": "PARTIALLY_READY — audit counts available; strategy not selected because no matrix is authorized.",
+      "positivity_status": "PARTIALLY_READY — marginal exposure/unexposed counts available; conditional positivity by eligible cohort/strata not assessed.",
+      "constraint_status": "PARTIALLY_READY — Phase 6 machine-readable constraints exist; only hard rules could be enforced, while soft relationships remain nonbinding.",
+      "marginal_exposure": {
+        "exposed_count": 14927,
+        "unexposed_count": 176442,
+        "missing_count": 0,
+        "exposure_percentage": 0.07800113916047009,
+        "total_admissions": 191369,
+        "unexposed_percentage": 92.19988608395299
+      },
+      "candidate_matrix_descriptors": {
+        "matrix_A_clinical_history_treatment_outcome": {
+          "name": "A — clinical/history + one candidate treatment + candidate outcome",
+          "candidate_schema_only": true,
+          "authorized_for_discovery": false,
+          "N_admissions_upper_bound": 191369,
+          "variable_count": 8,
+          "N_per_variable_naive": 23921.125,
+          "binary_variable_count": 7,
+          "continuous_variable_count": 1,
+          "missingness": "See per-variable counts; descriptive only, no handling performed.",
+          "variables_or_block": [
+            "anchor_age",
+            "sex_male",
+            "diabetes",
+            "hypertension",
+            "ckd",
+            "prior_mi",
+            "aspirin_before",
+            "is_MI"
+          ],
+          "limitations": [
+            "Admission rows are not known to be independent because some patients contribute repeated admissions.",
+            "Naive N/p is not a guarantee of reliable discovery or adequate conditional-independence power.",
+            "No candidate baseline or outcome definition is finalized."
+          ]
+        },
+        "matrix_B_clinical_history_engineered_ecg_treatment_outcome": {
+          "name": "B — Matrix A + 95 engineered ECG measurements",
+          "candidate_schema_only": true,
+          "authorized_for_discovery": false,
+          "N_admissions_upper_bound": 191369,
+          "variable_count": 103,
+          "N_per_variable_naive": 1857.9514563106795,
+          "binary_variable_count": 7,
+          "continuous_variable_count": 96,
+          "missingness": "See per-variable counts; descriptive only, no handling performed.",
+          "variables_or_block": [
+            "anchor_age",
+            "sex_male",
+            "diabetes",
+            "hypertension",
+            "ckd",
+            "prior_mi",
+            "aspirin_before",
+            "is_MI",
+            {
+              "block": "engineered_ecg_block",
+              "dimension_count": 95
+            }
+          ],
+          "limitations": [
+            "Admission rows are not known to be independent because some patients contribute repeated admissions.",
+            "Naive N/p is not a guarantee of reliable discovery or adequate conditional-independence power.",
+            "No candidate baseline or outcome definition is finalized."
+          ]
+        },
+        "matrix_C_clinical_history_z_ecg_treatment_outcome": {
+          "name": "C — Matrix A + 64 learned ECG representation dimensions",
+          "candidate_schema_only": true,
+          "authorized_for_discovery": false,
+          "N_admissions_upper_bound": 191369,
+          "variable_count": 72,
+          "N_per_variable_naive": 2657.902777777778,
+          "binary_variable_count": 7,
+          "continuous_variable_count": 65,
+          "missingness": "See per-variable counts; descriptive only, no handling performed.",
+          "variables_or_block": [
+            "anchor_age",
+            "sex_male",
+            "diabetes",
+            "hypertension",
+            "ckd",
+            "prior_mi",
+            "aspirin_before",
+            "is_MI",
+            {
+              "block": "z_ecg_block",
+              "dimension_count": 64
+            }
+          ],
+          "limitations": [
+            "Admission rows are not known to be independent because some patients contribute repeated admissions.",
+            "Naive N/p is not a guarantee of reliable discovery or adequate conditional-independence power.",
+            "No candidate baseline or outcome definition is finalized."
+          ]
+        },
+        "matrix_D_block_reduced": {
+          "name": "D — reduced ECG block",
+          "candidate_schema_only": true,
+          "authorized_for_discovery": false,
+          "variables_or_block": [],
+          "status": "NOT AVAILABLE — Phase 5 performed no PCA or other justified reduction."
+        },
+        "interpretation": "These are bookkeeping descriptions only. No admission-level design matrix was constructed: doing so would require selecting a baseline ECG, outcome, and treatment-specific time zero that remain unresolved."
+      },
+      "candidate_missingness": {
+        "candidate_field_count": 170,
+        "per_variable": {
+          "anchor_age": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "sex_male": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "diabetes": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "hypertension": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ckd": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "prior_mi": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "aspirin_before": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "is_MI": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Label_Troponin": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "index_mi_time": {
+            "missing_count": 327700,
+            "missing_percentage": 87.1704838666773
+          },
+          "time_diff_hours": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "QRS_Dur_Global": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "QRS_Dur_Global_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "QRS_Dur_Global_count": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "RR_Mean_Global": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "RR_Mean_Global_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "S_Amp_V1": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "S_Amp_V1_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "S_Amp_V2": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "S_Amp_V2_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "S_Amp_V3": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "S_Amp_V3_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_I": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_I_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_I": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_I_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_I": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_I_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_I": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_II": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_II_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_II": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_II_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_II": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_II_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_II": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_III": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_III_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_III": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_III_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_III": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_III_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_III": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_aVR": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_aVR_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_aVR": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_aVR_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_aVR": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_aVR_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_aVR": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_aVL": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_aVL_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_aVL": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_aVL_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_aVL": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_aVL_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_aVL": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_aVF": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_aVF_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_aVF": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_aVF_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_aVF": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_aVF_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_aVF": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V1": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V1_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V1": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V1_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V1": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V1_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_V1": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V2": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V2_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V2": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V2_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V2": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V2_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_V2": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V3": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V3_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V3": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V3_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V3": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V3_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_V3": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V4": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V4_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V4": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V4_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V4": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V4_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_V4": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V5": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V5_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V5": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V5_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V5": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V5_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_V5": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V6": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V6_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V6": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V6_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V6": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V6_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_V6": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_1": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_2": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_3": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_4": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_5": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_6": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_7": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_8": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_9": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_10": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_11": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_12": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_13": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_14": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_15": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_16": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_17": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_18": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_19": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_20": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_21": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_22": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_23": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_24": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_25": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_26": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_27": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_28": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_29": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_30": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_31": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_32": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_33": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_34": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_35": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_36": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_37": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_38": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_39": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_40": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_41": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_42": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_43": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_44": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_45": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_46": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_47": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_48": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_49": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_50": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_51": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_52": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_53": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_54": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_55": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_56": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_57": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_58": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_59": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_60": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_61": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_62": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_63": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_64": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          }
+        },
+        "core_clinical_treatment_outcome_missing_cells": 0,
+        "ecg_representation_missing_cells": 0,
+        "missing_data_strategy": "NOT SELECTED — no discovery matrix authorized; no imputation or row deletion performed."
+      },
+      "phase1_unit": "admission",
+      "phase1_conclusion_snapshot": {
+        "admission_level_unit": "Primary causal unit remains admission-level.",
+        "ecg_time_is_causal_time_zero": "NOT ESTABLISHED",
+        "phase1_decision_record": "Admission-level is the primary observational unit; ECG time is not yet established as causal time zero; index ECG selection remains unresolved pending the Phase 2 treatment-timing audit."
+      },
+      "phase2_time_zero_record": "UNRESOLVED for aspirin, statin, beta blocker, and ACE inhibitor because exact treatment assignment time is unavailable.",
+      "phase6_question_template": {
+        "candidate_treatment_variable": "aspirin_before",
+        "related_during_window_variable": "aspirin_during",
+        "related_post_discharge_variable": null,
+        "candidate_time_zero": "UNRESOLVED — exact medication assignment/administration time is unavailable.",
+        "intended_contrast": "Pre-admission aspirin-use indicator vs no recorded pre-admission aspirin-use indicator; not an identified assignment intervention.",
+        "outcome": {
+          "conceptual_node": "MI_event",
+          "candidate_observed_fields": [
+            "is_MI",
+            "Label_Troponin"
+          ],
+          "status": "UNRESOLVED — later causal outcome definition and event horizon required."
+        },
+        "candidate_baseline_covariates": {
+          "historical_candidates": [
+            "anchor_age",
+            "sex_male",
+            "diabetes",
+            "hypertension",
+            "ckd",
+            "prior_mi"
+          ],
+          "ecg_features": "z_ecg_block and engineered_ecg_block only if an ECG is proven before this treatment-specific time zero; currently TEMPORALLY UNRESOLVED.",
+          "eligibility_status": "Candidate schema only; no final adjustment set."
+        },
+        "possible_post_treatment_variables": [
+          "aspirin_during",
+          "vasopressor_during",
+          "mech_vent_during",
+          "z_ecg_block",
+          "engineered_ecg_block"
+        ],
+        "treatment_assignment_causes_to_consider": [
+          "anchor_age",
+          "sex_male",
+          "diabetes",
+          "hypertension",
+          "ckd",
+          "prior_mi",
+          "acute_severity_unmeasured",
+          "prior_ecg_state_before_admission (not separately represented in the current selected-ECG block)"
+        ],
+        "outcome_causes_to_consider": [
+          "anchor_age",
+          "sex_male",
+          "diabetes",
+          "hypertension",
+          "ckd",
+          "prior_mi",
+          "z_ecg_block",
+          "engineered_ecg_block",
+          "acute_severity_unmeasured"
+        ],
+        "treatment_specific_temporal_requirements": [
+          "Establish exact exposure/assignment time and exposure version for this treatment.",
+          "Establish whether each candidate baseline variable, especially the selected ECG representation, is measured before assignment.",
+          "Define whether the outcome is an incident MI after assignment or a cohort label reflecting an already-present/previous event.",
+          "Resolve treatment overlap, contraindications, and time-varying treatment before defining the contrast."
+        ],
+        "treatment_definition": "Phase F describes aspirin_before as use before admission and aspirin_during as in-hospital use; exact administration or initiation times are unavailable.",
+        "status": "TEMPLATE ONLY — no treatment, time zero, DAG, or causal effect selected."
+      },
+      "blocking_reasons": [
+        "Exact treatment assignment/administration timestamp is unavailable; treatment-specific time zero is unresolved.",
+        "No final index ECG has been selected, and the treatment-relative eligibility of all ECG variables remains unresolved.",
+        "Phase 2 outcome definition and event horizon remain unresolved; a candidate MI label is not yet an incident post-treatment endpoint.",
+        "Phase 3 identified no clearly eligible baseline covariate; all six clinical candidates remain pending provenance/temporal verification.",
+        "Phase 5 did not verify z_ecg waveform, checkpoint, training, preprocessing, or outcome/treatment-independence provenance.",
+        "Engineered ECG preprocessing lineage and train-only fitting scope remain unresolved.",
+        "Repeated admissions within patient require dependence-aware discovery, but effective sample size and supported cluster-aware CI/score procedure have not been established."
+      ],
+      "algorithm_status": {
+        "PC": "NOT RUN — readiness gate BLOCKED",
+        "GES": "NOT RUN — readiness gate BLOCKED",
+        "FCI": "NOT RUN — readiness gate BLOCKED",
+        "stability_analysis": "NOT RUN — no valid discovery matrix or algorithm outputs"
+      },
+      "discovery_matrix_constructed": false,
+      "raw_graph": null,
+      "stable_candidate_graph": null,
+      "bootstrap_frequencies": []
+    },
+    "statin": {
+      "readiness": "BLOCKED",
+      "candidate_treatment": "statin_before",
+      "candidate_outcome": "is_MI (provisional; causal endpoint/horizon unresolved)",
+      "time_zero_status": "BLOCKED — UNRESOLVED",
+      "index_ecg_status": "BLOCKED — no final index ECG rule",
+      "outcome_status": "BLOCKED — causal outcome definition/horizon unresolved",
+      "baseline_covariate_status": "BLOCKED — Phase 3 has no clearly eligible baseline covariates.",
+      "treatment_timestamp_status": "BLOCKED — exact timestamp unavailable",
+      "ecg_temporal_eligibility_status": "BLOCKED — cannot establish ECG before treatment assignment",
+      "z_ecg_provenance_status": "BLOCKED — Phase 5 unresolved/partially verified",
+      "engineered_ecg_provenance_status": "BLOCKED — upstream preprocessing provenance unresolved",
+      "missingness_status": "PARTIALLY_READY — audit counts available; strategy not selected because no matrix is authorized.",
+      "positivity_status": "PARTIALLY_READY — marginal exposure/unexposed counts available; conditional positivity by eligible cohort/strata not assessed.",
+      "constraint_status": "PARTIALLY_READY — Phase 6 machine-readable constraints exist; only hard rules could be enforced, while soft relationships remain nonbinding.",
+      "marginal_exposure": {
+        "exposed_count": 13203,
+        "unexposed_count": 178166,
+        "missing_count": 0,
+        "exposure_percentage": 0.06899236553464773,
+        "total_admissions": 191369,
+        "unexposed_percentage": 93.10076344653523
+      },
+      "candidate_matrix_descriptors": {
+        "matrix_A_clinical_history_treatment_outcome": {
+          "name": "A — clinical/history + one candidate treatment + candidate outcome",
+          "candidate_schema_only": true,
+          "authorized_for_discovery": false,
+          "N_admissions_upper_bound": 191369,
+          "variable_count": 8,
+          "N_per_variable_naive": 23921.125,
+          "binary_variable_count": 7,
+          "continuous_variable_count": 1,
+          "missingness": "See per-variable counts; descriptive only, no handling performed.",
+          "variables_or_block": [
+            "anchor_age",
+            "sex_male",
+            "diabetes",
+            "hypertension",
+            "ckd",
+            "prior_mi",
+            "statin_before",
+            "is_MI"
+          ],
+          "limitations": [
+            "Admission rows are not known to be independent because some patients contribute repeated admissions.",
+            "Naive N/p is not a guarantee of reliable discovery or adequate conditional-independence power.",
+            "No candidate baseline or outcome definition is finalized."
+          ]
+        },
+        "matrix_B_clinical_history_engineered_ecg_treatment_outcome": {
+          "name": "B — Matrix A + 95 engineered ECG measurements",
+          "candidate_schema_only": true,
+          "authorized_for_discovery": false,
+          "N_admissions_upper_bound": 191369,
+          "variable_count": 103,
+          "N_per_variable_naive": 1857.9514563106795,
+          "binary_variable_count": 7,
+          "continuous_variable_count": 96,
+          "missingness": "See per-variable counts; descriptive only, no handling performed.",
+          "variables_or_block": [
+            "anchor_age",
+            "sex_male",
+            "diabetes",
+            "hypertension",
+            "ckd",
+            "prior_mi",
+            "statin_before",
+            "is_MI",
+            {
+              "block": "engineered_ecg_block",
+              "dimension_count": 95
+            }
+          ],
+          "limitations": [
+            "Admission rows are not known to be independent because some patients contribute repeated admissions.",
+            "Naive N/p is not a guarantee of reliable discovery or adequate conditional-independence power.",
+            "No candidate baseline or outcome definition is finalized."
+          ]
+        },
+        "matrix_C_clinical_history_z_ecg_treatment_outcome": {
+          "name": "C — Matrix A + 64 learned ECG representation dimensions",
+          "candidate_schema_only": true,
+          "authorized_for_discovery": false,
+          "N_admissions_upper_bound": 191369,
+          "variable_count": 72,
+          "N_per_variable_naive": 2657.902777777778,
+          "binary_variable_count": 7,
+          "continuous_variable_count": 65,
+          "missingness": "See per-variable counts; descriptive only, no handling performed.",
+          "variables_or_block": [
+            "anchor_age",
+            "sex_male",
+            "diabetes",
+            "hypertension",
+            "ckd",
+            "prior_mi",
+            "statin_before",
+            "is_MI",
+            {
+              "block": "z_ecg_block",
+              "dimension_count": 64
+            }
+          ],
+          "limitations": [
+            "Admission rows are not known to be independent because some patients contribute repeated admissions.",
+            "Naive N/p is not a guarantee of reliable discovery or adequate conditional-independence power.",
+            "No candidate baseline or outcome definition is finalized."
+          ]
+        },
+        "matrix_D_block_reduced": {
+          "name": "D — reduced ECG block",
+          "candidate_schema_only": true,
+          "authorized_for_discovery": false,
+          "variables_or_block": [],
+          "status": "NOT AVAILABLE — Phase 5 performed no PCA or other justified reduction."
+        },
+        "interpretation": "These are bookkeeping descriptions only. No admission-level design matrix was constructed: doing so would require selecting a baseline ECG, outcome, and treatment-specific time zero that remain unresolved."
+      },
+      "candidate_missingness": {
+        "candidate_field_count": 170,
+        "per_variable": {
+          "anchor_age": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "sex_male": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "diabetes": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "hypertension": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ckd": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "prior_mi": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "statin_before": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "is_MI": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Label_Troponin": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "index_mi_time": {
+            "missing_count": 327700,
+            "missing_percentage": 87.1704838666773
+          },
+          "time_diff_hours": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "QRS_Dur_Global": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "QRS_Dur_Global_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "QRS_Dur_Global_count": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "RR_Mean_Global": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "RR_Mean_Global_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "S_Amp_V1": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "S_Amp_V1_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "S_Amp_V2": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "S_Amp_V2_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "S_Amp_V3": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "S_Amp_V3_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_I": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_I_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_I": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_I_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_I": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_I_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_I": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_II": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_II_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_II": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_II_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_II": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_II_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_II": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_III": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_III_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_III": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_III_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_III": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_III_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_III": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_aVR": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_aVR_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_aVR": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_aVR_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_aVR": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_aVR_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_aVR": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_aVL": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_aVL_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_aVL": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_aVL_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_aVL": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_aVL_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_aVL": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_aVF": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_aVF_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_aVF": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_aVF_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_aVF": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_aVF_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_aVF": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V1": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V1_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V1": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V1_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V1": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V1_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_V1": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V2": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V2_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V2": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V2_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V2": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V2_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_V2": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V3": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V3_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V3": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V3_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V3": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V3_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_V3": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V4": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V4_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V4": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V4_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V4": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V4_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_V4": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V5": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V5_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V5": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V5_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V5": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V5_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_V5": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V6": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V6_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V6": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V6_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V6": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V6_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_V6": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_1": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_2": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_3": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_4": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_5": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_6": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_7": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_8": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_9": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_10": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_11": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_12": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_13": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_14": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_15": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_16": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_17": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_18": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_19": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_20": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_21": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_22": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_23": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_24": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_25": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_26": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_27": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_28": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_29": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_30": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_31": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_32": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_33": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_34": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_35": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_36": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_37": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_38": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_39": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_40": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_41": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_42": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_43": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_44": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_45": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_46": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_47": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_48": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_49": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_50": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_51": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_52": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_53": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_54": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_55": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_56": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_57": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_58": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_59": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_60": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_61": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_62": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_63": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_64": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          }
+        },
+        "core_clinical_treatment_outcome_missing_cells": 0,
+        "ecg_representation_missing_cells": 0,
+        "missing_data_strategy": "NOT SELECTED — no discovery matrix authorized; no imputation or row deletion performed."
+      },
+      "phase1_unit": "admission",
+      "phase1_conclusion_snapshot": {
+        "admission_level_unit": "Primary causal unit remains admission-level.",
+        "ecg_time_is_causal_time_zero": "NOT ESTABLISHED",
+        "phase1_decision_record": "Admission-level is the primary observational unit; ECG time is not yet established as causal time zero; index ECG selection remains unresolved pending the Phase 2 treatment-timing audit."
+      },
+      "phase2_time_zero_record": "UNRESOLVED for aspirin, statin, beta blocker, and ACE inhibitor because exact treatment assignment time is unavailable.",
+      "phase6_question_template": {
+        "candidate_treatment_variable": "statin_before",
+        "related_during_window_variable": "statin_during",
+        "related_post_discharge_variable": "statin_after",
+        "candidate_time_zero": "UNRESOLVED — exact medication assignment/administration time is unavailable.",
+        "intended_contrast": "Pre-admission statin-use indicator vs no recorded pre-admission statin-use indicator; not an identified assignment intervention.",
+        "outcome": {
+          "conceptual_node": "MI_event",
+          "candidate_observed_fields": [
+            "is_MI",
+            "Label_Troponin"
+          ],
+          "status": "UNRESOLVED — later causal outcome definition and event horizon required."
+        },
+        "candidate_baseline_covariates": {
+          "historical_candidates": [
+            "anchor_age",
+            "sex_male",
+            "diabetes",
+            "hypertension",
+            "ckd",
+            "prior_mi"
+          ],
+          "ecg_features": "z_ecg_block and engineered_ecg_block only if an ECG is proven before this treatment-specific time zero; currently TEMPORALLY UNRESOLVED.",
+          "eligibility_status": "Candidate schema only; no final adjustment set."
+        },
+        "possible_post_treatment_variables": [
+          "statin_during",
+          "vasopressor_during",
+          "mech_vent_during",
+          "z_ecg_block",
+          "engineered_ecg_block"
+        ],
+        "treatment_assignment_causes_to_consider": [
+          "anchor_age",
+          "sex_male",
+          "diabetes",
+          "hypertension",
+          "ckd",
+          "prior_mi",
+          "acute_severity_unmeasured",
+          "prior_ecg_state_before_admission (not separately represented in the current selected-ECG block)"
+        ],
+        "outcome_causes_to_consider": [
+          "anchor_age",
+          "sex_male",
+          "diabetes",
+          "hypertension",
+          "ckd",
+          "prior_mi",
+          "z_ecg_block",
+          "engineered_ecg_block",
+          "acute_severity_unmeasured"
+        ],
+        "treatment_specific_temporal_requirements": [
+          "Establish exact exposure/assignment time and exposure version for this treatment.",
+          "Establish whether each candidate baseline variable, especially the selected ECG representation, is measured before assignment.",
+          "Define whether the outcome is an incident MI after assignment or a cohort label reflecting an already-present/previous event.",
+          "Resolve treatment overlap, contraindications, and time-varying treatment before defining the contrast."
+        ],
+        "treatment_definition": "Phase F describes statin_before as use before admission, statin_during as in-hospital use, and statin_after as post-discharge use; exact times are unavailable.",
+        "status": "TEMPLATE ONLY — no treatment, time zero, DAG, or causal effect selected."
+      },
+      "blocking_reasons": [
+        "Exact treatment assignment/administration timestamp is unavailable; treatment-specific time zero is unresolved.",
+        "No final index ECG has been selected, and the treatment-relative eligibility of all ECG variables remains unresolved.",
+        "Phase 2 outcome definition and event horizon remain unresolved; a candidate MI label is not yet an incident post-treatment endpoint.",
+        "Phase 3 identified no clearly eligible baseline covariate; all six clinical candidates remain pending provenance/temporal verification.",
+        "Phase 5 did not verify z_ecg waveform, checkpoint, training, preprocessing, or outcome/treatment-independence provenance.",
+        "Engineered ECG preprocessing lineage and train-only fitting scope remain unresolved.",
+        "Repeated admissions within patient require dependence-aware discovery, but effective sample size and supported cluster-aware CI/score procedure have not been established."
+      ],
+      "algorithm_status": {
+        "PC": "NOT RUN — readiness gate BLOCKED",
+        "GES": "NOT RUN — readiness gate BLOCKED",
+        "FCI": "NOT RUN — readiness gate BLOCKED",
+        "stability_analysis": "NOT RUN — no valid discovery matrix or algorithm outputs"
+      },
+      "discovery_matrix_constructed": false,
+      "raw_graph": null,
+      "stable_candidate_graph": null,
+      "bootstrap_frequencies": []
+    },
+    "beta_blocker": {
+      "readiness": "BLOCKED",
+      "candidate_treatment": "beta_blocker_before",
+      "candidate_outcome": "is_MI (provisional; causal endpoint/horizon unresolved)",
+      "time_zero_status": "BLOCKED — UNRESOLVED",
+      "index_ecg_status": "BLOCKED — no final index ECG rule",
+      "outcome_status": "BLOCKED — causal outcome definition/horizon unresolved",
+      "baseline_covariate_status": "BLOCKED — Phase 3 has no clearly eligible baseline covariates.",
+      "treatment_timestamp_status": "BLOCKED — exact timestamp unavailable",
+      "ecg_temporal_eligibility_status": "BLOCKED — cannot establish ECG before treatment assignment",
+      "z_ecg_provenance_status": "BLOCKED — Phase 5 unresolved/partially verified",
+      "engineered_ecg_provenance_status": "BLOCKED — upstream preprocessing provenance unresolved",
+      "missingness_status": "PARTIALLY_READY — audit counts available; strategy not selected because no matrix is authorized.",
+      "positivity_status": "PARTIALLY_READY — marginal exposure/unexposed counts available; conditional positivity by eligible cohort/strata not assessed.",
+      "constraint_status": "PARTIALLY_READY — Phase 6 machine-readable constraints exist; only hard rules could be enforced, while soft relationships remain nonbinding.",
+      "marginal_exposure": {
+        "exposed_count": 6099,
+        "unexposed_count": 185270,
+        "missing_count": 0,
+        "exposure_percentage": 0.03187036562870684,
+        "total_admissions": 191369,
+        "unexposed_percentage": 96.81296343712931
+      },
+      "candidate_matrix_descriptors": {
+        "matrix_A_clinical_history_treatment_outcome": {
+          "name": "A — clinical/history + one candidate treatment + candidate outcome",
+          "candidate_schema_only": true,
+          "authorized_for_discovery": false,
+          "N_admissions_upper_bound": 191369,
+          "variable_count": 8,
+          "N_per_variable_naive": 23921.125,
+          "binary_variable_count": 7,
+          "continuous_variable_count": 1,
+          "missingness": "See per-variable counts; descriptive only, no handling performed.",
+          "variables_or_block": [
+            "anchor_age",
+            "sex_male",
+            "diabetes",
+            "hypertension",
+            "ckd",
+            "prior_mi",
+            "beta_blocker_before",
+            "is_MI"
+          ],
+          "limitations": [
+            "Admission rows are not known to be independent because some patients contribute repeated admissions.",
+            "Naive N/p is not a guarantee of reliable discovery or adequate conditional-independence power.",
+            "No candidate baseline or outcome definition is finalized."
+          ]
+        },
+        "matrix_B_clinical_history_engineered_ecg_treatment_outcome": {
+          "name": "B — Matrix A + 95 engineered ECG measurements",
+          "candidate_schema_only": true,
+          "authorized_for_discovery": false,
+          "N_admissions_upper_bound": 191369,
+          "variable_count": 103,
+          "N_per_variable_naive": 1857.9514563106795,
+          "binary_variable_count": 7,
+          "continuous_variable_count": 96,
+          "missingness": "See per-variable counts; descriptive only, no handling performed.",
+          "variables_or_block": [
+            "anchor_age",
+            "sex_male",
+            "diabetes",
+            "hypertension",
+            "ckd",
+            "prior_mi",
+            "beta_blocker_before",
+            "is_MI",
+            {
+              "block": "engineered_ecg_block",
+              "dimension_count": 95
+            }
+          ],
+          "limitations": [
+            "Admission rows are not known to be independent because some patients contribute repeated admissions.",
+            "Naive N/p is not a guarantee of reliable discovery or adequate conditional-independence power.",
+            "No candidate baseline or outcome definition is finalized."
+          ]
+        },
+        "matrix_C_clinical_history_z_ecg_treatment_outcome": {
+          "name": "C — Matrix A + 64 learned ECG representation dimensions",
+          "candidate_schema_only": true,
+          "authorized_for_discovery": false,
+          "N_admissions_upper_bound": 191369,
+          "variable_count": 72,
+          "N_per_variable_naive": 2657.902777777778,
+          "binary_variable_count": 7,
+          "continuous_variable_count": 65,
+          "missingness": "See per-variable counts; descriptive only, no handling performed.",
+          "variables_or_block": [
+            "anchor_age",
+            "sex_male",
+            "diabetes",
+            "hypertension",
+            "ckd",
+            "prior_mi",
+            "beta_blocker_before",
+            "is_MI",
+            {
+              "block": "z_ecg_block",
+              "dimension_count": 64
+            }
+          ],
+          "limitations": [
+            "Admission rows are not known to be independent because some patients contribute repeated admissions.",
+            "Naive N/p is not a guarantee of reliable discovery or adequate conditional-independence power.",
+            "No candidate baseline or outcome definition is finalized."
+          ]
+        },
+        "matrix_D_block_reduced": {
+          "name": "D — reduced ECG block",
+          "candidate_schema_only": true,
+          "authorized_for_discovery": false,
+          "variables_or_block": [],
+          "status": "NOT AVAILABLE — Phase 5 performed no PCA or other justified reduction."
+        },
+        "interpretation": "These are bookkeeping descriptions only. No admission-level design matrix was constructed: doing so would require selecting a baseline ECG, outcome, and treatment-specific time zero that remain unresolved."
+      },
+      "candidate_missingness": {
+        "candidate_field_count": 170,
+        "per_variable": {
+          "anchor_age": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "sex_male": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "diabetes": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "hypertension": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ckd": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "prior_mi": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "beta_blocker_before": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "is_MI": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Label_Troponin": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "index_mi_time": {
+            "missing_count": 327700,
+            "missing_percentage": 87.1704838666773
+          },
+          "time_diff_hours": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "QRS_Dur_Global": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "QRS_Dur_Global_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "QRS_Dur_Global_count": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "RR_Mean_Global": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "RR_Mean_Global_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "S_Amp_V1": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "S_Amp_V1_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "S_Amp_V2": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "S_Amp_V2_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "S_Amp_V3": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "S_Amp_V3_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_I": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_I_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_I": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_I_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_I": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_I_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_I": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_II": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_II_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_II": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_II_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_II": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_II_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_II": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_III": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_III_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_III": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_III_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_III": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_III_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_III": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_aVR": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_aVR_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_aVR": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_aVR_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_aVR": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_aVR_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_aVR": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_aVL": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_aVL_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_aVL": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_aVL_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_aVL": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_aVL_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_aVL": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_aVF": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_aVF_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_aVF": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_aVF_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_aVF": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_aVF_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_aVF": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V1": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V1_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V1": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V1_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V1": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V1_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_V1": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V2": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V2_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V2": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V2_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V2": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V2_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_V2": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V3": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V3_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V3": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V3_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V3": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V3_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_V3": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V4": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V4_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V4": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V4_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V4": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V4_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_V4": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V5": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V5_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V5": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V5_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V5": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V5_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_V5": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V6": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V6_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V6": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V6_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V6": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V6_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_V6": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_1": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_2": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_3": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_4": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_5": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_6": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_7": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_8": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_9": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_10": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_11": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_12": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_13": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_14": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_15": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_16": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_17": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_18": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_19": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_20": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_21": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_22": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_23": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_24": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_25": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_26": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_27": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_28": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_29": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_30": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_31": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_32": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_33": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_34": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_35": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_36": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_37": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_38": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_39": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_40": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_41": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_42": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_43": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_44": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_45": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_46": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_47": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_48": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_49": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_50": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_51": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_52": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_53": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_54": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_55": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_56": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_57": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_58": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_59": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_60": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_61": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_62": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_63": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_64": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          }
+        },
+        "core_clinical_treatment_outcome_missing_cells": 0,
+        "ecg_representation_missing_cells": 0,
+        "missing_data_strategy": "NOT SELECTED — no discovery matrix authorized; no imputation or row deletion performed."
+      },
+      "phase1_unit": "admission",
+      "phase1_conclusion_snapshot": {
+        "admission_level_unit": "Primary causal unit remains admission-level.",
+        "ecg_time_is_causal_time_zero": "NOT ESTABLISHED",
+        "phase1_decision_record": "Admission-level is the primary observational unit; ECG time is not yet established as causal time zero; index ECG selection remains unresolved pending the Phase 2 treatment-timing audit."
+      },
+      "phase2_time_zero_record": "UNRESOLVED for aspirin, statin, beta blocker, and ACE inhibitor because exact treatment assignment time is unavailable.",
+      "phase6_question_template": {
+        "candidate_treatment_variable": "beta_blocker_before",
+        "related_during_window_variable": "beta_blocker_during",
+        "related_post_discharge_variable": null,
+        "candidate_time_zero": "UNRESOLVED — exact medication assignment/administration time is unavailable.",
+        "intended_contrast": "Pre-admission beta-blocker-use indicator vs no recorded pre-admission beta-blocker-use indicator; not an identified assignment intervention.",
+        "outcome": {
+          "conceptual_node": "MI_event",
+          "candidate_observed_fields": [
+            "is_MI",
+            "Label_Troponin"
+          ],
+          "status": "UNRESOLVED — later causal outcome definition and event horizon required."
+        },
+        "candidate_baseline_covariates": {
+          "historical_candidates": [
+            "anchor_age",
+            "sex_male",
+            "diabetes",
+            "hypertension",
+            "ckd",
+            "prior_mi"
+          ],
+          "ecg_features": "z_ecg_block and engineered_ecg_block only if an ECG is proven before this treatment-specific time zero; currently TEMPORALLY UNRESOLVED.",
+          "eligibility_status": "Candidate schema only; no final adjustment set."
+        },
+        "possible_post_treatment_variables": [
+          "beta_blocker_during",
+          "vasopressor_during",
+          "mech_vent_during",
+          "z_ecg_block",
+          "engineered_ecg_block"
+        ],
+        "treatment_assignment_causes_to_consider": [
+          "anchor_age",
+          "sex_male",
+          "diabetes",
+          "hypertension",
+          "ckd",
+          "prior_mi",
+          "acute_severity_unmeasured",
+          "prior_ecg_state_before_admission (not separately represented in the current selected-ECG block)"
+        ],
+        "outcome_causes_to_consider": [
+          "anchor_age",
+          "sex_male",
+          "diabetes",
+          "hypertension",
+          "ckd",
+          "prior_mi",
+          "z_ecg_block",
+          "engineered_ecg_block",
+          "acute_severity_unmeasured"
+        ],
+        "treatment_specific_temporal_requirements": [
+          "Establish exact exposure/assignment time and exposure version for this treatment.",
+          "Establish whether each candidate baseline variable, especially the selected ECG representation, is measured before assignment.",
+          "Define whether the outcome is an incident MI after assignment or a cohort label reflecting an already-present/previous event.",
+          "Resolve treatment overlap, contraindications, and time-varying treatment before defining the contrast."
+        ],
+        "treatment_definition": "Phase F describes beta_blocker_before as use before admission and beta_blocker_during as in-hospital use; exact administration or initiation times are unavailable.",
+        "status": "TEMPLATE ONLY — no treatment, time zero, DAG, or causal effect selected."
+      },
+      "blocking_reasons": [
+        "Exact treatment assignment/administration timestamp is unavailable; treatment-specific time zero is unresolved.",
+        "No final index ECG has been selected, and the treatment-relative eligibility of all ECG variables remains unresolved.",
+        "Phase 2 outcome definition and event horizon remain unresolved; a candidate MI label is not yet an incident post-treatment endpoint.",
+        "Phase 3 identified no clearly eligible baseline covariate; all six clinical candidates remain pending provenance/temporal verification.",
+        "Phase 5 did not verify z_ecg waveform, checkpoint, training, preprocessing, or outcome/treatment-independence provenance.",
+        "Engineered ECG preprocessing lineage and train-only fitting scope remain unresolved.",
+        "Repeated admissions within patient require dependence-aware discovery, but effective sample size and supported cluster-aware CI/score procedure have not been established."
+      ],
+      "algorithm_status": {
+        "PC": "NOT RUN — readiness gate BLOCKED",
+        "GES": "NOT RUN — readiness gate BLOCKED",
+        "FCI": "NOT RUN — readiness gate BLOCKED",
+        "stability_analysis": "NOT RUN — no valid discovery matrix or algorithm outputs"
+      },
+      "discovery_matrix_constructed": false,
+      "raw_graph": null,
+      "stable_candidate_graph": null,
+      "bootstrap_frequencies": []
+    },
+    "acei": {
+      "readiness": "BLOCKED",
+      "candidate_treatment": "acei_before",
+      "candidate_outcome": "is_MI (provisional; causal endpoint/horizon unresolved)",
+      "time_zero_status": "BLOCKED — UNRESOLVED",
+      "index_ecg_status": "BLOCKED — no final index ECG rule",
+      "outcome_status": "BLOCKED — causal outcome definition/horizon unresolved",
+      "baseline_covariate_status": "BLOCKED — Phase 3 has no clearly eligible baseline covariates.",
+      "treatment_timestamp_status": "BLOCKED — exact timestamp unavailable",
+      "ecg_temporal_eligibility_status": "BLOCKED — cannot establish ECG before treatment assignment",
+      "z_ecg_provenance_status": "BLOCKED — Phase 5 unresolved/partially verified",
+      "engineered_ecg_provenance_status": "BLOCKED — upstream preprocessing provenance unresolved",
+      "missingness_status": "PARTIALLY_READY — audit counts available; strategy not selected because no matrix is authorized.",
+      "positivity_status": "PARTIALLY_READY — marginal exposure/unexposed counts available; conditional positivity by eligible cohort/strata not assessed.",
+      "constraint_status": "PARTIALLY_READY — Phase 6 machine-readable constraints exist; only hard rules could be enforced, while soft relationships remain nonbinding.",
+      "marginal_exposure": {
+        "exposed_count": 6196,
+        "unexposed_count": 185173,
+        "missing_count": 0,
+        "exposure_percentage": 0.032377239782827937,
+        "total_admissions": 191369,
+        "unexposed_percentage": 96.76227602171721
+      },
+      "candidate_matrix_descriptors": {
+        "matrix_A_clinical_history_treatment_outcome": {
+          "name": "A — clinical/history + one candidate treatment + candidate outcome",
+          "candidate_schema_only": true,
+          "authorized_for_discovery": false,
+          "N_admissions_upper_bound": 191369,
+          "variable_count": 8,
+          "N_per_variable_naive": 23921.125,
+          "binary_variable_count": 7,
+          "continuous_variable_count": 1,
+          "missingness": "See per-variable counts; descriptive only, no handling performed.",
+          "variables_or_block": [
+            "anchor_age",
+            "sex_male",
+            "diabetes",
+            "hypertension",
+            "ckd",
+            "prior_mi",
+            "acei_before",
+            "is_MI"
+          ],
+          "limitations": [
+            "Admission rows are not known to be independent because some patients contribute repeated admissions.",
+            "Naive N/p is not a guarantee of reliable discovery or adequate conditional-independence power.",
+            "No candidate baseline or outcome definition is finalized."
+          ]
+        },
+        "matrix_B_clinical_history_engineered_ecg_treatment_outcome": {
+          "name": "B — Matrix A + 95 engineered ECG measurements",
+          "candidate_schema_only": true,
+          "authorized_for_discovery": false,
+          "N_admissions_upper_bound": 191369,
+          "variable_count": 103,
+          "N_per_variable_naive": 1857.9514563106795,
+          "binary_variable_count": 7,
+          "continuous_variable_count": 96,
+          "missingness": "See per-variable counts; descriptive only, no handling performed.",
+          "variables_or_block": [
+            "anchor_age",
+            "sex_male",
+            "diabetes",
+            "hypertension",
+            "ckd",
+            "prior_mi",
+            "acei_before",
+            "is_MI",
+            {
+              "block": "engineered_ecg_block",
+              "dimension_count": 95
+            }
+          ],
+          "limitations": [
+            "Admission rows are not known to be independent because some patients contribute repeated admissions.",
+            "Naive N/p is not a guarantee of reliable discovery or adequate conditional-independence power.",
+            "No candidate baseline or outcome definition is finalized."
+          ]
+        },
+        "matrix_C_clinical_history_z_ecg_treatment_outcome": {
+          "name": "C — Matrix A + 64 learned ECG representation dimensions",
+          "candidate_schema_only": true,
+          "authorized_for_discovery": false,
+          "N_admissions_upper_bound": 191369,
+          "variable_count": 72,
+          "N_per_variable_naive": 2657.902777777778,
+          "binary_variable_count": 7,
+          "continuous_variable_count": 65,
+          "missingness": "See per-variable counts; descriptive only, no handling performed.",
+          "variables_or_block": [
+            "anchor_age",
+            "sex_male",
+            "diabetes",
+            "hypertension",
+            "ckd",
+            "prior_mi",
+            "acei_before",
+            "is_MI",
+            {
+              "block": "z_ecg_block",
+              "dimension_count": 64
+            }
+          ],
+          "limitations": [
+            "Admission rows are not known to be independent because some patients contribute repeated admissions.",
+            "Naive N/p is not a guarantee of reliable discovery or adequate conditional-independence power.",
+            "No candidate baseline or outcome definition is finalized."
+          ]
+        },
+        "matrix_D_block_reduced": {
+          "name": "D — reduced ECG block",
+          "candidate_schema_only": true,
+          "authorized_for_discovery": false,
+          "variables_or_block": [],
+          "status": "NOT AVAILABLE — Phase 5 performed no PCA or other justified reduction."
+        },
+        "interpretation": "These are bookkeeping descriptions only. No admission-level design matrix was constructed: doing so would require selecting a baseline ECG, outcome, and treatment-specific time zero that remain unresolved."
+      },
+      "candidate_missingness": {
+        "candidate_field_count": 170,
+        "per_variable": {
+          "anchor_age": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "sex_male": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "diabetes": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "hypertension": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ckd": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "prior_mi": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "acei_before": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "is_MI": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Label_Troponin": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "index_mi_time": {
+            "missing_count": 327700,
+            "missing_percentage": 87.1704838666773
+          },
+          "time_diff_hours": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "QRS_Dur_Global": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "QRS_Dur_Global_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "QRS_Dur_Global_count": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "RR_Mean_Global": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "RR_Mean_Global_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "S_Amp_V1": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "S_Amp_V1_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "S_Amp_V2": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "S_Amp_V2_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "S_Amp_V3": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "S_Amp_V3_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_I": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_I_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_I": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_I_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_I": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_I_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_I": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_II": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_II_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_II": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_II_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_II": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_II_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_II": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_III": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_III_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_III": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_III_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_III": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_III_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_III": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_aVR": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_aVR_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_aVR": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_aVR_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_aVR": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_aVR_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_aVR": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_aVL": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_aVL_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_aVL": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_aVL_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_aVL": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_aVL_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_aVL": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_aVF": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_aVF_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_aVF": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_aVF_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_aVF": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_aVF_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_aVF": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V1": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V1_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V1": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V1_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V1": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V1_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_V1": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V2": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V2_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V2": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V2_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V2": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V2_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_V2": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V3": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V3_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V3": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V3_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V3": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V3_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_V3": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V4": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V4_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V4": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V4_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V4": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V4_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_V4": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V5": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V5_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V5": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V5_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V5": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V5_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_V5": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V6": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "Q_Amp_V6_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V6": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "R_Amp_V6_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V6": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "T_Amp_V6_iqr": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "ST_Elev_V6": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_1": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_2": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_3": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_4": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_5": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_6": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_7": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_8": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_9": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_10": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_11": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_12": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_13": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_14": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_15": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_16": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_17": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_18": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_19": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_20": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_21": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_22": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_23": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_24": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_25": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_26": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_27": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_28": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_29": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_30": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_31": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_32": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_33": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_34": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_35": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_36": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_37": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_38": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_39": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_40": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_41": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_42": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_43": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_44": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_45": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_46": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_47": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_48": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_49": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_50": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_51": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_52": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_53": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_54": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_55": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_56": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_57": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_58": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_59": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_60": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_61": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_62": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_63": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          },
+          "z_ecg_64": {
+            "missing_count": 0,
+            "missing_percentage": 0.0
+          }
+        },
+        "core_clinical_treatment_outcome_missing_cells": 0,
+        "ecg_representation_missing_cells": 0,
+        "missing_data_strategy": "NOT SELECTED — no discovery matrix authorized; no imputation or row deletion performed."
+      },
+      "phase1_unit": "admission",
+      "phase1_conclusion_snapshot": {
+        "admission_level_unit": "Primary causal unit remains admission-level.",
+        "ecg_time_is_causal_time_zero": "NOT ESTABLISHED",
+        "phase1_decision_record": "Admission-level is the primary observational unit; ECG time is not yet established as causal time zero; index ECG selection remains unresolved pending the Phase 2 treatment-timing audit."
+      },
+      "phase2_time_zero_record": "UNRESOLVED for aspirin, statin, beta blocker, and ACE inhibitor because exact treatment assignment time is unavailable.",
+      "phase6_question_template": {
+        "candidate_treatment_variable": "acei_before",
+        "related_during_window_variable": "acei_during",
+        "related_post_discharge_variable": null,
+        "candidate_time_zero": "UNRESOLVED — exact medication assignment/administration time is unavailable.",
+        "intended_contrast": "Pre-admission ACE-inhibitor-use indicator vs no recorded pre-admission ACE-inhibitor-use indicator; not an identified assignment intervention.",
+        "outcome": {
+          "conceptual_node": "MI_event",
+          "candidate_observed_fields": [
+            "is_MI",
+            "Label_Troponin"
+          ],
+          "status": "UNRESOLVED — later causal outcome definition and event horizon required."
+        },
+        "candidate_baseline_covariates": {
+          "historical_candidates": [
+            "anchor_age",
+            "sex_male",
+            "diabetes",
+            "hypertension",
+            "ckd",
+            "prior_mi"
+          ],
+          "ecg_features": "z_ecg_block and engineered_ecg_block only if an ECG is proven before this treatment-specific time zero; currently TEMPORALLY UNRESOLVED.",
+          "eligibility_status": "Candidate schema only; no final adjustment set."
+        },
+        "possible_post_treatment_variables": [
+          "acei_during",
+          "vasopressor_during",
+          "mech_vent_during",
+          "z_ecg_block",
+          "engineered_ecg_block"
+        ],
+        "treatment_assignment_causes_to_consider": [
+          "anchor_age",
+          "sex_male",
+          "diabetes",
+          "hypertension",
+          "ckd",
+          "prior_mi",
+          "acute_severity_unmeasured",
+          "prior_ecg_state_before_admission (not separately represented in the current selected-ECG block)"
+        ],
+        "outcome_causes_to_consider": [
+          "anchor_age",
+          "sex_male",
+          "diabetes",
+          "hypertension",
+          "ckd",
+          "prior_mi",
+          "z_ecg_block",
+          "engineered_ecg_block",
+          "acute_severity_unmeasured"
+        ],
+        "treatment_specific_temporal_requirements": [
+          "Establish exact exposure/assignment time and exposure version for this treatment.",
+          "Establish whether each candidate baseline variable, especially the selected ECG representation, is measured before assignment.",
+          "Define whether the outcome is an incident MI after assignment or a cohort label reflecting an already-present/previous event.",
+          "Resolve treatment overlap, contraindications, and time-varying treatment before defining the contrast."
+        ],
+        "treatment_definition": "Phase F describes acei_before as use before admission and acei_during as in-hospital use; exact administration or initiation times are unavailable.",
+        "status": "TEMPLATE ONLY — no treatment, time zero, DAG, or causal effect selected."
+      },
+      "blocking_reasons": [
+        "Exact treatment assignment/administration timestamp is unavailable; treatment-specific time zero is unresolved.",
+        "No final index ECG has been selected, and the treatment-relative eligibility of all ECG variables remains unresolved.",
+        "Phase 2 outcome definition and event horizon remain unresolved; a candidate MI label is not yet an incident post-treatment endpoint.",
+        "Phase 3 identified no clearly eligible baseline covariate; all six clinical candidates remain pending provenance/temporal verification.",
+        "Phase 5 did not verify z_ecg waveform, checkpoint, training, preprocessing, or outcome/treatment-independence provenance.",
+        "Engineered ECG preprocessing lineage and train-only fitting scope remain unresolved.",
+        "Repeated admissions within patient require dependence-aware discovery, but effective sample size and supported cluster-aware CI/score procedure have not been established."
+      ],
+      "algorithm_status": {
+        "PC": "NOT RUN — readiness gate BLOCKED",
+        "GES": "NOT RUN — readiness gate BLOCKED",
+        "FCI": "NOT RUN — readiness gate BLOCKED",
+        "stability_analysis": "NOT RUN — no valid discovery matrix or algorithm outputs"
+      },
+      "discovery_matrix_constructed": false,
+      "raw_graph": null,
+      "stable_candidate_graph": null,
+      "bootstrap_frequencies": []
+    }
+  },
+  "candidate_discovery_matrices": {
+    "aspirin": {
+      "matrix_A_clinical_history_treatment_outcome": {
+        "name": "A — clinical/history + one candidate treatment + candidate outcome",
+        "candidate_schema_only": true,
+        "authorized_for_discovery": false,
+        "N_admissions_upper_bound": 191369,
+        "variable_count": 8,
+        "N_per_variable_naive": 23921.125,
+        "binary_variable_count": 7,
+        "continuous_variable_count": 1,
+        "missingness": "See per-variable counts; descriptive only, no handling performed.",
+        "variables_or_block": [
+          "anchor_age",
+          "sex_male",
+          "diabetes",
+          "hypertension",
+          "ckd",
+          "prior_mi",
+          "aspirin_before",
+          "is_MI"
+        ],
+        "limitations": [
+          "Admission rows are not known to be independent because some patients contribute repeated admissions.",
+          "Naive N/p is not a guarantee of reliable discovery or adequate conditional-independence power.",
+          "No candidate baseline or outcome definition is finalized."
+        ]
+      },
+      "matrix_B_clinical_history_engineered_ecg_treatment_outcome": {
+        "name": "B — Matrix A + 95 engineered ECG measurements",
+        "candidate_schema_only": true,
+        "authorized_for_discovery": false,
+        "N_admissions_upper_bound": 191369,
+        "variable_count": 103,
+        "N_per_variable_naive": 1857.9514563106795,
+        "binary_variable_count": 7,
+        "continuous_variable_count": 96,
+        "missingness": "See per-variable counts; descriptive only, no handling performed.",
+        "variables_or_block": [
+          "anchor_age",
+          "sex_male",
+          "diabetes",
+          "hypertension",
+          "ckd",
+          "prior_mi",
+          "aspirin_before",
+          "is_MI",
+          {
+            "block": "engineered_ecg_block",
+            "dimension_count": 95
+          }
+        ],
+        "limitations": [
+          "Admission rows are not known to be independent because some patients contribute repeated admissions.",
+          "Naive N/p is not a guarantee of reliable discovery or adequate conditional-independence power.",
+          "No candidate baseline or outcome definition is finalized."
+        ]
+      },
+      "matrix_C_clinical_history_z_ecg_treatment_outcome": {
+        "name": "C — Matrix A + 64 learned ECG representation dimensions",
+        "candidate_schema_only": true,
+        "authorized_for_discovery": false,
+        "N_admissions_upper_bound": 191369,
+        "variable_count": 72,
+        "N_per_variable_naive": 2657.902777777778,
+        "binary_variable_count": 7,
+        "continuous_variable_count": 65,
+        "missingness": "See per-variable counts; descriptive only, no handling performed.",
+        "variables_or_block": [
+          "anchor_age",
+          "sex_male",
+          "diabetes",
+          "hypertension",
+          "ckd",
+          "prior_mi",
+          "aspirin_before",
+          "is_MI",
+          {
+            "block": "z_ecg_block",
+            "dimension_count": 64
+          }
+        ],
+        "limitations": [
+          "Admission rows are not known to be independent because some patients contribute repeated admissions.",
+          "Naive N/p is not a guarantee of reliable discovery or adequate conditional-independence power.",
+          "No candidate baseline or outcome definition is finalized."
+        ]
+      },
+      "matrix_D_block_reduced": {
+        "name": "D — reduced ECG block",
+        "candidate_schema_only": true,
+        "authorized_for_discovery": false,
+        "variables_or_block": [],
+        "status": "NOT AVAILABLE — Phase 5 performed no PCA or other justified reduction."
+      },
+      "interpretation": "These are bookkeeping descriptions only. No admission-level design matrix was constructed: doing so would require selecting a baseline ECG, outcome, and treatment-specific time zero that remain unresolved."
+    },
+    "statin": {
+      "matrix_A_clinical_history_treatment_outcome": {
+        "name": "A — clinical/history + one candidate treatment + candidate outcome",
+        "candidate_schema_only": true,
+        "authorized_for_discovery": false,
+        "N_admissions_upper_bound": 191369,
+        "variable_count": 8,
+        "N_per_variable_naive": 23921.125,
+        "binary_variable_count": 7,
+        "continuous_variable_count": 1,
+        "missingness": "See per-variable counts; descriptive only, no handling performed.",
+        "variables_or_block": [
+          "anchor_age",
+          "sex_male",
+          "diabetes",
+          "hypertension",
+          "ckd",
+          "prior_mi",
+          "statin_before",
+          "is_MI"
+        ],
+        "limitations": [
+          "Admission rows are not known to be independent because some patients contribute repeated admissions.",
+          "Naive N/p is not a guarantee of reliable discovery or adequate conditional-independence power.",
+          "No candidate baseline or outcome definition is finalized."
+        ]
+      },
+      "matrix_B_clinical_history_engineered_ecg_treatment_outcome": {
+        "name": "B — Matrix A + 95 engineered ECG measurements",
+        "candidate_schema_only": true,
+        "authorized_for_discovery": false,
+        "N_admissions_upper_bound": 191369,
+        "variable_count": 103,
+        "N_per_variable_naive": 1857.9514563106795,
+        "binary_variable_count": 7,
+        "continuous_variable_count": 96,
+        "missingness": "See per-variable counts; descriptive only, no handling performed.",
+        "variables_or_block": [
+          "anchor_age",
+          "sex_male",
+          "diabetes",
+          "hypertension",
+          "ckd",
+          "prior_mi",
+          "statin_before",
+          "is_MI",
+          {
+            "block": "engineered_ecg_block",
+            "dimension_count": 95
+          }
+        ],
+        "limitations": [
+          "Admission rows are not known to be independent because some patients contribute repeated admissions.",
+          "Naive N/p is not a guarantee of reliable discovery or adequate conditional-independence power.",
+          "No candidate baseline or outcome definition is finalized."
+        ]
+      },
+      "matrix_C_clinical_history_z_ecg_treatment_outcome": {
+        "name": "C — Matrix A + 64 learned ECG representation dimensions",
+        "candidate_schema_only": true,
+        "authorized_for_discovery": false,
+        "N_admissions_upper_bound": 191369,
+        "variable_count": 72,
+        "N_per_variable_naive": 2657.902777777778,
+        "binary_variable_count": 7,
+        "continuous_variable_count": 65,
+        "missingness": "See per-variable counts; descriptive only, no handling performed.",
+        "variables_or_block": [
+          "anchor_age",
+          "sex_male",
+          "diabetes",
+          "hypertension",
+          "ckd",
+          "prior_mi",
+          "statin_before",
+          "is_MI",
+          {
+            "block": "z_ecg_block",
+            "dimension_count": 64
+          }
+        ],
+        "limitations": [
+          "Admission rows are not known to be independent because some patients contribute repeated admissions.",
+          "Naive N/p is not a guarantee of reliable discovery or adequate conditional-independence power.",
+          "No candidate baseline or outcome definition is finalized."
+        ]
+      },
+      "matrix_D_block_reduced": {
+        "name": "D — reduced ECG block",
+        "candidate_schema_only": true,
+        "authorized_for_discovery": false,
+        "variables_or_block": [],
+        "status": "NOT AVAILABLE — Phase 5 performed no PCA or other justified reduction."
+      },
+      "interpretation": "These are bookkeeping descriptions only. No admission-level design matrix was constructed: doing so would require selecting a baseline ECG, outcome, and treatment-specific time zero that remain unresolved."
+    },
+    "beta_blocker": {
+      "matrix_A_clinical_history_treatment_outcome": {
+        "name": "A — clinical/history + one candidate treatment + candidate outcome",
+        "candidate_schema_only": true,
+        "authorized_for_discovery": false,
+        "N_admissions_upper_bound": 191369,
+        "variable_count": 8,
+        "N_per_variable_naive": 23921.125,
+        "binary_variable_count": 7,
+        "continuous_variable_count": 1,
+        "missingness": "See per-variable counts; descriptive only, no handling performed.",
+        "variables_or_block": [
+          "anchor_age",
+          "sex_male",
+          "diabetes",
+          "hypertension",
+          "ckd",
+          "prior_mi",
+          "beta_blocker_before",
+          "is_MI"
+        ],
+        "limitations": [
+          "Admission rows are not known to be independent because some patients contribute repeated admissions.",
+          "Naive N/p is not a guarantee of reliable discovery or adequate conditional-independence power.",
+          "No candidate baseline or outcome definition is finalized."
+        ]
+      },
+      "matrix_B_clinical_history_engineered_ecg_treatment_outcome": {
+        "name": "B — Matrix A + 95 engineered ECG measurements",
+        "candidate_schema_only": true,
+        "authorized_for_discovery": false,
+        "N_admissions_upper_bound": 191369,
+        "variable_count": 103,
+        "N_per_variable_naive": 1857.9514563106795,
+        "binary_variable_count": 7,
+        "continuous_variable_count": 96,
+        "missingness": "See per-variable counts; descriptive only, no handling performed.",
+        "variables_or_block": [
+          "anchor_age",
+          "sex_male",
+          "diabetes",
+          "hypertension",
+          "ckd",
+          "prior_mi",
+          "beta_blocker_before",
+          "is_MI",
+          {
+            "block": "engineered_ecg_block",
+            "dimension_count": 95
+          }
+        ],
+        "limitations": [
+          "Admission rows are not known to be independent because some patients contribute repeated admissions.",
+          "Naive N/p is not a guarantee of reliable discovery or adequate conditional-independence power.",
+          "No candidate baseline or outcome definition is finalized."
+        ]
+      },
+      "matrix_C_clinical_history_z_ecg_treatment_outcome": {
+        "name": "C — Matrix A + 64 learned ECG representation dimensions",
+        "candidate_schema_only": true,
+        "authorized_for_discovery": false,
+        "N_admissions_upper_bound": 191369,
+        "variable_count": 72,
+        "N_per_variable_naive": 2657.902777777778,
+        "binary_variable_count": 7,
+        "continuous_variable_count": 65,
+        "missingness": "See per-variable counts; descriptive only, no handling performed.",
+        "variables_or_block": [
+          "anchor_age",
+          "sex_male",
+          "diabetes",
+          "hypertension",
+          "ckd",
+          "prior_mi",
+          "beta_blocker_before",
+          "is_MI",
+          {
+            "block": "z_ecg_block",
+            "dimension_count": 64
+          }
+        ],
+        "limitations": [
+          "Admission rows are not known to be independent because some patients contribute repeated admissions.",
+          "Naive N/p is not a guarantee of reliable discovery or adequate conditional-independence power.",
+          "No candidate baseline or outcome definition is finalized."
+        ]
+      },
+      "matrix_D_block_reduced": {
+        "name": "D — reduced ECG block",
+        "candidate_schema_only": true,
+        "authorized_for_discovery": false,
+        "variables_or_block": [],
+        "status": "NOT AVAILABLE — Phase 5 performed no PCA or other justified reduction."
+      },
+      "interpretation": "These are bookkeeping descriptions only. No admission-level design matrix was constructed: doing so would require selecting a baseline ECG, outcome, and treatment-specific time zero that remain unresolved."
+    },
+    "acei": {
+      "matrix_A_clinical_history_treatment_outcome": {
+        "name": "A — clinical/history + one candidate treatment + candidate outcome",
+        "candidate_schema_only": true,
+        "authorized_for_discovery": false,
+        "N_admissions_upper_bound": 191369,
+        "variable_count": 8,
+        "N_per_variable_naive": 23921.125,
+        "binary_variable_count": 7,
+        "continuous_variable_count": 1,
+        "missingness": "See per-variable counts; descriptive only, no handling performed.",
+        "variables_or_block": [
+          "anchor_age",
+          "sex_male",
+          "diabetes",
+          "hypertension",
+          "ckd",
+          "prior_mi",
+          "acei_before",
+          "is_MI"
+        ],
+        "limitations": [
+          "Admission rows are not known to be independent because some patients contribute repeated admissions.",
+          "Naive N/p is not a guarantee of reliable discovery or adequate conditional-independence power.",
+          "No candidate baseline or outcome definition is finalized."
+        ]
+      },
+      "matrix_B_clinical_history_engineered_ecg_treatment_outcome": {
+        "name": "B — Matrix A + 95 engineered ECG measurements",
+        "candidate_schema_only": true,
+        "authorized_for_discovery": false,
+        "N_admissions_upper_bound": 191369,
+        "variable_count": 103,
+        "N_per_variable_naive": 1857.9514563106795,
+        "binary_variable_count": 7,
+        "continuous_variable_count": 96,
+        "missingness": "See per-variable counts; descriptive only, no handling performed.",
+        "variables_or_block": [
+          "anchor_age",
+          "sex_male",
+          "diabetes",
+          "hypertension",
+          "ckd",
+          "prior_mi",
+          "acei_before",
+          "is_MI",
+          {
+            "block": "engineered_ecg_block",
+            "dimension_count": 95
+          }
+        ],
+        "limitations": [
+          "Admission rows are not known to be independent because some patients contribute repeated admissions.",
+          "Naive N/p is not a guarantee of reliable discovery or adequate conditional-independence power.",
+          "No candidate baseline or outcome definition is finalized."
+        ]
+      },
+      "matrix_C_clinical_history_z_ecg_treatment_outcome": {
+        "name": "C — Matrix A + 64 learned ECG representation dimensions",
+        "candidate_schema_only": true,
+        "authorized_for_discovery": false,
+        "N_admissions_upper_bound": 191369,
+        "variable_count": 72,
+        "N_per_variable_naive": 2657.902777777778,
+        "binary_variable_count": 7,
+        "continuous_variable_count": 65,
+        "missingness": "See per-variable counts; descriptive only, no handling performed.",
+        "variables_or_block": [
+          "anchor_age",
+          "sex_male",
+          "diabetes",
+          "hypertension",
+          "ckd",
+          "prior_mi",
+          "acei_before",
+          "is_MI",
+          {
+            "block": "z_ecg_block",
+            "dimension_count": 64
+          }
+        ],
+        "limitations": [
+          "Admission rows are not known to be independent because some patients contribute repeated admissions.",
+          "Naive N/p is not a guarantee of reliable discovery or adequate conditional-independence power.",
+          "No candidate baseline or outcome definition is finalized."
+        ]
+      },
+      "matrix_D_block_reduced": {
+        "name": "D — reduced ECG block",
+        "candidate_schema_only": true,
+        "authorized_for_discovery": false,
+        "variables_or_block": [],
+        "status": "NOT AVAILABLE — Phase 5 performed no PCA or other justified reduction."
+      },
+      "interpretation": "These are bookkeeping descriptions only. No admission-level design matrix was constructed: doing so would require selecting a baseline ECG, outcome, and treatment-specific time zero that remain unresolved."
+    }
+  },
+  "algorithm_configurations": {
+    "PC": {
+      "status": "NOT RUN",
+      "reason": "Readiness gate BLOCKED for every treatment.",
+      "alpha_grid": [],
+      "ci_test": null,
+      "orientation_settings": null
+    },
+    "GES": {
+      "status": "NOT RUN",
+      "reason": "Readiness gate BLOCKED for every treatment.",
+      "score": null,
+      "penalty_grid": [],
+      "initialization": null
+    },
+    "FCI": {
+      "status": "NOT RUN",
+      "reason": "Readiness gate BLOCKED for every treatment.",
+      "alpha_grid": [],
+      "ci_test": null,
+      "selection_bias_model": null
+    }
+  },
+  "ci_tests": {
+    "status": "NOT SELECTED / NOT RUN",
+    "reason": "Matrix is not authorized, outcome is unresolved, and mixed binary/continuous variables plus patient clustering require a justified method before testing.",
+    "candidate_variables": "Not finalized",
+    "sample_size": "Admission counts are known, but effective independent sample size is unresolved.",
+    "multiple_testing": "Not applicable; no CI tests performed."
+  },
+  "missing_data": {
+    "status": "AUDITED DESCRIPTIVELY; NO HANDLING PERFORMED",
+    "method": null,
+    "imputation": false,
+    "complete_case_rows_dropped": 0,
+    "reason": "No discovery matrix authorized; no imputation or complete-case selection performed."
+  },
+  "stability_analysis": {
+    "status": "NOT RUN",
+    "bootstrap_frequencies": [],
+    "reason": "No valid discovery matrix or raw algorithmic graph.",
+    "interpretation_warning": "Even if later estimated, high bootstrap frequency indicates resampling stability only, not causal truth."
+  },
+  "algorithm_comparison": {
+    "status": "NOT APPLICABLE — no algorithms were run.",
+    "edge_comparison_matrix": [],
+    "major_disagreements": []
+  },
+  "raw_graphs": {},
+  "stable_candidate_graphs": {},
+  "suspicious_structure_flags": [],
+  "constraint_application": {
+    "hard_constraints": "Would be enforced only after validating graph nodes and block expansions.",
+    "soft_constraints": "Nonbinding; not converted to mandatory arrows.",
+    "constraint_violations": []
+  },
+  "phase8_handoff": [
+    "Resolve treatment-specific time zero using exact medication assignment/administration times for one candidate treatment at a time.",
+    "Define a post-assignment incident MI outcome and a defensible follow-up horizon; choose one outcome representation.",
+    "Resolve baseline variable eligibility and a treatment-specific ECG rule without assuming earliest ECG is baseline.",
+    "Audit engineered ECG preprocessing and train-only fit scope; complete Phase 5 VAE checkpoint/training/embedding linkage provenance.",
+    "Specify admission-level dependence handling for repeated patients and a valid effective sample-size/CI-test strategy.",
+    "Assess conditional treatment positivity in the finalized eligible population and specify missing-data handling.",
+    "Only then map Phase 6 hard constraints to the finalized matrix; preserve its soft constraints as nonbinding.",
+    "If all gates are satisfied, run PC/GES/FCI separately by treatment, retain partial orientations/PAG endpoints, and perform configuration and resampling stability analysis."
+  ]
+}

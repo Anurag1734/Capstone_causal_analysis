@@ -1,0 +1,20 @@
+{
+  "treatment": "statin_before",
+  "exact_treatment_time_zero": null,
+  "exact_treatment_assignment_time": null,
+  "exact_administration_time": null,
+  "source_supports_exact_timing": false,
+  "source_supports_prescription_window_only": true,
+  "supported_claim": "recent pre-admission statin prescription indicator",
+  "unsupported_claim": "causal treatment initiation time or exact pre-ECG treatment assignment",
+  "valid_pre_treatment_ecg_rule": false,
+  "prevalent_user_vs_new_user": "prevalent-user / recent-prescription indicator, not a newly initiated therapy design",
+  "status": "NOT READY",
+  "required_additional_data": [
+    "exact medication start or administration timestamps",
+    "verified medication administration source",
+    "clear treatment assignment logic",
+    "clinically valid pre-treatment ECG rule",
+    "treatment-specific outcome definition and horizon"
+  ]
+}

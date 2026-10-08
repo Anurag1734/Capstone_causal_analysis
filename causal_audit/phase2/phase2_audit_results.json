@@ -1,0 +1,608 @@
+{
+  "dataset": {
+    "train_rows": 262813,
+    "validation_rows": 56319,
+    "test_rows": 56798,
+    "combined_rows": 375930,
+    "split_rows": {
+      "train": 262813,
+      "validation": 56319,
+      "test": 56798
+    }
+  },
+  "treatment_variables": {
+    "row_level_prevalence": {
+      "statin_before": {
+        "exposed_count": 26240,
+        "unexposed_count": 349690,
+        "missing_count": 0,
+        "exposure_percentage": 0.06980022876599366
+      },
+      "statin_during": {
+        "exposed_count": 149186,
+        "unexposed_count": 226744,
+        "missing_count": 0,
+        "exposure_percentage": 0.39684515734312237
+      },
+      "statin_after": {
+        "exposed_count": 3061,
+        "unexposed_count": 372869,
+        "missing_count": 0,
+        "exposure_percentage": 0.00814247333280132
+      },
+      "beta_blocker_before": {
+        "exposed_count": 11628,
+        "unexposed_count": 364302,
+        "missing_count": 0,
+        "exposure_percentage": 0.030931290399808475
+      },
+      "beta_blocker_during": {
+        "exposed_count": 199344,
+        "unexposed_count": 176586,
+        "missing_count": 0,
+        "exposure_percentage": 0.5302689330460458
+      },
+      "acei_before": {
+        "exposed_count": 11943,
+        "unexposed_count": 363987,
+        "missing_count": 0,
+        "exposure_percentage": 0.031769212353363656
+      },
+      "acei_during": {
+        "exposed_count": 80253,
+        "unexposed_count": 295677,
+        "missing_count": 0,
+        "exposure_percentage": 0.21347857313861623
+      },
+      "aspirin_before": {
+        "exposed_count": 30621,
+        "unexposed_count": 345309,
+        "missing_count": 0,
+        "exposure_percentage": 0.08145399409464528
+      },
+      "aspirin_during": {
+        "exposed_count": 158397,
+        "unexposed_count": 217533,
+        "missing_count": 0,
+        "exposure_percentage": 0.42134705929295346
+      },
+      "vasopressor_during": {
+        "exposed_count": 41492,
+        "unexposed_count": 334438,
+        "missing_count": 0,
+        "exposure_percentage": 0.11037161173622749
+      },
+      "mech_vent_during": {
+        "exposed_count": 67054,
+        "unexposed_count": 308876,
+        "missing_count": 0,
+        "exposure_percentage": 0.17836831324980715
+      }
+    },
+    "admission_level_prevalence": {
+      "statin_before": {
+        "exposed_count": 13203,
+        "unexposed_count": 178166,
+        "missing_count": 0,
+        "exposure_percentage": 0.06899236553464773
+      },
+      "statin_during": {
+        "exposed_count": 67360,
+        "unexposed_count": 124009,
+        "missing_count": 0,
+        "exposure_percentage": 0.35199013424326825
+      },
+      "statin_after": {
+        "exposed_count": 1660,
+        "unexposed_count": 189709,
+        "missing_count": 0,
+        "exposure_percentage": 0.00867434119423731
+      },
+      "beta_blocker_before": {
+        "exposed_count": 6099,
+        "unexposed_count": 185270,
+        "missing_count": 0,
+        "exposure_percentage": 0.03187036562870684
+      },
+      "beta_blocker_during": {
+        "exposed_count": 84530,
+        "unexposed_count": 106839,
+        "missing_count": 0,
+        "exposure_percentage": 0.44171208502944576
+      },
+      "acei_before": {
+        "exposed_count": 6196,
+        "unexposed_count": 185173,
+        "missing_count": 0,
+        "exposure_percentage": 0.032377239782827937
+      },
+      "acei_during": {
+        "exposed_count": 35216,
+        "unexposed_count": 156153,
+        "missing_count": 0,
+        "exposure_percentage": 0.1840214454796754
+      },
+      "aspirin_before": {
+        "exposed_count": 14927,
+        "unexposed_count": 176442,
+        "missing_count": 0,
+        "exposure_percentage": 0.07800113916047009
+      },
+      "aspirin_during": {
+        "exposed_count": 68655,
+        "unexposed_count": 122714,
+        "missing_count": 0,
+        "exposure_percentage": 0.358757165476122
+      },
+      "vasopressor_during": {
+        "exposed_count": 11284,
+        "unexposed_count": 180085,
+        "missing_count": 0,
+        "exposure_percentage": 0.05896461809383965
+      },
+      "mech_vent_during": {
+        "exposed_count": 21397,
+        "unexposed_count": 169972,
+        "missing_count": 0,
+        "exposure_percentage": 0.11181016779102153
+      }
+    },
+    "consistency_within_admission": {
+      "statin_before": {
+        "n_admissions_with_inconsistent_values": 0,
+        "percentage_of_admissions_affected": 0.0,
+        "example_unique_values": [
+          0,
+          1
+        ]
+      },
+      "statin_during": {
+        "n_admissions_with_inconsistent_values": 0,
+        "percentage_of_admissions_affected": 0.0,
+        "example_unique_values": [
+          0,
+          1
+        ]
+      },
+      "statin_after": {
+        "n_admissions_with_inconsistent_values": 0,
+        "percentage_of_admissions_affected": 0.0,
+        "example_unique_values": [
+          0,
+          1
+        ]
+      },
+      "beta_blocker_before": {
+        "n_admissions_with_inconsistent_values": 0,
+        "percentage_of_admissions_affected": 0.0,
+        "example_unique_values": [
+          0,
+          1
+        ]
+      },
+      "beta_blocker_during": {
+        "n_admissions_with_inconsistent_values": 0,
+        "percentage_of_admissions_affected": 0.0,
+        "example_unique_values": [
+          0,
+          1
+        ]
+      },
+      "acei_before": {
+        "n_admissions_with_inconsistent_values": 0,
+        "percentage_of_admissions_affected": 0.0,
+        "example_unique_values": [
+          0,
+          1
+        ]
+      },
+      "acei_during": {
+        "n_admissions_with_inconsistent_values": 0,
+        "percentage_of_admissions_affected": 0.0,
+        "example_unique_values": [
+          0,
+          1
+        ]
+      },
+      "aspirin_before": {
+        "n_admissions_with_inconsistent_values": 0,
+        "percentage_of_admissions_affected": 0.0,
+        "example_unique_values": [
+          0,
+          1
+        ]
+      },
+      "aspirin_during": {
+        "n_admissions_with_inconsistent_values": 0,
+        "percentage_of_admissions_affected": 0.0,
+        "example_unique_values": [
+          0,
+          1
+        ]
+      },
+      "vasopressor_during": {
+        "n_admissions_with_inconsistent_values": 0,
+        "percentage_of_admissions_affected": 0.0,
+        "example_unique_values": [
+          0,
+          1
+        ]
+      },
+      "mech_vent_during": {
+        "n_admissions_with_inconsistent_values": 0,
+        "percentage_of_admissions_affected": 0.0,
+        "example_unique_values": [
+          0,
+          1
+        ]
+      }
+    },
+    "classification": {
+      "Potential baseline treatment": [
+        "statin_before",
+        "beta_blocker_before",
+        "acei_before",
+        "aspirin_before"
+      ],
+      "Potential acute treatment": [
+        "statin_during",
+        "beta_blocker_during",
+        "acei_during",
+        "aspirin_during"
+      ],
+      "Potential downstream treatment": [
+        "statin_after"
+      ],
+      "Likely downstream/supportive intervention": [
+        "vasopressor_during",
+        "mech_vent_during"
+      ],
+      "Timing unresolved": [
+        "statin_before",
+        "statin_during",
+        "statin_after",
+        "beta_blocker_before",
+        "beta_blocker_during",
+        "acei_before",
+        "acei_during",
+        "aspirin_before",
+        "aspirin_during",
+        "vasopressor_during",
+        "mech_vent_during"
+      ]
+    },
+    "variable_definition": {
+      "statin_before": {
+        "definition": "Pre-admission statin use; before hospital admission.",
+        "reference_event": "hospital admission / pre-admission baseline",
+        "exact_timing_available": "No",
+        "evidence": "Phase F master dataset schema and longitudinal MI cohort extraction guide describe statin_before as before admission/pre-admission use."
+      },
+      "statin_during": {
+        "definition": "In-hospital statin use during the admission.",
+        "reference_event": "admission stay / in-hospital period",
+        "exact_timing_available": "No",
+        "evidence": "Phase F schema lists statin_during as During admission."
+      },
+      "statin_after": {
+        "definition": "Post-discharge statin use.",
+        "reference_event": "after discharge",
+        "exact_timing_available": "No",
+        "evidence": "Phase F schema lists statin_after as After discharge."
+      },
+      "beta_blocker_before": {
+        "definition": "Pre-admission beta-blocker use.",
+        "reference_event": "hospital admission / pre-admission baseline",
+        "exact_timing_available": "No",
+        "evidence": "Phase F schema lists beta_blocker_before as Before."
+      },
+      "beta_blocker_during": {
+        "definition": "In-hospital beta-blocker use.",
+        "reference_event": "admission stay",
+        "exact_timing_available": "No",
+        "evidence": "Phase F schema lists beta_blocker_during as During."
+      },
+      "acei_before": {
+        "definition": "Pre-admission ACE inhibitor use.",
+        "reference_event": "hospital admission / pre-admission baseline",
+        "exact_timing_available": "No",
+        "evidence": "Phase F schema lists acei_before as Before."
+      },
+      "acei_during": {
+        "definition": "In-hospital ACE inhibitor use.",
+        "reference_event": "admission stay",
+        "exact_timing_available": "No",
+        "evidence": "Phase F schema lists acei_during as During."
+      },
+      "aspirin_before": {
+        "definition": "Pre-admission aspirin use.",
+        "reference_event": "hospital admission / pre-admission baseline",
+        "exact_timing_available": "No",
+        "evidence": "Phase F schema lists aspirin_before as Before."
+      },
+      "aspirin_during": {
+        "definition": "In-hospital aspirin use.",
+        "reference_event": "admission stay",
+        "exact_timing_available": "No",
+        "evidence": "Phase F schema lists aspirin_during as During."
+      },
+      "vasopressor_during": {
+        "definition": "Vasopressor administration during the admission.",
+        "reference_event": "in-hospital clinical escalation / acute support",
+        "exact_timing_available": "No",
+        "evidence": "Phase F schema lists vasopressor_during as During and describes it as vasopressor administration."
+      },
+      "mech_vent_during": {
+        "definition": "Mechanical ventilation during the admission.",
+        "reference_event": "in-hospital acute supportive care",
+        "exact_timing_available": "No",
+        "evidence": "Phase F schema lists mech_vent_during as During and describes it as mechanical ventilation."
+      }
+    },
+    "relative_to_ecg": {
+      "statin": "Treatment assignment relative to ECG is not directly known. Before variables represent pre-admission medication and do not establish exact timing before a specific ECG; during variables represent in-hospital treatment around the episode.",
+      "beta_blocker": "Before variables are pre-admission/chronic use; during variables are in-hospital use. Exact pre-ECG assignment cannot be established from the binary columns alone.",
+      "ACE inhibitor": "Before variables are pre-admission/chronic use; during variables are in-hospital use. Exact baseline timing relative to ECG is unavailable.",
+      "aspirin": "Before variables are pre-admission/chronic use; during variables are in-hospital use. Exact timing relative to ECG is unresolved."
+    },
+    "relative_to_mi": {
+      "statin_before": {
+        "treatment_indicator_count_on_MI_label_rows": 1318,
+        "timing_classification": "UNKNOWN",
+        "assessment": "The treatment feature is an admission-window indicator without medication timestamps. Its name does not establish timing relative to index_mi_time."
+      },
+      "statin_during": {
+        "treatment_indicator_count_on_MI_label_rows": 11353,
+        "timing_classification": "UNKNOWN",
+        "assessment": "The treatment feature is an admission-window indicator without medication timestamps. Its name does not establish timing relative to index_mi_time."
+      },
+      "statin_after": {
+        "treatment_indicator_count_on_MI_label_rows": 222,
+        "timing_classification": "UNKNOWN",
+        "assessment": "The treatment feature is an admission-window indicator without medication timestamps. Its name does not establish timing relative to index_mi_time."
+      },
+      "beta_blocker_before": {
+        "treatment_indicator_count_on_MI_label_rows": 319,
+        "timing_classification": "UNKNOWN",
+        "assessment": "The treatment feature is an admission-window indicator without medication timestamps. Its name does not establish timing relative to index_mi_time."
+      },
+      "beta_blocker_during": {
+        "treatment_indicator_count_on_MI_label_rows": 11951,
+        "timing_classification": "UNKNOWN",
+        "assessment": "The treatment feature is an admission-window indicator without medication timestamps. Its name does not establish timing relative to index_mi_time."
+      },
+      "acei_before": {
+        "treatment_indicator_count_on_MI_label_rows": 440,
+        "timing_classification": "UNKNOWN",
+        "assessment": "The treatment feature is an admission-window indicator without medication timestamps. Its name does not establish timing relative to index_mi_time."
+      },
+      "acei_during": {
+        "treatment_indicator_count_on_MI_label_rows": 5498,
+        "timing_classification": "UNKNOWN",
+        "assessment": "The treatment feature is an admission-window indicator without medication timestamps. Its name does not establish timing relative to index_mi_time."
+      },
+      "aspirin_before": {
+        "treatment_indicator_count_on_MI_label_rows": 1618,
+        "timing_classification": "UNKNOWN",
+        "assessment": "The treatment feature is an admission-window indicator without medication timestamps. Its name does not establish timing relative to index_mi_time."
+      },
+      "aspirin_during": {
+        "treatment_indicator_count_on_MI_label_rows": 11763,
+        "timing_classification": "UNKNOWN",
+        "assessment": "The treatment feature is an admission-window indicator without medication timestamps. Its name does not establish timing relative to index_mi_time."
+      },
+      "vasopressor_during": {
+        "treatment_indicator_count_on_MI_label_rows": 2896,
+        "timing_classification": "UNKNOWN",
+        "assessment": "The treatment feature is an admission-window indicator without medication timestamps. Its name does not establish timing relative to index_mi_time."
+      },
+      "mech_vent_during": {
+        "treatment_indicator_count_on_MI_label_rows": 3538,
+        "timing_classification": "UNKNOWN",
+        "assessment": "The treatment feature is an admission-window indicator without medication timestamps. Its name does not establish timing relative to index_mi_time."
+      }
+    },
+    "temporal_ordering_audit": {
+      "Label_Troponin_is_the_established_MI_temporal_cohort_label": true,
+      "MI_Post-Incident_rows": 0,
+      "MI_label_rows_with_both_ecg_and_index_mi_timestamps": 10503,
+      "timestamp_fields_reclassify_Label_Troponin": false,
+      "treatment_orderings": {
+        "ECG -> treatment -> MI": "UNRESOLVED \u2014 exact treatment assignment/admin timestamps are unavailable.",
+        "treatment -> ECG -> MI": "UNRESOLVED \u2014 exact treatment assignment/admin timestamps are unavailable.",
+        "ECG -> MI -> treatment": "UNRESOLVED \u2014 exact treatment assignment/admin timestamps are unavailable.",
+        "treatment -> MI -> ECG": "UNRESOLVED \u2014 exact treatment assignment/admin timestamps are unavailable."
+      },
+      "time_diff_hours_warning": "time_diff_hours is ECG minus index_mi_time for MI patients, but for Control_Symptomatic it uses an admission-time anchor/fallback and is not MI-relative. Do not infer MI ordering or post-MI status for controls from this field."
+    }
+  },
+  "outcome_variables": {
+    "is_MI_binary": true,
+    "is_MI_values": [
+      false,
+      true
+    ],
+    "Label_Troponin_counts": {
+      "Control_Symptomatic": 362372,
+      "MI_Acute_Presentation": 7604,
+      "MI_Pre-Incident": 5954
+    },
+    "Label_Troponin_expected_categories_including_excluded": {
+      "Control_Symptomatic": 362372,
+      "MI_Pre-Incident": 5954,
+      "MI_Acute_Presentation": 7604,
+      "MI_Post-Incident": 0
+    },
+    "is_MI_by_Label_Troponin": {
+      "Control_Symptomatic": {
+        "False": 362372,
+        "True": 0
+      },
+      "MI_Acute_Presentation": {
+        "False": 0,
+        "True": 7604
+      },
+      "MI_Pre-Incident": {
+        "False": 0,
+        "True": 5954
+      }
+    },
+    "Label_Troponin_missing": 0,
+    "is_MI_missing": 0,
+    "index_mi_time_missing": 327700,
+    "index_mi_time_nonnull": 48230,
+    "time_diff_hours_missing": 0,
+    "time_diff_hours_nonnull": 375930,
+    "temporal_summary_by_Label_Troponin": {
+      "Control_Symptomatic": {
+        "row_count": 362372,
+        "index_mi_time_nonnull_count": 37727,
+        "index_mi_time_missing_count": 324645,
+        "time_diff_hours_nonnull_count": 362372,
+        "time_diff_hours_min": -4599.716666666666,
+        "time_diff_hours_median": 12.583333333333334,
+        "time_diff_hours_max": 5868.4
+      },
+      "MI_Pre-Incident": {
+        "row_count": 5954,
+        "index_mi_time_nonnull_count": 5952,
+        "index_mi_time_missing_count": 2,
+        "time_diff_hours_nonnull_count": 5954,
+        "time_diff_hours_min": -1417.8666666666666,
+        "time_diff_hours_median": -13.175,
+        "time_diff_hours_max": -6.016666666666667
+      },
+      "MI_Acute_Presentation": {
+        "row_count": 7604,
+        "index_mi_time_nonnull_count": 4551,
+        "index_mi_time_missing_count": 3053,
+        "time_diff_hours_nonnull_count": 7604,
+        "time_diff_hours_min": -6.0,
+        "time_diff_hours_median": 0.1333333333333333,
+        "time_diff_hours_max": 2.0
+      },
+      "MI_Post-Incident": {
+        "row_count": 0,
+        "index_mi_time_nonnull_count": 0,
+        "index_mi_time_missing_count": 0,
+        "time_diff_hours_nonnull_count": 0,
+        "time_diff_hours_min": null,
+        "time_diff_hours_median": null,
+        "time_diff_hours_max": null
+      }
+    },
+    "time_diff_hours_semantics": {
+      "MI_patients": "ecg_time - index_mi_time; this arithmetic describes ECG-to-MI timing only for MI patients.",
+      "Control_Symptomatic": "Based on the admission-time anchor/fallback; it is not time relative to an MI event.",
+      "interpretation_rule": "Do not use time_diff_hours alone to classify rows as before/after MI or to replace Label_Troponin.",
+      "label_grouped_values_are_descriptive_only": true
+    },
+    "MI_Post-Incident_rows_in_master_dataset": 0,
+    "outcome_definition_assessment": "UNRESOLVED \u2014 requires later causal outcome definition/audit."
+  },
+  "temporal_ordering_audit": {
+    "Label_Troponin_is_the_established_MI_temporal_cohort_label": true,
+    "MI_Post-Incident_rows": 0,
+    "MI_label_rows_with_both_ecg_and_index_mi_timestamps": 10503,
+    "timestamp_fields_reclassify_Label_Troponin": false,
+    "treatment_orderings": {
+      "ECG -> treatment -> MI": "UNRESOLVED \u2014 exact treatment assignment/admin timestamps are unavailable.",
+      "treatment -> ECG -> MI": "UNRESOLVED \u2014 exact treatment assignment/admin timestamps are unavailable.",
+      "ECG -> MI -> treatment": "UNRESOLVED \u2014 exact treatment assignment/admin timestamps are unavailable.",
+      "treatment -> MI -> ECG": "UNRESOLVED \u2014 exact treatment assignment/admin timestamps are unavailable."
+    },
+    "time_diff_hours_warning": "time_diff_hours is ECG minus index_mi_time for MI patients, but for Control_Symptomatic it uses an admission-time anchor/fallback and is not MI-relative. Do not infer MI ordering or post-MI status for controls from this field."
+  },
+  "candidate_primary_treatments": {
+    "aspirin": {
+      "row_exposed_total": 189018,
+      "admission_exposed_total": 83582,
+      "temporal_clarity": "UNRESOLVED unless exact medication timestamps are added",
+      "assignment_information": "Binary administrative window indicators only; no exact treatment assignment timestamps",
+      "potential_positivity_concerns": "Possible if near-universal exposure in some strata; requires later modeling cohort definition",
+      "confounding_by_indication_concerns": "High; chronic and acute medication use are likely correlated with disease severity and clinical indication",
+      "compatibility_with_ECG_question": "Partial, but timing relative to ECG is not established well enough for definitive baseline treatment",
+      "baseline_establishability": "UNRESOLVED",
+      "treatment_specific_time_zero": "UNRESOLVED; exact medication assignment time not in the parquet",
+      "consistency_percentage_max": 0.0
+    },
+    "statin": {
+      "row_exposed_total": 178487,
+      "admission_exposed_total": 82223,
+      "temporal_clarity": "UNRESOLVED unless exact medication timestamps are added",
+      "assignment_information": "Binary administrative window indicators only; no exact treatment assignment timestamps",
+      "potential_positivity_concerns": "Possible if near-universal exposure in some strata; requires later modeling cohort definition",
+      "confounding_by_indication_concerns": "High; chronic and acute medication use are likely correlated with disease severity and clinical indication",
+      "compatibility_with_ECG_question": "Partial, but timing relative to ECG is not established well enough for definitive baseline treatment",
+      "baseline_establishability": "UNRESOLVED",
+      "treatment_specific_time_zero": "UNRESOLVED; exact medication assignment time not in the parquet",
+      "consistency_percentage_max": 0.0
+    },
+    "beta_blocker": {
+      "row_exposed_total": 210972,
+      "admission_exposed_total": 90629,
+      "temporal_clarity": "UNRESOLVED unless exact medication timestamps are added",
+      "assignment_information": "Binary administrative window indicators only; no exact treatment assignment timestamps",
+      "potential_positivity_concerns": "Possible if near-universal exposure in some strata; requires later modeling cohort definition",
+      "confounding_by_indication_concerns": "High; chronic and acute medication use are likely correlated with disease severity and clinical indication",
+      "compatibility_with_ECG_question": "Partial, but timing relative to ECG is not established well enough for definitive baseline treatment",
+      "baseline_establishability": "UNRESOLVED",
+      "treatment_specific_time_zero": "UNRESOLVED; exact medication assignment time not in the parquet",
+      "consistency_percentage_max": 0.0
+    },
+    "acei": {
+      "row_exposed_total": 92196,
+      "admission_exposed_total": 41412,
+      "temporal_clarity": "UNRESOLVED unless exact medication timestamps are added",
+      "assignment_information": "Binary administrative window indicators only; no exact treatment assignment timestamps",
+      "potential_positivity_concerns": "Possible if near-universal exposure in some strata; requires later modeling cohort definition",
+      "confounding_by_indication_concerns": "High; chronic and acute medication use are likely correlated with disease severity and clinical indication",
+      "compatibility_with_ECG_question": "Partial, but timing relative to ECG is not established well enough for definitive baseline treatment",
+      "baseline_establishability": "UNRESOLVED",
+      "treatment_specific_time_zero": "UNRESOLVED; exact medication assignment time not in the parquet",
+      "consistency_percentage_max": 0.0
+    }
+  },
+  "phase2_decision_record": {
+    "Primary candidate treatment(s)": "UNRESOLVED",
+    "Reason": "The parquet provides window-coded treatment indicators but not exact treatment assignment timestamps; a defensible ECG-based baseline treatment cannot be established from the current dataset alone.",
+    "Treatments excluded from primary analysis": [
+      "vasopressor_during",
+      "mech_vent_during"
+    ],
+    "Reason_exclusion": "These are acute supportive interventions rather than stable baseline exposures and are more plausibly downstream severity markers.",
+    "Treatment timing": {
+      "What is known": "The `*_before` columns represent pre-admission medication exposure, `*_during` columns represent in-hospital use, and `statin_after` is post-discharge use.",
+      "What is unknown": "Exact treatment administration times relative to the ECG and MI event; whether a chronic `*_before` medication was assigned at a meaningful baseline time."
+    },
+    "Outcome definition": "Current definition: binary `is_MI` linked to the categorical Label_Troponin cohort labels. The master dataset contains zero MI_Post-Incident rows because that category was intentionally excluded during modeling-data construction.",
+    "Outcome timing": "Assessment: use Label_Troponin for established MI temporal cohort labels. time_diff_hours is ECG minus index_mi_time for MI patients; for Control_Symptomatic it uses the admission-time anchor/fallback and is not MI-relative. Do not classify controls as post-MI from a positive value.",
+    "time_diff_hours interpretation": "Do not treat time_diff_hours as a universal ECG-to-MI variable. Do not use it alone to infer whether a variable was measured before the treatment-specific causal baseline/index ECG.",
+    "Causal time zero": "Status: UNRESOLVED for all candidate treatments.",
+    "Treatment-specific time zero": "UNRESOLVED for aspirin, statin, beta blocker, and ACE inhibitor because exact treatment assignment time is unavailable.",
+    "Potential baseline treatments": [
+      "statin_before",
+      "beta_blocker_before",
+      "acei_before",
+      "aspirin_before"
+    ],
+    "Potential acute treatments": [
+      "statin_during",
+      "beta_blocker_during",
+      "acei_during",
+      "aspirin_during"
+    ],
+    "Potential downstream treatments": [
+      "statin_after"
+    ],
+    "Positivity concerns": "UNRESOLVED; requires later modeling-specific assessment.",
+    "Confounding-by-indication concerns": "High; disease severity and clinical indication are likely to drive both treatment and outcome.",
+    "Temporal inconsistencies": "No within-admission treatment-flag inconsistencies were observed. Exact treatment ordering remains unresolved; time_diff_hours is not MI-relative for controls.",
+    "Unresolved issues": [
+      "Exact medication start or administration time relative to ECG and MI.",
+      "Whether a binary `*_before` flag can serve as a valid baseline treatment for later causal analysis.",
+      "Whether the current MI label/time definition is sufficiently precise for later causal outcome analysis."
+    ],
+    "Phase 3 handoff": "Phase 3 should proceed only after a separate causal outcome specification and a treatment timing audit from the original medication source data are completed. A defensible causal treatment time zero is not established by the current parquet dataset alone."
+  }
+}

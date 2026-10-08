@@ -1,0 +1,453 @@
+{
+  "lab_coverage": {
+    "Hematocrit": {
+      "itemid": 51221,
+      "lab_name": "Hematocrit",
+      "total_measurements": 3318138,
+      "unique_patients": 242973,
+      "cohort_patients": 98973,
+      "cohort_measurements": 2514019,
+      "cohort_coverage_pct": 99.7
+    },
+    "Creatinine": {
+      "itemid": 50912,
+      "lab_name": "Creatinine",
+      "total_measurements": 3281300,
+      "unique_patients": 239831,
+      "cohort_patients": 98963,
+      "cohort_measurements": 2552590,
+      "cohort_coverage_pct": 99.7
+    },
+    "Platelet": {
+      "itemid": 51265,
+      "lab_name": "Platelet Count",
+      "total_measurements": 3206337,
+      "unique_patients": 242683,
+      "cohort_patients": 98956,
+      "cohort_measurements": 2428934,
+      "cohort_coverage_pct": 99.7
+    },
+    "BUN": {
+      "itemid": 51006,
+      "lab_name": "Urea Nitrogen",
+      "total_measurements": 3187680,
+      "unique_patients": 237983,
+      "cohort_patients": 98945,
+      "cohort_measurements": 2496628,
+      "cohort_coverage_pct": 99.7
+    },
+    "WBC": {
+      "itemid": 51301,
+      "lab_name": "White Blood Cells",
+      "total_measurements": 3164426,
+      "unique_patients": 242616,
+      "cohort_patients": 98879,
+      "cohort_measurements": 2390888,
+      "cohort_coverage_pct": 99.6
+    },
+    "Hemoglobin": {
+      "itemid": 51222,
+      "lab_name": "Hemoglobin",
+      "total_measurements": 3183429,
+      "unique_patients": 242664,
+      "cohort_patients": 98876,
+      "cohort_measurements": 2406218,
+      "cohort_coverage_pct": 99.6
+    },
+    "Potassium": {
+      "itemid": 50971,
+      "lab_name": "Potassium",
+      "total_measurements": 3148658,
+      "unique_patients": 233285,
+      "cohort_patients": 98736,
+      "cohort_measurements": 2495355,
+      "cohort_coverage_pct": 99.5
+    },
+    "Sodium": {
+      "itemid": 50983,
+      "lab_name": "Sodium",
+      "total_measurements": 3119339,
+      "unique_patients": 233181,
+      "cohort_patients": 98705,
+      "cohort_measurements": 2471406,
+      "cohort_coverage_pct": 99.4
+    },
+    "Chloride": {
+      "itemid": 50902,
+      "lab_name": "Chloride",
+      "total_measurements": 3083234,
+      "unique_patients": 233012,
+      "cohort_patients": 98697,
+      "cohort_measurements": 2445915,
+      "cohort_coverage_pct": 99.4
+    },
+    "Bicarbonate": {
+      "itemid": 50882,
+      "lab_name": "Bicarbonate",
+      "total_measurements": 2972049,
+      "unique_patients": 232085,
+      "cohort_patients": 98630,
+      "cohort_measurements": 2356113,
+      "cohort_coverage_pct": 99.4
+    },
+    "Glucose_blood": {
+      "itemid": 50931,
+      "lab_name": "Glucose",
+      "total_measurements": 2749198,
+      "unique_patients": 234469,
+      "cohort_patients": 98623,
+      "cohort_measurements": 2154698,
+      "cohort_coverage_pct": 99.4
+    },
+    "Calcium": {
+      "itemid": 50893,
+      "lab_name": "Calcium, Total",
+      "total_measurements": 2190520,
+      "unique_patients": 165626,
+      "cohort_patients": 90536,
+      "cohort_measurements": 1801841,
+      "cohort_coverage_pct": 91.2
+    },
+    "Magnesium": {
+      "itemid": 50960,
+      "lab_name": "Magnesium",
+      "total_measurements": 2153904,
+      "unique_patients": 158119,
+      "cohort_patients": 90531,
+      "cohort_measurements": 1796421,
+      "cohort_coverage_pct": 91.2
+    },
+    "Phosphate": {
+      "itemid": 50970,
+      "lab_name": "Phosphate",
+      "total_measurements": 2065818,
+      "unique_patients": 156099,
+      "cohort_patients": 89554,
+      "cohort_measurements": 1722256,
+      "cohort_coverage_pct": 90.2
+    },
+    "INR": {
+      "itemid": 51237,
+      "lab_name": "INR(PT)",
+      "total_measurements": 1388168,
+      "unique_patients": 157138,
+      "cohort_patients": 87950,
+      "cohort_measurements": 1148631,
+      "cohort_coverage_pct": 88.6
+    },
+    "PT": {
+      "itemid": 51274,
+      "lab_name": "PT",
+      "total_measurements": 1387685,
+      "unique_patients": 157136,
+      "cohort_patients": 87947,
+      "cohort_measurements": 1148154,
+      "cohort_coverage_pct": 88.6
+    },
+    "PTT": {
+      "itemid": 51275,
+      "lab_name": "PTT",
+      "total_measurements": 1248397,
+      "unique_patients": 153463,
+      "cohort_patients": 87025,
+      "cohort_measurements": 1034023,
+      "cohort_coverage_pct": 87.7
+    },
+    "ALT": {
+      "itemid": 50861,
+      "lab_name": "Alanine Aminotransferase (ALT)",
+      "total_measurements": 1342051,
+      "unique_patients": 160816,
+      "cohort_patients": 79429,
+      "cohort_measurements": 995208,
+      "cohort_coverage_pct": 80.0
+    },
+    "AST": {
+      "itemid": 50878,
+      "lab_name": "Asparate Aminotransferase (AST)",
+      "total_measurements": 1320656,
+      "unique_patients": 158942,
+      "cohort_patients": 79217,
+      "cohort_measurements": 986073,
+      "cohort_coverage_pct": 79.8
+    },
+    "Bilirubin_Total": {
+      "itemid": 50885,
+      "lab_name": "Bilirubin, Total",
+      "total_measurements": 1158743,
+      "unique_patients": 145315,
+      "cohort_patients": 76571,
+      "cohort_measurements": 895514,
+      "cohort_coverage_pct": 77.1
+    },
+    "Albumin": {
+      "itemid": 50862,
+      "lab_name": "Albumin",
+      "total_measurements": 749800,
+      "unique_patients": 129755,
+      "cohort_patients": 71400,
+      "cohort_measurements": 573695,
+      "cohort_coverage_pct": 71.9
+    },
+    "HbA1c": {
+      "itemid": 50852,
+      "lab_name": "% Hemoglobin A1c",
+      "total_measurements": 223244,
+      "unique_patients": 74715,
+      "cohort_patients": 41959,
+      "cohort_measurements": 143921,
+      "cohort_coverage_pct": 42.3
+    },
+    "Glucose_serum": {
+      "itemid": 50809,
+      "lab_name": "Glucose",
+      "total_measurements": 209857,
+      "unique_patients": 46609,
+      "cohort_patients": 33023,
+      "cohort_measurements": 173954,
+      "cohort_coverage_pct": 33.3
+    },
+    "BNP": {
+      "itemid": 50963,
+      "lab_name": "NTproBNP",
+      "total_measurements": 64449,
+      "unique_patients": 28068,
+      "cohort_patients": 23133,
+      "cohort_measurements": 57527,
+      "cohort_coverage_pct": 23.3
+    },
+    "CRP": {
+      "itemid": 50889,
+      "lab_name": "C-Reactive Protein",
+      "total_measurements": 117898,
+      "unique_patients": 41842,
+      "cohort_patients": 23103,
+      "cohort_measurements": 74641,
+      "cohort_coverage_pct": 23.3
+    },
+    "NT_proBNP": {
+      "itemid": 50964,
+      "lab_name": "Osmolality, Measured",
+      "total_measurements": 40275,
+      "unique_patients": 13181,
+      "cohort_patients": 10606,
+      "cohort_measurements": 32072,
+      "cohort_coverage_pct": 10.7
+    }
+  },
+  "omr_coverage": {
+    "Weight (Lbs)": {
+      "total_records": 1889542,
+      "unique_patients": 149877,
+      "cohort_patients": 68310,
+      "cohort_records": 1179762,
+      "cohort_coverage_pct": 68.8
+    },
+    "BMI (kg/m2)": {
+      "total_records": 1662112,
+      "unique_patients": 137636,
+      "cohort_patients": 64167,
+      "cohort_records": 1041860,
+      "cohort_coverage_pct": 64.6
+    },
+    "Height (Inches)": {
+      "total_records": 706906,
+      "unique_patients": 132944,
+      "cohort_patients": 62826,
+      "cohort_records": 442714,
+      "cohort_coverage_pct": 63.3
+    },
+    "Blood Pressure": {
+      "total_records": 2169549,
+      "unique_patients": 135594,
+      "cohort_patients": 59863,
+      "cohort_records": 1316642,
+      "cohort_coverage_pct": 60.3
+    },
+    "Blood Pressure Sitting": {
+      "total_records": 3400,
+      "unique_patients": 1977,
+      "cohort_patients": 1288,
+      "cohort_records": 2365,
+      "cohort_coverage_pct": 1.3
+    },
+    "Blood Pressure Lying": {
+      "total_records": 2764,
+      "unique_patients": 1629,
+      "cohort_patients": 1064,
+      "cohort_records": 1912,
+      "cohort_coverage_pct": 1.1
+    },
+    "Blood Pressure Standing (1 min)": {
+      "total_records": 2560,
+      "unique_patients": 1607,
+      "cohort_patients": 1038,
+      "cohort_records": 1750,
+      "cohort_coverage_pct": 1.0
+    },
+    "Blood Pressure Standing (3 mins)": {
+      "total_records": 626,
+      "unique_patients": 442,
+      "cohort_patients": 303,
+      "cohort_records": 439,
+      "cohort_coverage_pct": 0.3
+    },
+    "Blood Pressure Standing": {
+      "total_records": 523,
+      "unique_patients": 369,
+      "cohort_patients": 268,
+      "cohort_records": 400,
+      "cohort_coverage_pct": 0.3
+    },
+    "BMI": {
+      "total_records": 554,
+      "unique_patients": 472,
+      "cohort_patients": 235,
+      "cohort_records": 275,
+      "cohort_coverage_pct": 0.2
+    },
+    "eGFR": {
+      "total_records": 240,
+      "unique_patients": 184,
+      "cohort_patients": 151,
+      "cohort_records": 199,
+      "cohort_coverage_pct": 0.2
+    },
+    "Weight": {
+      "total_records": 354,
+      "unique_patients": 305,
+      "cohort_patients": 147,
+      "cohort_records": 163,
+      "cohort_coverage_pct": 0.1
+    },
+    "Height": {
+      "total_records": 39,
+      "unique_patients": 38,
+      "cohort_patients": 19,
+      "cohort_records": 20,
+      "cohort_coverage_pct": 0.0
+    }
+  },
+  "vitals_coverage": {
+    "Heart_Rate": {
+      "itemid": 220045,
+      "vital_name": "Heart Rate",
+      "total_records": 6460839,
+      "unique_patients": 50919,
+      "cohort_admissions": 46846,
+      "cohort_records": 4999337
+    },
+    "Respiratory_Rate": {
+      "itemid": 220210,
+      "vital_name": "Respiratory Rate",
+      "total_records": 6393762,
+      "unique_patients": 50877,
+      "cohort_admissions": 46829,
+      "cohort_records": 4957313
+    },
+    "SpO2": {
+      "itemid": 220277,
+      "vital_name": "O2 saturation pulseoxymetry",
+      "total_records": 6324341,
+      "unique_patients": 50880,
+      "cohort_admissions": 46813,
+      "cohort_records": 4897199
+    },
+    "Rhythm": {
+      "itemid": 220048,
+      "vital_name": "Heart Rhythm",
+      "total_records": 5907987,
+      "unique_patients": 50703,
+      "cohort_admissions": 46699,
+      "cohort_records": 4602545
+    },
+    "Systolic_BP_NonInvasive": {
+      "itemid": 220179,
+      "vital_name": "Non Invasive Blood Pressure systolic",
+      "total_records": 4067219,
+      "unique_patients": 50442,
+      "cohort_admissions": 46449,
+      "cohort_records": 3111120
+    },
+    "Diastolic_BP_NonInvasive": {
+      "itemid": 220180,
+      "vital_name": "Non Invasive Blood Pressure diastolic",
+      "total_records": 4066337,
+      "unique_patients": 50442,
+      "cohort_admissions": 46448,
+      "cohort_records": 3110423
+    },
+    "Mean_BP_NonInvasive": {
+      "itemid": 220181,
+      "vital_name": "Non Invasive Blood Pressure mean",
+      "total_records": 4064537,
+      "unique_patients": 50418,
+      "cohort_admissions": 46450,
+      "cohort_records": 3110346
+    },
+    "Mean_BP_Invasive": {
+      "itemid": 220052,
+      "vital_name": "Arterial Blood Pressure mean",
+      "total_records": 2272013,
+      "unique_patients": 24127,
+      "cohort_admissions": 19468,
+      "cohort_records": 1823355
+    },
+    "Systolic_BP_Invasive": {
+      "itemid": 220050,
+      "vital_name": "Arterial Blood Pressure systolic",
+      "total_records": 2264001,
+      "unique_patients": 23991,
+      "cohort_admissions": 19313,
+      "cohort_records": 1816808
+    },
+    "Diastolic_BP_Invasive": {
+      "itemid": 220051,
+      "vital_name": "Arterial Blood Pressure diastolic",
+      "total_records": 2263647,
+      "unique_patients": 23998,
+      "cohort_admissions": 19317,
+      "cohort_records": 1816512
+    },
+    "Temperature_F": {
+      "itemid": 223761,
+      "vital_name": "Temperature Fahrenheit",
+      "total_records": 1515962,
+      "unique_patients": 50201,
+      "cohort_admissions": 46218,
+      "cohort_records": 1168097
+    },
+    "Temperature_C": {
+      "itemid": 223762,
+      "vital_name": "Temperature Celsius",
+      "total_records": 264628,
+      "unique_patients": 6720,
+      "cohort_admissions": 5639,
+      "cohort_records": 211996
+    },
+    "Weight_kg": {
+      "itemid": 224639,
+      "vital_name": "Daily Weight",
+      "total_records": 202491,
+      "unique_patients": 30623,
+      "cohort_admissions": 27496,
+      "cohort_records": 156599
+    },
+    "Height_cm": {
+      "itemid": 226730,
+      "vital_name": "Height (cm)",
+      "total_records": 33707,
+      "unique_patients": 28670,
+      "cohort_admissions": 24907,
+      "cohort_records": 25335
+    }
+  },
+  "prescriptions": {
+    "total_rows": 15416708,
+    "unique_admissions": 365442,
+    "unique_patients": 158421,
+    "cohort_admissions": 168387,
+    "with_starttime": 15399765,
+    "with_stoptime": 15394109
+  }
+}

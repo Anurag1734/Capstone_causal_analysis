@@ -1,0 +1,37 @@
+{
+  "treatment": "statin_before",
+  "candidate_rules": [
+    {
+      "name": "earliest_ecg_in_admission",
+      "status": "operationally available but not causally valid",
+      "guaranteed_pre_treatment": false,
+      "notes": "does not prove the ECG occurred before treatment time zero"
+    },
+    {
+      "name": "latest_ecg_before_treatment",
+      "status": "blocked",
+      "guaranteed_pre_treatment": false,
+      "notes": "requires a validated treatment time zero that is not available"
+    },
+    {
+      "name": "first_ecg_before_treatment",
+      "status": "blocked",
+      "guaranteed_pre_treatment": false,
+      "notes": "requires a validated treatment time zero that is not available"
+    },
+    {
+      "name": "ecg_closest_to_treatment_before",
+      "status": "blocked",
+      "guaranteed_pre_treatment": false,
+      "notes": "requires a validated treatment time zero that is not available"
+    },
+    {
+      "name": "mi_relative_ecg_selection",
+      "status": "outcome-dependent and not valid for a baseline treatment design",
+      "guaranteed_pre_treatment": false,
+      "notes": "uses outcome timing to define the ECG selection rule"
+    }
+  ],
+  "final_selection_rule": null,
+  "status": "NOT READY"
+}
