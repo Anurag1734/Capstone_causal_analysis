@@ -1,0 +1,58 @@
+# Configuration for HbA1c Statistical Causal Discovery Pipeline
+
+dataset:
+  target_population: "Adults with established diabetes diagnosed on or before baseline"
+  exposure_variable: "hba1c"
+  candidate_windows: [90, 180, 365]
+  primary_window: 180
+  hba1c_threshold: 7.0
+  baseline_rule: "Earliest non-MI hospital admission per patient"
+  outcome_variable: "subsequent_mi"
+  covariates:
+    - "anchor_age"
+    - "sex_male"
+    - "hypertension"
+    - "ckd"
+    - "prior_mi"
+  quarantined_variables:
+    - "ecg_features_95"
+    - "z_ecg_64"
+  excluded_variables:
+    - "study_id"
+    - "SubjectID"
+    - "hadm_id"
+    - "Label_Troponin"
+    - "is_MI"
+    - "index_mi_time"
+    - "time_diff_hours"
+    - "post_baseline_treatments"
+
+pc:
+  ci_test: "fisherz"
+  ci_test_discrete: "chisq"
+  alpha: 0.05
+  max_cond_size: 4
+  random_seed: 42
+
+ges:
+  score_func: "local_score_BIC"
+  score_func_discrete: "local_score_BDeu"
+  random_seed: 42
+
+fci:
+  ci_test: "fisherz"
+  ci_test_discrete: "chisq"
+  alpha: 0.05
+  max_cond_size: 4
+  random_seed: 42
+
+bootstrap:
+  n_replicates: 100
+  sample_fraction: 1.0
+  replace: true
+  random_seed: 42
+
+paths:
+  data_dir: "causal_discovery/hba1c/data"
+  results_dir: "causal_discovery/hba1c/results"
+  reports_dir: "causal_discovery/hba1c/reports"

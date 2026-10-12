@@ -1,0 +1,27 @@
+=== GES ALGORITHM DISCOVERY GRAPH ===
+Dataset: hba1c_discovery_180d.csv (N = 6575)
+Score Function: local_score_BIC
+BIC Score: -2858.6289673833535
+causal-learn version: 0.1.4.8
+
+Adjacency Matrix:
+[[ 0  0  1  1  0  1 -1]
+ [ 0  0  0  1  1  0  0]
+ [-1  0  0 -1  0  0  0]
+ [-1 -1  1  0  1  0 -1]
+ [ 0 -1  0 -1  0  0 -1]
+ [-1  0  0  0  0  0 -1]
+ [ 1  0  0  1  1  1  0]]
+
+Discovered Edges:
+  hypertension -> anchor_age (endpoints: TAIL, ARROW)
+  ckd -> anchor_age (endpoints: TAIL, ARROW)
+  hba1c_state -> anchor_age (endpoints: TAIL, ARROW)
+  anchor_age -> subsequent_mi (endpoints: TAIL, ARROW)
+  ckd -> sex_male (endpoints: TAIL, ARROW)
+  prior_mi -> sex_male (endpoints: TAIL, ARROW)
+  hypertension -> ckd (endpoints: TAIL, ARROW)
+  prior_mi -> ckd (endpoints: TAIL, ARROW)
+  ckd -> subsequent_mi (endpoints: TAIL, ARROW)
+  prior_mi -> subsequent_mi (endpoints: TAIL, ARROW)
+  hba1c_state -> subsequent_mi (endpoints: TAIL, ARROW)

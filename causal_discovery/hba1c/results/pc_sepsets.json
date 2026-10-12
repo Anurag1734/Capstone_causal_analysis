@@ -1,0 +1,59 @@
+{
+  "anchor_age _||_ sex_male": [
+    [
+      "ckd"
+    ],
+    [
+      "ckd"
+    ]
+  ],
+  "anchor_age _||_ prior_mi": [
+    [
+      "hypertension",
+      "ckd",
+      "subsequent_mi"
+    ],
+    []
+  ],
+  "sex_male _||_ hypertension": [
+    [
+      "ckd"
+    ],
+    [
+      "ckd"
+    ]
+  ],
+  "sex_male _||_ subsequent_mi": [
+    [
+      "ckd",
+      "prior_mi"
+    ],
+    [
+      "ckd",
+      "prior_mi"
+    ]
+  ],
+  "hypertension _||_ prior_mi": [
+    [],
+    []
+  ],
+  "hypertension _||_ hba1c_state": [
+    [],
+    []
+  ],
+  "hypertension _||_ subsequent_mi": [
+    [
+      "anchor_age",
+      "ckd",
+      "prior_mi"
+    ]
+  ],
+  "ckd _||_ hba1c_state": [
+    [],
+    []
+  ],
+  "prior_mi _||_ hba1c_state": [
+    [],
+    []
+  ]
+}

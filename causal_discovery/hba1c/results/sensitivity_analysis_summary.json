@@ -1,0 +1,80 @@
+{
+  "lookback_windows": {
+    "90d": {
+      "sample_size": 4818,
+      "subsequent_mi_events": 534,
+      "pc_edge_count": 11,
+      "ges_edge_count": 12,
+      "fci_edge_count": 11,
+      "hba1c_mi_detected": {
+        "pc": true,
+        "ges": false,
+        "fci": true
+      }
+    },
+    "180d": {
+      "sample_size": 6575,
+      "subsequent_mi_events": 763,
+      "pc_edge_count": 12,
+      "ges_edge_count": 11,
+      "fci_edge_count": 12,
+      "hba1c_mi_detected": {
+        "pc": true,
+        "ges": true,
+        "fci": true
+      }
+    },
+    "365d": {
+      "sample_size": 8042,
+      "subsequent_mi_events": 949,
+      "pc_edge_count": 12,
+      "ges_edge_count": 12,
+      "fci_edge_count": 12,
+      "hba1c_mi_detected": {
+        "pc": true,
+        "ges": true,
+        "fci": true
+      }
+    }
+  },
+  "continuous_hba1c": {
+    "hba1c_mi_detected": {
+      "pc": true,
+      "ges": true,
+      "fci": true
+    },
+    "pc_edge_count": 11,
+    "ges_edge_count": 12,
+    "fci_edge_count": 11
+  },
+  "significance_thresholds": {
+    "alpha_0.01": {
+      "pc_edge_count": 12,
+      "fci_edge_count": 12,
+      "hba1c_mi_pc": true,
+      "hba1c_mi_fci": true
+    },
+    "alpha_0.05": {
+      "pc_edge_count": 12,
+      "fci_edge_count": 12,
+      "hba1c_mi_pc": true,
+      "hba1c_mi_fci": true
+    },
+    "alpha_0.1": {
+      "pc_edge_count": 12,
+      "fci_edge_count": 12,
+      "hba1c_mi_pc": true,
+      "hba1c_mi_fci": true
+    }
+  },
+  "discrete_representation": {
+    "pc_edge_count": 12,
+    "ges_edge_count": 10,
+    "fci_edge_count": 12,
+    "hba1c_mi_detected": {
+      "pc": false,
+      "ges": false,
+      "fci": true
+    }
+  }
+}
