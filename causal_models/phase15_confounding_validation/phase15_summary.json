@@ -1,0 +1,48 @@
+{
+  "eligible_cohort_n": 7545,
+  "unique_patients": 7545,
+  "treatment_known_n": 4656,
+  "treated_n": 2986,
+  "control_n": 1670,
+  "treatment_missing_n": 2889,
+  "all_index_admissions_match_admissions_chronology": true,
+  "baseline_features_available_n": 4656,
+  "not_in_phase9_split_files_n": 551,
+  "phase9_split_sizes": {
+    "train": 4882,
+    "validation": 1037,
+    "test": 1075
+  },
+  "phase9_unique_admission_rows": 6994,
+  "phase11_complete_case_n": 3230,
+  "observed_endpoint_n": 4985,
+  "incomplete_or_uncertain_followup_n": 2560,
+  "phase11_known_treatment_incomplete_followup_n": 1426,
+  "missing_baseline_feature_n": 2889,
+  "exposed_with_emar_record_n": 1505,
+  "exposed_without_emar_record_n": 1481,
+  "exposed_with_valid_in_admission_first_emar_n": 1500,
+  "prescription_order_records_for_exposed_n": 3837,
+  "prior_mi_coded_admission_count_available_n": 7545,
+  "negative_or_invalid_index_length_of_stay_n": 1,
+  "index_diagnosis_record_missing_n": 4,
+  "severity_code_feature_missing_n": 4,
+  "phase14_acute_candidate_n": 555,
+  "phase14_acute_classification_counts": {
+    "candidate distinct acute MI": 211,
+    "possible transfer/readmission for the same episode": 167,
+    "possible continuation of index MI episode": 114,
+    "uncertain episode classification": 63
+  },
+  "phase14_timing_counts": {
+    "within_1_day": 14,
+    "within_7_days": 103,
+    "within_30_days": 226
+  },
+  "confirmed_prior_preprocessing_exclusion_n": 0,
+  "index_admissions_absent_from_phase9_splits_n": 551,
+  "previous_preprocessing_exclusion_interpretation": "551 index admissions are absent from the exported Phase 9 split rows. The retained artifacts do not contain a per-admission exclusion log that distinguishes deliberate ECG/data filtering from absent ECG/master coverage. Do not equate this with a confirmed preprocessing exclusion.",
+  "index_severity_timing_caveat": "Diagnosis codes and length of stay are index-stay summaries with no timing relative to first dose; they are descriptive/sensitivity variables only.",
+  "selection_note": "IPCW for incomplete outcome follow-up cannot correct missing treatment, missing index master features, or ECG-linked selection.",
+  "recommendation": "B - conditional go for descriptive in-hospital exposure comparisons; pause further causal effect estimation pending endpoint, linkage selection, and confounding validation."
+}

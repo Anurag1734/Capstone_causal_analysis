@@ -1,0 +1,743 @@
+{
+  "status": "model_estimates_not_established_clinical_effects",
+  "split_patient_overlap": {
+    "train_vs_validation": 0,
+    "train_vs_test": 0,
+    "validation_vs_test": 0
+  },
+  "cohort_sizes": {
+    "train": {
+      "prior_mi_admissions_before_complete_case_filter": 4882,
+      "complete_admissions": 2237,
+      "dropped_missing_treatment_outcome_or_covariate": 2645,
+      "admissions_with_conflicting_rows": 0,
+      "constant_features_excluded": [],
+      "features_used": [
+        "anchor_age",
+        "sex_male",
+        "diabetes",
+        "hypertension",
+        "ckd",
+        "aspirin_before",
+        "beta_blocker_before",
+        "acei_before",
+        "statin_before"
+      ],
+      "feature_count": 9,
+      "treated": 1401,
+      "control": 836,
+      "outcome_events": 816,
+      "patients": 2237
+    },
+    "validation": {
+      "prior_mi_admissions_before_complete_case_filter": 1037,
+      "complete_admissions": 494,
+      "dropped_missing_treatment_outcome_or_covariate": 543,
+      "admissions_with_conflicting_rows": 0,
+      "constant_features_excluded": [],
+      "features_used": [
+        "anchor_age",
+        "sex_male",
+        "diabetes",
+        "hypertension",
+        "ckd",
+        "aspirin_before",
+        "beta_blocker_before",
+        "acei_before",
+        "statin_before"
+      ],
+      "feature_count": 9,
+      "treated": 296,
+      "control": 198,
+      "outcome_events": 177,
+      "patients": 494
+    },
+    "test": {
+      "prior_mi_admissions_before_complete_case_filter": 1075,
+      "complete_admissions": 499,
+      "dropped_missing_treatment_outcome_or_covariate": 576,
+      "admissions_with_conflicting_rows": 0,
+      "constant_features_excluded": [],
+      "features_used": [
+        "anchor_age",
+        "sex_male",
+        "diabetes",
+        "hypertension",
+        "ckd",
+        "aspirin_before",
+        "beta_blocker_before",
+        "acei_before",
+        "statin_before"
+      ],
+      "feature_count": 9,
+      "treated": 317,
+      "control": 182,
+      "outcome_events": 168,
+      "patients": 499
+    }
+  },
+  "preliminary_source_cohort": {
+    "train": {
+      "admissions": 4882,
+      "unique_patients": 4882,
+      "treated": 2086,
+      "control": 1153,
+      "treatment_missing": 1643,
+      "treatment_prevalence_among_known": 0.6440259339302253,
+      "recurrent_mi_events": 1252,
+      "competing_deaths": 626,
+      "event_free": 1462,
+      "incomplete_followup": 1542,
+      "outcome_observed": 3340,
+      "outcome_missing_due_to_followup": 1542,
+      "outcome_prevalence_among_observed": 0.37485029940119763,
+      "censoring_prevalence": 0.31585415813191314,
+      "recurrent_mi_prevalence_among_observed": 0.37485029940119763,
+      "propensity_balance_sample_size": 3239,
+      "treatment_prevalence_in_propensity_balance_sample": 0.6440259339302253,
+      "propensity_auc_source_fit": 0.6990058449382536,
+      "propensity_overlap": {
+        "treated": {
+          "n": 2086,
+          "mean": 0.6892940810061254,
+          "sd": 0.12604141737686442,
+          "min": 0.10661345085343359,
+          "max": 0.8358116455094206,
+          "quantiles_1_5_25_50_75_95_99": [
+            0.18712535581631995,
+            0.3763441915097054,
+            0.6720238642559169,
+            0.7191698140020237,
+            0.7626067808317423,
+            0.8059839804846227,
+            0.8250818305257832
+          ]
+        },
+        "control": {
+          "n": 1153,
+          "mean": 0.5621421976815375,
+          "sd": 0.20442943911321892,
+          "min": 0.05207611057406056,
+          "max": 0.8358116455094206,
+          "quantiles_1_5_25_50_75_95_99": [
+            0.09625263450488673,
+            0.14865635760245807,
+            0.4193168710962991,
+            0.6436988128517745,
+            0.7237000782472361,
+            0.7825336895085505,
+            0.8183176265527645
+          ]
+        },
+        "common_support": [
+          0.10661345085343359,
+          0.8358116455094206
+        ],
+        "fraction_outside_common_support": 0.006174745291756715
+      },
+      "covariate_balance_smd": {
+        "anchor_age": {
+          "before": 0.12366473290449574,
+          "after_ipw": 0.0018991225988341971
+        },
+        "sex_male": {
+          "before": 0.05984058685669406,
+          "after_ipw": 0.0041829495638258515
+        },
+        "diabetes": {
+          "before": 0.15151307501694156,
+          "after_ipw": 0.0037329423015829578
+        },
+        "hypertension": {
+          "before": 0.12945233629371058,
+          "after_ipw": 0.0014945570282919477
+        },
+        "ckd": {
+          "before": 0.14043862348032118,
+          "after_ipw": -0.0007465302309095792
+        },
+        "aspirin_before": {
+          "before": -0.6283598602571375,
+          "after_ipw": 0.022649860754442003
+        },
+        "beta_blocker_before": {
+          "before": -0.36205092513670983,
+          "after_ipw": 0.011811457945082286
+        },
+        "acei_before": {
+          "before": -0.47147181268530736,
+          "after_ipw": 0.02838868683836186
+        }
+      }
+    },
+    "validation": {
+      "admissions": 1037,
+      "unique_patients": 1037,
+      "treated": 429,
+      "control": 263,
+      "treatment_missing": 345,
+      "treatment_prevalence_among_known": 0.619942196531792,
+      "recurrent_mi_events": 260,
+      "competing_deaths": 131,
+      "event_free": 317,
+      "incomplete_followup": 329,
+      "outcome_observed": 708,
+      "outcome_missing_due_to_followup": 329,
+      "outcome_prevalence_among_observed": 0.3672316384180791,
+      "censoring_prevalence": 0.3172613307618129,
+      "recurrent_mi_prevalence_among_observed": 0.3672316384180791,
+      "propensity_balance_sample_size": 692,
+      "treatment_prevalence_in_propensity_balance_sample": 0.619942196531792,
+      "propensity_auc_source_fit": 0.6833382080530369,
+      "propensity_overlap": {
+        "treated": {
+          "n": 429,
+          "mean": 0.6815763326089527,
+          "sd": 0.13302189896202427,
+          "min": 0.11569924516830933,
+          "max": 0.8322950440189253,
+          "quantiles_1_5_25_50_75_95_99": [
+            0.1791333345403106,
+            0.3469744465302332,
+            0.6638242519204269,
+            0.7132158553327608,
+            0.7612115888579132,
+            0.8068902513410875,
+            0.8269077462632815
+          ]
+        },
+        "control": {
+          "n": 263,
+          "mean": 0.5570773038379411,
+          "sd": 0.21128331222235033,
+          "min": 0.07356677307737394,
+          "max": 0.8358116455094206,
+          "quantiles_1_5_25_50_75_95_99": [
+            0.08638056935656897,
+            0.14985842633917185,
+            0.39856780477533416,
+            0.6450466300480342,
+            0.7203922111555412,
+            0.7757727323097898,
+            0.8121295576578264
+          ]
+        },
+        "common_support": [
+          0.11569924516830933,
+          0.8322950440189253
+        ],
+        "fraction_outside_common_support": 0.011560693641618497
+      },
+      "covariate_balance_smd": {
+        "anchor_age": {
+          "before": 0.07415972859348484,
+          "after_ipw": -0.06226373445889097
+        },
+        "sex_male": {
+          "before": 0.053478198637375275,
+          "after_ipw": 0.00040777023409974817
+        },
+        "diabetes": {
+          "before": 0.191537102993399,
+          "after_ipw": 0.09439395185521014
+        },
+        "hypertension": {
+          "before": 0.10932307623782385,
+          "after_ipw": -0.034663554840813404
+        },
+        "ckd": {
+          "before": 0.21625298049158842,
+          "after_ipw": 0.028614161248918874
+        },
+        "aspirin_before": {
+          "before": -0.6142399111251584,
+          "after_ipw": 0.06475753106452331
+        },
+        "beta_blocker_before": {
+          "before": -0.316493830089748,
+          "after_ipw": 0.1277551270996101
+        },
+        "acei_before": {
+          "before": -0.45696635678279446,
+          "after_ipw": 0.04414994536784625
+        }
+      }
+    },
+    "test": {
+      "admissions": 1075,
+      "unique_patients": 1075,
+      "treated": 471,
+      "control": 254,
+      "treatment_missing": 350,
+      "treatment_prevalence_among_known": 0.6496551724137931,
+      "recurrent_mi_events": 261,
+      "competing_deaths": 149,
+      "event_free": 336,
+      "incomplete_followup": 329,
+      "outcome_observed": 746,
+      "outcome_missing_due_to_followup": 329,
+      "outcome_prevalence_among_observed": 0.34986595174262736,
+      "censoring_prevalence": 0.30604651162790697,
+      "recurrent_mi_prevalence_among_observed": 0.34986595174262736,
+      "propensity_balance_sample_size": 725,
+      "treatment_prevalence_in_propensity_balance_sample": 0.6496551724137931,
+      "propensity_auc_source_fit": 0.6797691291773241,
+      "propensity_overlap": {
+        "treated": {
+          "n": 471,
+          "mean": 0.6832508856946375,
+          "sd": 0.13025953829068304,
+          "min": 0.08796800302238635,
+          "max": 0.8358116455094206,
+          "quantiles_1_5_25_50_75_95_99": [
+            0.1546026966878859,
+            0.3838304514745064,
+            0.6690491887414556,
+            0.7154009031825588,
+            0.7581593491927892,
+            0.7978313730404412,
+            0.8200745049547595
+          ]
+        },
+        "control": {
+          "n": 254,
+          "mean": 0.5602291163810635,
+          "sd": 0.21199163186455752,
+          "min": 0.05530246555220811,
+          "max": 0.8176263495089837,
+          "quantiles_1_5_25_50_75_95_99": [
+            0.08105188400286051,
+            0.14314254477240523,
+            0.4103697633346116,
+            0.6392228389094432,
+            0.7306624731371585,
+            0.786972142856502,
+            0.7988165144653798
+          ]
+        },
+        "common_support": [
+          0.08796800302238635,
+          0.8176263495089837
+        ],
+        "fraction_outside_common_support": 0.013793103448275862
+      },
+      "covariate_balance_smd": {
+        "anchor_age": {
+          "before": 0.12040201262561567,
+          "after_ipw": -0.018841638358624024
+        },
+        "sex_male": {
+          "before": 0.039876912614311075,
+          "after_ipw": 0.013811702823503455
+        },
+        "diabetes": {
+          "before": 0.05245392492723545,
+          "after_ipw": -0.10770159271943075
+        },
+        "hypertension": {
+          "before": 0.13749539660947854,
+          "after_ipw": -0.07155488517810721
+        },
+        "ckd": {
+          "before": 0.17471362784186506,
+          "after_ipw": 0.061866389853359696
+        },
+        "aspirin_before": {
+          "before": -0.6230312930973182,
+          "after_ipw": 0.07399758044687921
+        },
+        "beta_blocker_before": {
+          "before": -0.343592281394671,
+          "after_ipw": 0.13682032835954222
+        },
+        "acei_before": {
+          "before": -0.46856353991626704,
+          "after_ipw": 0.10213649700140104
+        }
+      }
+    }
+  },
+  "censoring_assessment": {
+    "definition": "Incomplete follow-up is the censoring outcome; recurrent MI, death, and confirmed event-free 12-month follow-up are observed endpoints.",
+    "train_fitted_logistic_model_test_auc": 0.636445457286254,
+    "by_split": {
+      "train": {
+        "complete_baseline_and_treatment_admissions": 3239,
+        "incomplete_followup_in_analysis_subset": 1002,
+        "censoring_prevalence_by_treatment": {
+          "0": 0.27493495229835213,
+          "1": 0.3283796740172579
+        },
+        "absolute_smd_incomplete_vs_observed": {
+          "anchor_age": -0.13995187190477193,
+          "sex_male": 0.09413230636644247,
+          "diabetes": -0.1987502954984989,
+          "hypertension": -0.1777380347325076,
+          "ckd": -0.3710268444238,
+          "aspirin_before": -0.1866081401485152,
+          "beta_blocker_before": -0.09047278381043132,
+          "acei_before": -0.13818702761112947
+        },
+        "conditional_observation_probability": {
+          "n": 3239,
+          "mean": 0.6906532868437163,
+          "sd": 0.09909291935611438,
+          "min": 0.45121247069178533,
+          "max": 0.9200212033518587,
+          "quantiles_1_5_25_50_75_95_99": [
+            0.49910373209489245,
+            0.5407829040673353,
+            0.6110547431245874,
+            0.6824211197810688,
+            0.7772615762439603,
+            0.8460868234841623,
+            0.8934508772574934
+          ]
+        },
+        "minimum_conditional_observation_probability": 0.45121247069178533
+      },
+      "validation": {
+        "complete_baseline_and_treatment_admissions": 692,
+        "incomplete_followup_in_analysis_subset": 198,
+        "censoring_prevalence_by_treatment": {
+          "0": 0.24714828897338403,
+          "1": 0.31002331002331
+        },
+        "absolute_smd_incomplete_vs_observed": {
+          "anchor_age": -0.20482514495399068,
+          "sex_male": 0.0840008241043125,
+          "diabetes": -0.29890266464965,
+          "hypertension": -0.2024788214821703,
+          "ckd": -0.29787803302768917,
+          "aspirin_before": -0.35820750768398424,
+          "beta_blocker_before": -0.2082675045479427,
+          "acei_before": -0.209668364573108
+        },
+        "conditional_observation_probability": {
+          "n": 692,
+          "mean": 0.6933439668216939,
+          "sd": 0.0982952347282175,
+          "min": 0.4379254906981307,
+          "max": 0.9033085538032464,
+          "quantiles_1_5_25_50_75_95_99": [
+            0.48880458648228925,
+            0.5403983694619843,
+            0.6192837217902122,
+            0.6836609385214323,
+            0.7802329453795653,
+            0.8386713417234409,
+            0.8876913025037078
+          ]
+        },
+        "minimum_conditional_observation_probability": 0.4379254906981307
+      },
+      "test": {
+        "complete_baseline_and_treatment_admissions": 725,
+        "incomplete_followup_in_analysis_subset": 226,
+        "censoring_prevalence_by_treatment": {
+          "0": 0.28346456692913385,
+          "1": 0.32696390658174096
+        },
+        "absolute_smd_incomplete_vs_observed": {
+          "anchor_age": -0.19286698094180102,
+          "sex_male": 0.17393583132047039,
+          "diabetes": -0.2411257057454059,
+          "hypertension": -0.28687522160221346,
+          "ckd": -0.3083775837398742,
+          "aspirin_before": -0.10776563000518564,
+          "beta_blocker_before": -0.10610397545731684,
+          "acei_before": -0.09951886501430314
+        },
+        "conditional_observation_probability": {
+          "n": 725,
+          "mean": 0.6903827559480421,
+          "sd": 0.09720170875084047,
+          "min": 0.45692939391496934,
+          "max": 0.9090471872856022,
+          "quantiles_1_5_25_50_75_95_99": [
+            0.48343018776526325,
+            0.5434319910056227,
+            0.6156521395920121,
+            0.6800429439988488,
+            0.7732433323425759,
+            0.8416411685459644,
+            0.8803582832017616
+          ]
+        },
+        "minimum_conditional_observation_probability": 0.45692939391496934
+      }
+    },
+    "interpretation": "Associations diagnose measured predictors of incomplete follow-up; they do not establish independent censoring."
+  },
+  "complete_case_analysis": {
+    "interpretation": "Exploratory complete-case analysis restricted to admissions with observed outcome follow-up and required baseline covariates.",
+    "train_admissions": 2237,
+    "validation_admissions": 494,
+    "test_admissions": 499,
+    "test_outcome_prevalence": 0.3366733466933868,
+    "test_treatment_prevalence": 0.6352705410821643,
+    "test_propensity_ipw_ate": {
+      "estimate": 0.051248785110983575,
+      "patient_cluster_bootstrap_95_interval": [
+        -0.045542138407476264,
+        0.13916531987016284
+      ]
+    },
+    "test_logistic_g_computation_ate": {
+      "estimate": 0.04176683587324851,
+      "patient_cluster_bootstrap_95_interval": [
+        0.041561517803794704,
+        0.04197797356707684
+      ],
+      "description": "Standardized logistic-model risk difference over the test covariate distribution; interval resamples test patients."
+    }
+  },
+  "preflight_status": "exploratory",
+  "preflight_warnings": [
+    "A distinct subsequent/recurrent-MI outcome has not been clinically and temporally validated.",
+    "Treatment-before-outcome ordering for statin_during has not been validated; the field denotes in-hospital treatment without an assignment timestamp."
+  ],
+  "censoring_sensitivity": {
+    "method": "stabilized IPCW multiplied by inverse-propensity weights",
+    "censor_model": "Logistic regression for observed outcome follow-up using train split; predictors are primary adjustment covariates and statin_during.",
+    "observed_probability_floor": 0.05,
+    "observed_followup_fraction_test": 0.6882758620689655,
+    "censor_weight_distribution": {
+      "n": 499,
+      "mean": 0.9946633340067408,
+      "sd": 0.13787558689664556,
+      "min": 0.7571398621496693,
+      "max": 1.4457769743673086,
+      "quantiles_1_5_25_50_75_95_99": [
+        0.7801529174553069,
+        0.8104270955647165,
+        0.8746051122582014,
+        0.9826072525726142,
+        1.0868015674602303,
+        1.2316906897217779,
+        1.3737338962220487
+      ]
+    },
+    "combined_weight_effective_sample_size": 366.4239595789103,
+    "ate_risk_difference": 0.047471816611795004,
+    "patient_cluster_bootstrap_95_interval": [
+      -0.052924802022855204,
+      0.14238421018773564
+    ],
+    "is_sensitivity_only": true,
+    "limitations": "IPCW requires conditional independent censoring and positivity given measured baseline variables; estimates do not account for unmeasured reasons for loss to observation."
+  },
+  "features": [
+    "anchor_age",
+    "sex_male",
+    "diabetes",
+    "hypertension",
+    "ckd",
+    "aspirin_before",
+    "beta_blocker_before",
+    "acei_before"
+  ],
+  "software_versions": {
+    "econml": "0.16.0",
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.6.1",
+    "pandas": "3.0.6",
+    "pyarrow": "25.0.1",
+    "matplotlib": "3.11.2"
+  },
+  "feature_notes": {
+    "statin_before": "Baseline order-derived history proxy; it does not establish prior receipt or adherence. Excluded from primary adjustment because it may proxy a collider; included only in a sensitivity specification.",
+    "prior_mi": "Eligibility filter (constant at 1 in the analysis cohort), not an X feature."
+  },
+  "subgroup_effects": [
+    {
+      "subgroup": "Age <65",
+      "admissions": 170,
+      "treated": 103,
+      "control": 67,
+      "ate": 0.04677435342322485,
+      "ci_lower_95": -0.06422521459008382,
+      "ci_upper_95": 0.1577739214365335,
+      "status": "model_estimate"
+    },
+    {
+      "subgroup": "Age >=65",
+      "admissions": 329,
+      "treated": 214,
+      "control": 115,
+      "ate": 0.024732272353130136,
+      "ci_lower_95": -0.08364186826252562,
+      "ci_upper_95": 0.1331064129687859,
+      "status": "model_estimate"
+    },
+    {
+      "subgroup": "Female",
+      "admissions": 219,
+      "treated": 135,
+      "control": 84,
+      "ate": 0.019422305432625336,
+      "ci_lower_95": -0.08376411433865036,
+      "ci_upper_95": 0.12260872520390101,
+      "status": "model_estimate"
+    },
+    {
+      "subgroup": "Male",
+      "admissions": 280,
+      "treated": 182,
+      "control": 98,
+      "ate": 0.04226811712993961,
+      "ci_lower_95": -0.0715433643247951,
+      "ci_upper_95": 0.1560795985846743,
+      "status": "model_estimate"
+    },
+    {
+      "subgroup": "Diabetes: no",
+      "admissions": 252,
+      "treated": 158,
+      "control": 94,
+      "ate": 0.02267364032738408,
+      "ci_lower_95": -0.08286971377781205,
+      "ci_upper_95": 0.12821699443258017,
+      "status": "model_estimate"
+    },
+    {
+      "subgroup": "Diabetes: yes",
+      "admissions": 247,
+      "treated": 159,
+      "control": 88,
+      "ate": 0.04200324017662854,
+      "ci_lower_95": -0.07095325571693664,
+      "ci_upper_95": 0.1549597360701937,
+      "status": "model_estimate"
+    }
+  ],
+  "test_outcome_metrics": {
+    "brier_score": 0.2212250873739698,
+    "log_loss": 0.6342919922857494,
+    "roc_auc": 0.5586606243705942,
+    "calibration_intercept": -0.19169163248287394,
+    "calibration_slope": 0.8710748188807079
+  },
+  "test_propensity_auc": 0.6723229451936077,
+  "test_propensity_overlap": {
+    "treated_quantiles": [
+      0.11641446012418866,
+      0.3380930550260976,
+      0.6591967506283934,
+      0.7125736611927639,
+      0.7582133566175787,
+      0.798775763184747,
+      0.814750651067343
+    ],
+    "control_quantiles": [
+      0.09030629753870943,
+      0.14291547905292318,
+      0.3962132169234867,
+      0.6333991551015676,
+      0.7236586330507937,
+      0.7826326035081528,
+      0.7939205445530594
+    ],
+    "fraction_outside_common_support": 0.03406813627254509,
+    "effective_sample_size_ipw": 359.23681949472126
+  },
+  "propensity_ipw_ate": {
+    "estimate": 0.051248785110983575,
+    "cluster_bootstrap_95_interval": [
+      -0.045542138407476264,
+      0.13916531987016284
+    ],
+    "smd_before": {
+      "anchor_age": 0.1737329148921852,
+      "sex_male": 0.07168886980076579,
+      "diabetes": 0.036053291293130285,
+      "hypertension": 0.12352389221517603,
+      "ckd": 0.19291891888131504,
+      "aspirin_before": -0.5744009730781225,
+      "beta_blocker_before": -0.2968798845603747,
+      "acei_before": -0.40137697574513076
+    },
+    "smd_after": {
+      "anchor_age": 0.0493674284471864,
+      "sex_male": 0.08744717741121812,
+      "diabetes": -0.17595713695310586,
+      "hypertension": -0.14846770117929128,
+      "ckd": 0.03764742218074721,
+      "aspirin_before": 0.21167039219387307,
+      "beta_blocker_before": 0.21192361121684117,
+      "acei_before": 0.23900886137837277
+    }
+  },
+  "causal_forest": {
+    "validation_candidates": [
+      {
+        "spec": {
+          "max_depth": 8,
+          "min_samples_leaf": 10
+        },
+        "validation_r_loss": 0.23310560749668632
+      },
+      {
+        "spec": {
+          "max_depth": 12,
+          "min_samples_leaf": 20
+        },
+        "validation_r_loss": 0.23270703108611207
+      }
+    ],
+    "selected_spec": {
+      "max_depth": 12,
+      "min_samples_leaf": 20
+    },
+    "sensitivity_specs": [
+      {
+        "spec": {
+          "max_depth": 8,
+          "min_samples_leaf": 10
+        },
+        "test_ate": 0.030932042529701893,
+        "test_cate_correlation_with_selected": 0.9289195283092895,
+        "mean_absolute_cate_difference": 0.023446707618640834
+      },
+      {
+        "spec": "include_statin_before_proxy",
+        "features": [
+          "anchor_age",
+          "sex_male",
+          "diabetes",
+          "hypertension",
+          "ckd",
+          "statin_before",
+          "aspirin_before",
+          "beta_blocker_before",
+          "acei_before"
+        ],
+        "test_ate": 0.046899807015560575,
+        "test_cate_correlation_with_primary": 0.9294695438942288,
+        "mean_absolute_cate_difference": 0.021451395568468628
+      }
+    ],
+    "ate": 0.03224159856939487,
+    "ate_95_interval": [
+      -0.0770340606514765,
+      0.1415172577902662
+    ],
+    "cate_distribution": {
+      "mean": 0.03224159856939487,
+      "std": 0.045838578111430925,
+      "quantiles": [
+        -0.07040606416541148,
+        -0.04214407623392403,
+        0.005544423697929896,
+        0.03433178696588295,
+        0.06027654507643265,
+        0.09970304773722537,
+        0.13952062287931924
+      ]
+    },
+    "heterogeneity_sd": 0.045838578111430925,
+    "ate_vs_propensity_sensitivity_difference": -0.019007186541588707
+  },
+  "interpretation": "Estimates rely on conditional exchangeability, positivity, consistency, correct temporal ordering, and accurate outcome/treatment measurement; predictive performance does not establish these assumptions. The complete-case analysis is exploratory; IPCW additionally requires conditional independent censoring and censoring positivity."
+}

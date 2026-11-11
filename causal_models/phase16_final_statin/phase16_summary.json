@@ -1,0 +1,19 @@
+{
+  "decision": "C",
+  "causal_estimate_approved": false,
+  "cohort_n": 7545,
+  "known_treatment_n": 4656,
+  "treated_n": 2986,
+  "control_n": 1670,
+  "missing_treatment_n": 2889,
+  "phase11_complete_case_n": 3230,
+  "phase11_test_n": 499,
+  "acute_candidates_n": 555,
+  "same_day_event_death": {
+    "same_day_acute_mi_death_pairs": 3,
+    "same_day_with_imprecise_death_time": 0,
+    "same_day_uncertain_in_saved_endpoint": 0
+  },
+  "split_patient_overlap": "none",
+  "new_effect_estimates_generated": false
+}

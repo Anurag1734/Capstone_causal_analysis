@@ -1,0 +1,1197 @@
+{
+  "model_id": "statin_recurrent_mi_provisional_v1",
+  "title": "Statin initiation and recurrent MI among patients with prior MI",
+  "status": "provisional_domain_informed_not_clinically_validated",
+  "target_trial": {
+    "population": "Patients with a documented prior MI who are alive and eligible at the index discharge.",
+    "intervention": "Initiate a statin around the index discharge under a prespecified regimen.",
+    "comparator": "Do not initiate a statin around the index discharge.",
+    "outcome": "First subsequent/recurrent MI after index discharge.",
+    "follow_up": "From index discharge to a prespecified horizon; death before MI is a competing event.",
+    "intended_estimand": "Difference in cumulative incidence of recurrent MI by the prespecified horizon under the two initiation strategies.",
+    "operationalization_status": "Not currently established. The master has statin_before, a recent pre-admission prescription/order indicator, not index-discharge initiation, administration, adherence, or a reliable new-user classification. Existing prescription and EMAR processing does not by itself establish an initiation time or a common time zero."
+  },
+  "treatment_node": "statin_initiation",
+  "outcome_node": "true_recurrent_mi",
+  "selection_conditioning_nodes": [
+    "selected_prior_mi_cohort"
+  ],
+  "candidate_adjustment_nodes": [
+    "age",
+    "sex",
+    "diabetes",
+    "hypertension",
+    "ckd",
+    "prior_cvd",
+    "lipid_burden",
+    "prior_mi_episode_count",
+    "time_since_most_recent_mi",
+    "prior_mi_severity",
+    "prior_cv_interventions",
+    "prior_statin_use",
+    "baseline_clinical_state",
+    "other_baseline_medications",
+    "healthcare_access"
+  ],
+  "measured_candidate_adjustment_nodes": [
+    "age",
+    "sex",
+    "diabetes",
+    "hypertension",
+    "ckd",
+    "other_baseline_medications"
+  ],
+  "nodes": [
+    {
+      "id": "age",
+      "label": "Age",
+      "role": "confounder",
+      "layer": 0,
+      "data_field": "anchor_age",
+      "measurement_status": "Present in master; exact age-at-index semantics need validation.",
+      "temporal_status": "Baseline candidate; source time relative to discharge assignment must be confirmed.",
+      "adjustment_candidate": true
+    },
+    {
+      "id": "sex",
+      "label": "Sex",
+      "role": "confounder",
+      "layer": 0,
+      "data_field": "sex_male",
+      "measurement_status": "Present in master; source coding requires validation.",
+      "temporal_status": "Patient attribute; baseline candidate.",
+      "adjustment_candidate": true
+    },
+    {
+      "id": "diabetes",
+      "label": "Diabetes",
+      "role": "confounder",
+      "layer": 1,
+      "data_field": "diabetes",
+      "measurement_status": "Present in master as prior-admission ICD history.",
+      "temporal_status": "History cutoff and completeness relative to index are unverified.",
+      "adjustment_candidate": true
+    },
+    {
+      "id": "hypertension",
+      "label": "Hypertension",
+      "role": "confounder",
+      "layer": 1,
+      "data_field": "hypertension",
+      "measurement_status": "Present in master as prior-admission ICD history.",
+      "temporal_status": "History cutoff and completeness relative to index are unverified.",
+      "adjustment_candidate": true
+    },
+    {
+      "id": "ckd",
+      "label": "CKD",
+      "role": "confounder",
+      "layer": 1,
+      "data_field": "ckd",
+      "measurement_status": "Present in master as prior-admission ICD history.",
+      "temporal_status": "History cutoff is unverified; timed renal function is not in the master.",
+      "adjustment_candidate": true
+    },
+    {
+      "id": "prior_cvd",
+      "label": "Prior cardiovascular disease",
+      "role": "confounder",
+      "layer": 2,
+      "data_field": null,
+      "measurement_status": "Potentially reconstructable from longitudinal diagnoses; no validated baseline feature is available.",
+      "temporal_status": "Must be restricted to diagnoses before treatment assignment.",
+      "adjustment_candidate": true
+    },
+    {
+      "id": "lipid_burden",
+      "label": "Lipid / atherosclerotic burden",
+      "role": "confounder",
+      "layer": 2,
+      "data_field": null,
+      "measurement_status": "Important common cause; outpatient lipid coverage is limited and no validated pre-treatment value is in the master.",
+      "temporal_status": "A value must precede assignment; acute measurements may follow illness or treatment.",
+      "adjustment_candidate": true
+    },
+    {
+      "id": "prior_mi_history",
+      "label": "Documented prior MI eligibility (binary)",
+      "role": "selection",
+      "layer": 2,
+      "additional_roles": [
+        "eligibility"
+      ],
+      "data_field": "prior_mi",
+      "measurement_status": "Present in master, but its source-history cutoff is unverified.",
+      "temporal_status": "Defines eligibility and is fixed by the selected population; do not treat it as a varying adjustment covariate.",
+      "adjustment_candidate": false
+    },
+    {
+      "id": "prior_mi_episode_count",
+      "label": "Number of prior MI episodes",
+      "role": "confounder",
+      "layer": 2,
+      "data_field": null,
+      "measurement_status": "Candidate requiring reconstruction from distinct MI admissions strictly before index; no validated master field.",
+      "temporal_status": "Pre-index history; varies within the prior-MI-eligible population.",
+      "adjustment_candidate": true
+    },
+    {
+      "id": "time_since_most_recent_mi",
+      "label": "Time since most recent MI",
+      "role": "confounder",
+      "layer": 2,
+      "data_field": null,
+      "measurement_status": "Candidate requiring validated MI dates and index time; no validated master field.",
+      "temporal_status": "Must be calculated from the most recent prior MI, not a future or index event.",
+      "adjustment_candidate": true
+    },
+    {
+      "id": "prior_cv_interventions",
+      "label": "Previous cardiovascular interventions",
+      "role": "confounder",
+      "layer": 2,
+      "data_field": null,
+      "measurement_status": "Candidate requiring reconstruction; no validated intervention history field is in the master.",
+      "temporal_status": "Only interventions before assignment qualify as baseline history.",
+      "adjustment_candidate": true
+    },
+    {
+      "id": "prior_mi_severity",
+      "label": "Prior MI severity / history",
+      "role": "confounder",
+      "layer": 2,
+      "data_field": null,
+      "measurement_status": "No validated severity or episode-history feature is in the master.",
+      "temporal_status": "Must summarize events strictly before index assignment.",
+      "adjustment_candidate": true
+    },
+    {
+      "id": "prior_statin_use",
+      "label": "Prior statin use",
+      "role": "confounder",
+      "layer": 2,
+      "measurement_status": "Actual use and complete lookback are not established; statin_before is only an order/prescription proxy.",
+      "temporal_status": "Must precede index-discharge initiation; continuation and new use must be distinguished.",
+      "adjustment_candidate": true
+    },
+    {
+      "id": "baseline_clinical_state",
+      "label": "Pre-assignment clinical state / severity",
+      "role": "confounder",
+      "layer": 2,
+      "measurement_status": "No single validated master field; acute vitals/labs may be post-origin or indication-driven.",
+      "temporal_status": "Include only if measured before treatment assignment.",
+      "adjustment_candidate": true
+    },
+    {
+      "id": "unmeasured_atherosclerotic_risk",
+      "label": "Unmeasured atherosclerotic risk / indication",
+      "role": "confounder",
+      "layer": 2,
+      "measurement_status": "Latent common cause including incompletely measured CAD burden, dyslipidemia, clinician-perceived risk, and related indication.",
+      "temporal_status": "Pre-assignment common-cause hypothesis; residual confounding expected.",
+      "adjustment_candidate": false
+    },
+    {
+      "id": "treatment_indication",
+      "label": "Recorded clinical indication",
+      "role": "proxy",
+      "layer": 3,
+      "measurement_status": "No validated indication field is available in the master.",
+      "temporal_status": "A candidate proxy only if recorded before assignment; does not replace underlying risk.",
+      "adjustment_candidate": false
+    },
+    {
+      "id": "other_baseline_medications",
+      "label": "Baseline aspirin / beta blocker / ACE inhibitor",
+      "role": "confounder",
+      "layer": 3,
+      "data_fields": [
+        "aspirin_before",
+        "beta_blocker_before",
+        "acei_before"
+      ],
+      "measurement_status": "Master indicators are prescription/order proxies; actual use and timing are unverified.",
+      "temporal_status": "Candidate only when confirmed before statin assignment; concurrent post-assignment therapy is not baseline.",
+      "adjustment_candidate": true
+    },
+    {
+      "id": "healthcare_access",
+      "label": "Healthcare access / utilization",
+      "role": "confounder",
+      "layer": 2,
+      "measurement_status": "Not adequately measured; admission and insurance fields may be incomplete proxies.",
+      "temporal_status": "Baseline access can affect prescribing, cohort selection, follow-up, and outcome ascertainment.",
+      "adjustment_candidate": true
+    },
+    {
+      "id": "survival_to_index_discharge",
+      "label": "Survival to index discharge",
+      "role": "selection",
+      "layer": 3,
+      "measurement_status": "Index-death fields exist in longitudinal source tables; index cohort not constructed.",
+      "temporal_status": "Eligibility/survival condition before the proposed discharge assignment.",
+      "adjustment_candidate": false
+    },
+    {
+      "id": "selected_prior_mi_cohort",
+      "label": "Selected: documented prior MI and index-discharge survivor",
+      "role": "selection",
+      "layer": 4,
+      "additional_roles": [
+        "collider"
+      ],
+      "measurement_status": "Design restriction; requires validated prior MI and index eligibility.",
+      "temporal_status": "Conditioned on by the target population definition.",
+      "adjustment_candidate": false
+    },
+    {
+      "id": "statin_initiation",
+      "label": "Statin initiation at index discharge",
+      "role": "treatment",
+      "layer": 4,
+      "measurement_status": "Target intervention; not established by current statin_before field.",
+      "temporal_status": "Assignment at/around index discharge; exact rule and time zero unresolved.",
+      "adjustment_candidate": false
+    },
+    {
+      "id": "recorded_statin_order",
+      "label": "Recorded index-discharge statin order",
+      "role": "proxy",
+      "layer": 5,
+      "additional_roles": [
+        "measurement"
+      ],
+      "measurement_status": "Candidate order measurement; source linkage and initiation rule have not been validated.",
+      "temporal_status": "Should record the treatment strategy at assignment; an order is not administration or adherence.",
+      "adjustment_candidate": false
+    },
+    {
+      "id": "statin_before_proxy",
+      "label": "Recent pre-admission statin order proxy",
+      "role": "proxy",
+      "layer": 3,
+      "additional_roles": [
+        "measurement"
+      ],
+      "data_field": "statin_before",
+      "measurement_status": "Present in master; prescription/order presence, not confirmed use.",
+      "temporal_status": "Pre-admission window; not a measure of initiation at index discharge.",
+      "adjustment_candidate": false,
+      "adjustment_note": "Do not adjust for this proxy by default. It is a common effect of prior statin use and healthcare access/documentation (prior_statin_use -> statin_before_proxy <- healthcare_access); conditioning on it can open a collider path. It is also an imperfect prescription measurement, not a sufficient substitute for prior use or index-discharge initiation."
+    },
+    {
+      "id": "post_assignment_adherence",
+      "label": "Post-assignment receipt / adherence",
+      "role": "mediator",
+      "layer": 5,
+      "measurement_status": "Not established by prescription presence; EMAR records administrations but are not a complete outpatient adherence measure.",
+      "temporal_status": "Post-assignment mediator; do not adjust for the total effect.",
+      "adjustment_candidate": false
+    },
+    {
+      "id": "post_assignment_monitoring",
+      "label": "Post-assignment monitoring / healthcare contact",
+      "role": "mediator",
+      "layer": 5,
+      "additional_roles": [
+        "collider"
+      ],
+      "measurement_status": "Not represented as a validated longitudinal measure.",
+      "temporal_status": "Post-assignment; may mediate care and outcome ascertainment, and may be a collider.",
+      "adjustment_candidate": false
+    },
+    {
+      "id": "true_recurrent_mi",
+      "label": "True subsequent / recurrent MI",
+      "role": "outcome",
+      "layer": 6,
+      "measurement_status": "Target clinical outcome; current MI-coded admissions do not alone establish incident clinical MI.",
+      "temporal_status": "After index discharge and within a prespecified horizon.",
+      "adjustment_candidate": false
+    },
+    {
+      "id": "death_before_mi",
+      "label": "Death before recurrent MI",
+      "role": "competing_event",
+      "layer": 6,
+      "measurement_status": "Death dates/flags exist in longitudinal artifacts; competing-risk cohort is not constructed.",
+      "temporal_status": "Competing event during follow-up, not a baseline adjustment variable.",
+      "adjustment_candidate": false
+    },
+    {
+      "id": "followup_observed",
+      "label": "Follow-up / outcome observation",
+      "role": "selection",
+      "layer": 7,
+      "additional_roles": [
+        "collider",
+        "censoring"
+      ],
+      "measurement_status": "Observation-end artifact exists; completeness and anomalous dates require resolution.",
+      "temporal_status": "Post-baseline observation/censoring process; informative censoring is not ruled out.",
+      "adjustment_candidate": false
+    },
+    {
+      "id": "recorded_recurrent_mi",
+      "label": "Recorded subsequent MI-coded admission",
+      "role": "proxy",
+      "layer": 7,
+      "additional_roles": [
+        "outcome_measurement"
+      ],
+      "data_field": "mi_admissions",
+      "measurement_status": "Longitudinal MI-coded admissions are available; code does not prove incident clinical MI.",
+      "temporal_status": "Outcome measurement after index; requires distinct admission and follow-up validation.",
+      "adjustment_candidate": false
+    },
+    {
+      "id": "pre_exposure_ecg_state",
+      "label": "Pre-exposure ECG state (quarantined)",
+      "role": "proxy",
+      "active": false,
+      "measurement_status": "Engineered ECG features exist, but treatment-relative timing is unresolved.",
+      "temporal_status": "Not included in active graph until a pre-assignment rule is validated.",
+      "adjustment_candidate": false
+    },
+    {
+      "id": "z_ecg",
+      "label": "z_ecg representation (quarantined)",
+      "role": "proxy",
+      "active": false,
+      "measurement_status": "Latent ECG representation; provenance and causal interpretation are unresolved.",
+      "temporal_status": "Not included in active graph.",
+      "adjustment_candidate": false
+    },
+    {
+      "id": "pre_exposure_labs",
+      "label": "Pre-exposure laboratory state (quarantined)",
+      "role": "proxy",
+      "active": false,
+      "measurement_status": "Potential lipid and other lab measures; master coverage and time eligibility are unresolved.",
+      "temporal_status": "Not included in active graph until linked measures are shown to precede assignment.",
+      "adjustment_candidate": false
+    }
+  ],
+  "edges": [
+    {
+      "from": "age",
+      "to": "diabetes",
+      "status": "proposed",
+      "rationale": "Age is associated with diabetes prevalence in the modeled baseline history."
+    },
+    {
+      "from": "age",
+      "to": "hypertension",
+      "status": "proposed",
+      "rationale": "Age is associated with hypertension prevalence in the modeled baseline history."
+    },
+    {
+      "from": "age",
+      "to": "ckd",
+      "status": "proposed",
+      "rationale": "Age is associated with CKD prevalence in the modeled baseline history."
+    },
+    {
+      "from": "age",
+      "to": "prior_cvd",
+      "status": "proposed",
+      "rationale": "Age influences accumulated cardiovascular disease burden."
+    },
+    {
+      "from": "age",
+      "to": "prior_mi_episode_count",
+      "status": "proposed",
+      "rationale": "Age and duration at risk influence the opportunity to accumulate prior MI episodes."
+    },
+    {
+      "from": "age",
+      "to": "prior_mi_history",
+      "status": "proposed",
+      "rationale": "Age influences the chance of a previous MI."
+    },
+    {
+      "from": "age",
+      "to": "statin_initiation",
+      "status": "proposed",
+      "rationale": "Age can affect preventive prescribing and treatment decisions."
+    },
+    {
+      "from": "age",
+      "to": "true_recurrent_mi",
+      "status": "proposed",
+      "rationale": "Age predicts recurrent cardiovascular risk."
+    },
+    {
+      "from": "age",
+      "to": "death_before_mi",
+      "status": "proposed",
+      "rationale": "Age affects competing mortality risk."
+    },
+    {
+      "from": "age",
+      "to": "survival_to_index_discharge",
+      "status": "proposed",
+      "rationale": "Age affects survival to the proposed assignment time."
+    },
+    {
+      "from": "sex",
+      "to": "lipid_burden",
+      "status": "assumption",
+      "rationale": "Sex-related differences in lipid burden are a modeling hypothesis requiring population-specific validation."
+    },
+    {
+      "from": "sex",
+      "to": "prior_cvd",
+      "status": "proposed",
+      "rationale": "Sex-related differences can affect cardiovascular history and its recognition."
+    },
+    {
+      "from": "sex",
+      "to": "prior_mi_history",
+      "status": "proposed",
+      "rationale": "Sex-related differences can affect prior MI risk and diagnosis."
+    },
+    {
+      "from": "sex",
+      "to": "statin_initiation",
+      "status": "proposed",
+      "rationale": "Sex can influence treatment patterns."
+    },
+    {
+      "from": "sex",
+      "to": "true_recurrent_mi",
+      "status": "proposed",
+      "rationale": "Sex is associated with cardiovascular risk."
+    },
+    {
+      "from": "sex",
+      "to": "death_before_mi",
+      "status": "proposed",
+      "rationale": "Sex is associated with competing mortality risk."
+    },
+    {
+      "from": "sex",
+      "to": "survival_to_index_discharge",
+      "status": "proposed",
+      "rationale": "Sex-related risk differences can affect survival to index discharge."
+    },
+    {
+      "from": "diabetes",
+      "to": "lipid_burden",
+      "status": "assumption",
+      "rationale": "Diabetes can affect lipid burden; this baseline mechanism is clinically plausible but requires validation."
+    },
+    {
+      "from": "diabetes",
+      "to": "prior_cvd",
+      "status": "proposed",
+      "rationale": "Diabetes contributes to accumulated cardiovascular disease burden."
+    },
+    {
+      "from": "diabetes",
+      "to": "prior_mi_episode_count",
+      "status": "proposed",
+      "rationale": "Diabetes contributes to prior cardiovascular event burden."
+    },
+    {
+      "from": "diabetes",
+      "to": "prior_mi_severity",
+      "status": "assumption",
+      "rationale": "Diabetes may relate to severity/history of prior MI; validate this mechanism clinically."
+    },
+    {
+      "from": "diabetes",
+      "to": "baseline_clinical_state",
+      "status": "proposed",
+      "rationale": "Diabetes can contribute to clinical state at index."
+    },
+    {
+      "from": "diabetes",
+      "to": "prior_mi_history",
+      "status": "proposed",
+      "rationale": "Diabetes increases prior and recurrent MI risk."
+    },
+    {
+      "from": "diabetes",
+      "to": "statin_initiation",
+      "status": "proposed",
+      "rationale": "Diabetes affects statin indication and prescribing."
+    },
+    {
+      "from": "diabetes",
+      "to": "true_recurrent_mi",
+      "status": "proposed",
+      "rationale": "Diabetes increases cardiovascular risk."
+    },
+    {
+      "from": "diabetes",
+      "to": "death_before_mi",
+      "status": "proposed",
+      "rationale": "Diabetes affects competing mortality risk."
+    },
+    {
+      "from": "hypertension",
+      "to": "prior_cvd",
+      "status": "proposed",
+      "rationale": "Hypertension contributes to accumulated cardiovascular disease burden."
+    },
+    {
+      "from": "hypertension",
+      "to": "prior_mi_episode_count",
+      "status": "proposed",
+      "rationale": "Hypertension contributes to prior cardiovascular event burden."
+    },
+    {
+      "from": "hypertension",
+      "to": "prior_mi_history",
+      "status": "proposed",
+      "rationale": "Hypertension increases prior and recurrent cardiovascular risk."
+    },
+    {
+      "from": "hypertension",
+      "to": "statin_initiation",
+      "status": "proposed",
+      "rationale": "Hypertension contributes to perceived cardiovascular risk and treatment decisions."
+    },
+    {
+      "from": "hypertension",
+      "to": "true_recurrent_mi",
+      "status": "proposed",
+      "rationale": "Hypertension increases cardiovascular risk."
+    },
+    {
+      "from": "hypertension",
+      "to": "death_before_mi",
+      "status": "proposed",
+      "rationale": "Hypertension can affect competing mortality."
+    },
+    {
+      "from": "ckd",
+      "to": "prior_cvd",
+      "status": "proposed",
+      "rationale": "CKD contributes to accumulated cardiovascular disease burden."
+    },
+    {
+      "from": "ckd",
+      "to": "prior_mi_episode_count",
+      "status": "proposed",
+      "rationale": "CKD is associated with prior cardiovascular event burden."
+    },
+    {
+      "from": "ckd",
+      "to": "baseline_clinical_state",
+      "status": "proposed",
+      "rationale": "CKD can contribute to pre-assignment clinical state."
+    },
+    {
+      "from": "ckd",
+      "to": "prior_mi_history",
+      "status": "proposed",
+      "rationale": "CKD is associated with prior and recurrent cardiovascular risk."
+    },
+    {
+      "from": "ckd",
+      "to": "statin_initiation",
+      "status": "proposed",
+      "rationale": "CKD affects prescribing decisions and perceived risk."
+    },
+    {
+      "from": "ckd",
+      "to": "true_recurrent_mi",
+      "status": "proposed",
+      "rationale": "CKD is associated with elevated cardiovascular risk."
+    },
+    {
+      "from": "ckd",
+      "to": "death_before_mi",
+      "status": "proposed",
+      "rationale": "CKD affects competing mortality risk."
+    },
+    {
+      "from": "prior_cvd",
+      "to": "prior_mi_episode_count",
+      "status": "proposed",
+      "rationale": "Established cardiovascular disease contributes to accumulated prior MI history."
+    },
+    {
+      "from": "prior_cvd",
+      "to": "prior_mi_history",
+      "status": "proposed",
+      "rationale": "Prior cardiovascular disease can precede and increase prior MI risk."
+    },
+    {
+      "from": "prior_cvd",
+      "to": "prior_mi_severity",
+      "status": "assumption",
+      "rationale": "Pre-existing cardiovascular burden may relate to prior MI severity; this relationship requires clinical validation."
+    },
+    {
+      "from": "prior_cvd",
+      "to": "treatment_indication",
+      "status": "proposed",
+      "rationale": "Established cardiovascular disease informs statin indication."
+    },
+    {
+      "from": "prior_cvd",
+      "to": "statin_initiation",
+      "status": "proposed",
+      "rationale": "Established cardiovascular disease drives secondary-prevention treatment."
+    },
+    {
+      "from": "prior_cvd",
+      "to": "true_recurrent_mi",
+      "status": "proposed",
+      "rationale": "Prior cardiovascular disease increases recurrent MI risk."
+    },
+    {
+      "from": "prior_cvd",
+      "to": "death_before_mi",
+      "status": "proposed",
+      "rationale": "Prior cardiovascular disease affects competing mortality."
+    },
+    {
+      "from": "prior_cvd",
+      "to": "survival_to_index_discharge",
+      "status": "proposed",
+      "rationale": "Cardiovascular burden can affect survival to index discharge."
+    },
+    {
+      "from": "lipid_burden",
+      "to": "prior_mi_episode_count",
+      "status": "proposed",
+      "rationale": "Atherosclerotic lipid burden contributes to prior MI risk and accumulated episodes."
+    },
+    {
+      "from": "lipid_burden",
+      "to": "prior_mi_history",
+      "status": "proposed",
+      "rationale": "Atherosclerotic lipid burden contributes to prior MI risk."
+    },
+    {
+      "from": "lipid_burden",
+      "to": "treatment_indication",
+      "status": "proposed",
+      "rationale": "Lipid burden informs clinical treatment indication."
+    },
+    {
+      "from": "lipid_burden",
+      "to": "statin_initiation",
+      "status": "proposed",
+      "rationale": "Dyslipidemia affects the decision to initiate statin therapy."
+    },
+    {
+      "from": "lipid_burden",
+      "to": "true_recurrent_mi",
+      "status": "proposed",
+      "rationale": "Atherosclerotic burden affects recurrent MI risk."
+    },
+    {
+      "from": "lipid_burden",
+      "to": "death_before_mi",
+      "status": "proposed",
+      "rationale": "Atherosclerotic burden affects cardiovascular mortality."
+    },
+    {
+      "from": "prior_statin_use",
+      "to": "prior_mi_episode_count",
+      "status": "assumption",
+      "rationale": "Prior statin use may alter prior MI occurrence; the longitudinal exposure history is not measured reliably."
+    },
+    {
+      "from": "prior_statin_use",
+      "to": "prior_mi_history",
+      "status": "assumption",
+      "rationale": "Earlier statin use may affect whether prior MI occurs; historical exposure is not observed reliably."
+    },
+    {
+      "from": "prior_statin_use",
+      "to": "statin_initiation",
+      "status": "proposed",
+      "rationale": "Prior use affects continuation, switching, and new-user status."
+    },
+    {
+      "from": "prior_statin_use",
+      "to": "true_recurrent_mi",
+      "status": "proposed",
+      "rationale": "Prior exposure may affect current risk and marks prior treatment history."
+    },
+    {
+      "from": "prior_statin_use",
+      "to": "death_before_mi",
+      "status": "assumption",
+      "rationale": "Prior exposure may affect mortality and survival into the eligible cohort."
+    },
+    {
+      "from": "prior_statin_use",
+      "to": "statin_before_proxy",
+      "status": "proposed",
+      "rationale": "A recent prescription/order flag is an imperfect indicator of prior use."
+    },
+    {
+      "from": "prior_mi_history",
+      "to": "selected_prior_mi_cohort",
+      "status": "proposed",
+      "rationale": "Documented prior MI is an explicit inclusion criterion."
+    },
+    {
+      "from": "prior_mi_episode_count",
+      "to": "prior_mi_history",
+      "status": "proposed",
+      "rationale": "At least one prior MI episode is required for documented prior-MI eligibility."
+    },
+    {
+      "from": "prior_mi_episode_count",
+      "to": "prior_mi_severity",
+      "status": "proposed",
+      "rationale": "Repeated prior episodes can contribute to accumulated prior MI severity/history."
+    },
+    {
+      "from": "prior_mi_episode_count",
+      "to": "prior_cv_interventions",
+      "status": "proposed",
+      "rationale": "A greater number of prior episodes can increase the opportunity for cardiovascular interventions."
+    },
+    {
+      "from": "prior_cvd",
+      "to": "prior_cv_interventions",
+      "status": "proposed",
+      "rationale": "Established cardiovascular disease can lead to revascularization or other cardiovascular interventions."
+    },
+    {
+      "from": "prior_mi_episode_count",
+      "to": "baseline_clinical_state",
+      "status": "assumption",
+      "rationale": "Accumulated prior MI episodes may affect index clinical state."
+    },
+    {
+      "from": "prior_mi_episode_count",
+      "to": "statin_initiation",
+      "status": "proposed",
+      "rationale": "The number of prior episodes can influence secondary-prevention treatment decisions."
+    },
+    {
+      "from": "prior_mi_episode_count",
+      "to": "true_recurrent_mi",
+      "status": "proposed",
+      "rationale": "A greater number of prior episodes may indicate elevated recurrent-event risk."
+    },
+    {
+      "from": "prior_mi_episode_count",
+      "to": "death_before_mi",
+      "status": "proposed",
+      "rationale": "Prior episode burden may affect competing mortality."
+    },
+    {
+      "from": "time_since_most_recent_mi",
+      "to": "statin_initiation",
+      "status": "proposed",
+      "rationale": "Recency of prior MI can influence treatment decisions at index discharge."
+    },
+    {
+      "from": "time_since_most_recent_mi",
+      "to": "true_recurrent_mi",
+      "status": "proposed",
+      "rationale": "Recency of prior MI may affect near-term recurrence risk."
+    },
+    {
+      "from": "time_since_most_recent_mi",
+      "to": "death_before_mi",
+      "status": "assumption",
+      "rationale": "Recency may relate to competing mortality; magnitude and direction require clinical validation."
+    },
+    {
+      "from": "prior_cv_interventions",
+      "to": "baseline_clinical_state",
+      "status": "assumption",
+      "rationale": "Previous cardiovascular interventions may affect clinical state at index; reconstruction and timing need validation."
+    },
+    {
+      "from": "prior_cv_interventions",
+      "to": "statin_initiation",
+      "status": "proposed",
+      "rationale": "Prior revascularization or other cardiovascular intervention can affect secondary-prevention prescribing."
+    },
+    {
+      "from": "prior_cv_interventions",
+      "to": "true_recurrent_mi",
+      "status": "assumption",
+      "rationale": "Prior interventions may mark disease burden and alter subsequent MI risk; the intervention types and effects require reconstruction and validation."
+    },
+    {
+      "from": "prior_cv_interventions",
+      "to": "death_before_mi",
+      "status": "assumption",
+      "rationale": "Prior interventions may mark disease burden relevant to competing mortality."
+    },
+    {
+      "from": "prior_mi_severity",
+      "to": "baseline_clinical_state",
+      "status": "proposed",
+      "rationale": "Prior MI severity can shape health and severity at the index admission."
+    },
+    {
+      "from": "prior_mi_severity",
+      "to": "treatment_indication",
+      "status": "proposed",
+      "rationale": "Prior MI severity can influence secondary-prevention decisions."
+    },
+    {
+      "from": "prior_mi_severity",
+      "to": "other_baseline_medications",
+      "status": "proposed",
+      "rationale": "Prior MI severity can influence other preventive therapy."
+    },
+    {
+      "from": "prior_mi_severity",
+      "to": "statin_initiation",
+      "status": "proposed",
+      "rationale": "Prior MI severity can influence treatment decisions."
+    },
+    {
+      "from": "prior_mi_severity",
+      "to": "true_recurrent_mi",
+      "status": "proposed",
+      "rationale": "Prior MI severity/history can affect recurrence risk."
+    },
+    {
+      "from": "prior_mi_severity",
+      "to": "death_before_mi",
+      "status": "proposed",
+      "rationale": "Prior MI severity/history can affect competing mortality."
+    },
+    {
+      "from": "prior_mi_severity",
+      "to": "survival_to_index_discharge",
+      "status": "proposed",
+      "rationale": "Prior MI severity/history can affect survival into the eligible cohort."
+    },
+    {
+      "from": "baseline_clinical_state",
+      "to": "treatment_indication",
+      "status": "assumption",
+      "rationale": "Pre-assignment findings may inform treatment indication; exact clinical window is unresolved."
+    },
+    {
+      "from": "baseline_clinical_state",
+      "to": "statin_initiation",
+      "status": "assumption",
+      "rationale": "Pre-assignment severity can affect prescribing; temporal eligibility must be verified."
+    },
+    {
+      "from": "baseline_clinical_state",
+      "to": "true_recurrent_mi",
+      "status": "assumption",
+      "rationale": "Pre-assignment state may predict recurrence; post-treatment severity would instead be a mediator."
+    },
+    {
+      "from": "baseline_clinical_state",
+      "to": "death_before_mi",
+      "status": "assumption",
+      "rationale": "Pre-assignment severity may affect competing mortality."
+    },
+    {
+      "from": "unmeasured_atherosclerotic_risk",
+      "to": "treatment_indication",
+      "status": "proposed",
+      "rationale": "Latent risk is reflected in the clinical indication for statin therapy."
+    },
+    {
+      "from": "unmeasured_atherosclerotic_risk",
+      "to": "statin_initiation",
+      "status": "proposed",
+      "rationale": "Clinician-perceived underlying risk affects treatment choice."
+    },
+    {
+      "from": "unmeasured_atherosclerotic_risk",
+      "to": "true_recurrent_mi",
+      "status": "proposed",
+      "rationale": "Underlying atherosclerotic burden affects recurrent MI risk."
+    },
+    {
+      "from": "unmeasured_atherosclerotic_risk",
+      "to": "death_before_mi",
+      "status": "assumption",
+      "rationale": "Underlying disease burden can affect competing cardiovascular mortality."
+    },
+    {
+      "from": "treatment_indication",
+      "to": "statin_initiation",
+      "status": "proposed",
+      "rationale": "The recorded indication directs treatment choice but does not substitute for the underlying risk state."
+    },
+    {
+      "from": "prior_cvd",
+      "to": "other_baseline_medications",
+      "status": "proposed",
+      "rationale": "Cardiovascular disease history can influence baseline aspirin, beta-blocker, and ACE-inhibitor use."
+    },
+    {
+      "from": "prior_statin_use",
+      "to": "other_baseline_medications",
+      "status": "assumption",
+      "rationale": "Prior preventive-treatment patterns may be associated with other baseline medications."
+    },
+    {
+      "from": "prior_statin_use",
+      "to": "post_assignment_adherence",
+      "status": "assumption",
+      "rationale": "Prior use may predict subsequent receipt or adherence; new-user versus continuation status is unresolved."
+    },
+    {
+      "from": "prior_mi_episode_count",
+      "to": "other_baseline_medications",
+      "status": "proposed",
+      "rationale": "Prior MI burden can influence baseline secondary-prevention co-medications."
+    },
+    {
+      "from": "treatment_indication",
+      "to": "other_baseline_medications",
+      "status": "assumption",
+      "rationale": "A shared clinical indication can drive co-prescribing."
+    },
+    {
+      "from": "other_baseline_medications",
+      "to": "statin_initiation",
+      "status": "assumption",
+      "rationale": "Pre-existing cardiovascular therapy may inform additional preventive prescribing."
+    },
+    {
+      "from": "other_baseline_medications",
+      "to": "true_recurrent_mi",
+      "status": "assumption",
+      "rationale": "Baseline co-therapies may independently affect future MI risk."
+    },
+    {
+      "from": "other_baseline_medications",
+      "to": "death_before_mi",
+      "status": "assumption",
+      "rationale": "Baseline co-therapies may affect competing mortality through their indications and effects."
+    },
+    {
+      "from": "healthcare_access",
+      "to": "prior_mi_history",
+      "status": "assumption",
+      "rationale": "Healthcare access and documentation affect whether prior MI is recorded for eligibility."
+    },
+    {
+      "from": "healthcare_access",
+      "to": "selected_prior_mi_cohort",
+      "status": "assumption",
+      "rationale": "Access and care contact affect whether prior MI is documented and the patient is observed."
+    },
+    {
+      "from": "healthcare_access",
+      "to": "statin_initiation",
+      "status": "proposed",
+      "rationale": "Access and clinician contact affect the opportunity for treatment."
+    },
+    {
+      "from": "healthcare_access",
+      "to": "statin_before_proxy",
+      "status": "proposed",
+      "rationale": "Care contact and documentation affect capture of a recent prescription."
+    },
+    {
+      "from": "healthcare_access",
+      "to": "other_baseline_medications",
+      "status": "assumption",
+      "rationale": "Access and contact affect prescribing and medication documentation."
+    },
+    {
+      "from": "healthcare_access",
+      "to": "post_assignment_monitoring",
+      "status": "proposed",
+      "rationale": "Access affects follow-up care and monitoring."
+    },
+    {
+      "from": "healthcare_access",
+      "to": "post_assignment_adherence",
+      "status": "assumption",
+      "rationale": "Access can affect post-assignment medication receipt; treatment and outpatient access are not measured completely."
+    },
+    {
+      "from": "healthcare_access",
+      "to": "followup_observed",
+      "status": "proposed",
+      "rationale": "Access and utilization affect continued outcome observation."
+    },
+    {
+      "from": "survival_to_index_discharge",
+      "to": "selected_prior_mi_cohort",
+      "status": "proposed",
+      "rationale": "The discharge-based intervention is only defined among eligible survivors."
+    },
+    {
+      "from": "prior_cvd",
+      "to": "prior_statin_use",
+      "status": "proposed",
+      "rationale": "Prior cardiovascular disease can drive historical statin treatment."
+    },
+    {
+      "from": "lipid_burden",
+      "to": "prior_statin_use",
+      "status": "proposed",
+      "rationale": "Lipid burden can influence historical statin use."
+    },
+    {
+      "from": "healthcare_access",
+      "to": "prior_statin_use",
+      "status": "assumption",
+      "rationale": "Access affects the opportunity to receive and document prior statin therapy."
+    },
+    {
+      "from": "prior_cvd",
+      "to": "baseline_clinical_state",
+      "status": "proposed",
+      "rationale": "Prior cardiovascular disease contributes to clinical state at index."
+    },
+    {
+      "from": "baseline_clinical_state",
+      "to": "survival_to_index_discharge",
+      "status": "assumption",
+      "rationale": "Clinical severity may affect survival to index discharge."
+    },
+    {
+      "from": "statin_initiation",
+      "to": "recorded_statin_order",
+      "status": "assumption",
+      "rationale": "An order could measure assignment only after source, timestamp, and new-user rules are validated."
+    },
+    {
+      "from": "statin_initiation",
+      "to": "post_assignment_adherence",
+      "status": "proposed",
+      "rationale": "Initiation can change subsequent receipt and adherence."
+    },
+    {
+      "from": "statin_initiation",
+      "to": "post_assignment_monitoring",
+      "status": "assumption",
+      "rationale": "Treatment may change subsequent monitoring and healthcare contact."
+    },
+    {
+      "from": "post_assignment_adherence",
+      "to": "true_recurrent_mi",
+      "status": "proposed",
+      "rationale": "Actual post-assignment statin use is the pathway for the pharmacologic effect."
+    },
+    {
+      "from": "post_assignment_adherence",
+      "to": "death_before_mi",
+      "status": "assumption",
+      "rationale": "Actual statin use may affect competing cardiovascular mortality."
+    },
+    {
+      "from": "post_assignment_monitoring",
+      "to": "followup_observed",
+      "status": "assumption",
+      "rationale": "Post-treatment contact affects whether subsequent events are captured."
+    },
+    {
+      "from": "death_before_mi",
+      "to": "followup_observed",
+      "status": "proposed",
+      "rationale": "Death ends observation for a subsequent MI event."
+    },
+    {
+      "from": "true_recurrent_mi",
+      "to": "recorded_recurrent_mi",
+      "status": "proposed",
+      "rationale": "A true event must occur to generate a corresponding coded admission."
+    },
+    {
+      "from": "followup_observed",
+      "to": "recorded_recurrent_mi",
+      "status": "proposed",
+      "rationale": "An event is observed only when follow-up and outcome ascertainment are available."
+    }
+  ],
+  "unresolved_edges": [
+    {
+      "from": "pre_exposure_ecg_state",
+      "to": "statin_initiation",
+      "status": "unresolved",
+      "rationale": "An ECG could affect prescribing only if its timing precedes assignment; the ECG-to-treatment linkage is incomplete."
+    },
+    {
+      "from": "pre_exposure_ecg_state",
+      "to": "true_recurrent_mi",
+      "status": "unresolved",
+      "rationale": "ECG physiology could predict recurrence, but the index ECG and temporal eligibility are not established."
+    },
+    {
+      "from": "z_ecg",
+      "to": "statin_initiation",
+      "status": "unresolved",
+      "rationale": "Do not treat latent ECG embeddings as causal covariates without provenance and pre-treatment timing."
+    },
+    {
+      "from": "z_ecg",
+      "to": "true_recurrent_mi",
+      "status": "unresolved",
+      "rationale": "Predictive association does not establish a causal role; representation provenance and timing remain unresolved."
+    },
+    {
+      "from": "pre_exposure_labs",
+      "to": "statin_initiation",
+      "status": "unresolved",
+      "rationale": "Lipid and other laboratory results could inform prescribing only when valid pre-assignment measurements are linked."
+    },
+    {
+      "from": "pre_exposure_labs",
+      "to": "true_recurrent_mi",
+      "status": "unresolved",
+      "rationale": "Laboratory values may proxy baseline risk, but current coverage and treatment-relative timing are not established."
+    },
+    {
+      "from": "post_assignment_monitoring",
+      "to": "true_recurrent_mi",
+      "status": "unresolved",
+      "rationale": "Monitoring may alter downstream clinical management and recurrence risk; this pathway is not represented in the active graph."
+    }
+  ],
+  "excluded_candidates": [
+    {
+      "variable": "statin_during",
+      "reason": "In-hospital treatment with unresolved ordering; not baseline discharge initiation."
+    },
+    {
+      "variable": "statin_after",
+      "reason": "Post-discharge treatment is downstream of the proposed assignment."
+    },
+    {
+      "variable": "vasopressor_during / mech_vent_during",
+      "reason": "Acute severity/treatment variables may be post-assignment and are not baseline confounders."
+    },
+    {
+      "variable": "is_MI / index_mi_time / Label_Troponin / time_diff_hours",
+      "reason": "Outcome or outcome-derived timing metadata; not baseline adjustment variables."
+    },
+    {
+      "variable": "ECG engineered features / z_ecg",
+      "reason": "Excluded from the active DAG until provenance and pre-treatment temporal eligibility are defensible."
+    }
+  ],
+  "clinical_assumptions_requiring_validation": [
+    "The index cohort can be defined without selecting on future treatment, future admission, or future MI.",
+    "The modeled baseline state and co-medications precede discharge assignment.",
+    "The assumed causes of treatment choice and recurrence are clinically plausible for the intended MIMIC population.",
+    "The selected prior-MI survivor cohort induces no unaddressed selection bias beyond the modeled mechanisms.",
+    "A statin initiation strategy has sufficiently well-defined versions (drug, dose, and assignment rule)."
+  ],
+  "data_limitations": [
+    "statin_before is a recent pre-admission prescription/order proxy, not verified initiation at index discharge, administration, or adherence.",
+    "Complete prior statin use and new-user eligibility are not established.",
+    "The master is ECG-linked and is not a validated complete longitudinal at-risk cohort.",
+    "Baseline timing and history cutoffs for comorbidity fields are unresolved.",
+    "Prior MI episode count, recency, severity, and previous cardiovascular interventions are candidates requiring reconstruction; no validated master fields are established.",
+    "Lipids, atherosclerotic burden, prior MI severity, smoking, frailty, treatment indication, and healthcare access are incompletely measured or unavailable.",
+    "ECG-medication linkage is incomplete; ECG features and z_ecg are not active adjustment nodes.",
+    "Death is a competing event and observation-end anomalies require resolution before follow-up analysis.",
+    "The follow-up horizon and index-discharge treatment assignment window are not specified.",
+    "The executable SCM is an unfitted architecture; its synthetic test coefficients are not empirical and its one-horizon event probabilities are not a survival model.",
+    "MI-coded admissions do not alone establish incident clinical MI or complete outcome ascertainment."
+  ],
+  "causal_use": "This DAG defines candidate structural relationships and separates treatment assignment, adherence mediators, competing death, outcome measurement, and selection. The companion SCM is a parameterized, unfitted architecture. Once treatment timing, cohort, outcome, horizon, and covariates are validated, it can guide structural equations and counterfactual risk queries; neither the graph nor executable architecture establishes causal identification."
+}

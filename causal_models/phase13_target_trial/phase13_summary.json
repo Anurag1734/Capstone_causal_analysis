@@ -1,0 +1,34 @@
+{
+  "cohort_n": 7545,
+  "unique_patients": 7545,
+  "treatment_known_n": 4656,
+  "treated_n": 2986,
+  "control_n": 1670,
+  "treatment_missing_n": 2889,
+  "baseline_complete_known_treatment_n": 4656,
+  "phase11_complete_case_n": 3230,
+  "broad_existing_event_type_counts": {
+    "incomplete_followup": 2560,
+    "event_free": 2158,
+    "recurrent_mi": 1833,
+    "competing_death": 994
+  },
+  "acute_endpoint_event_type_counts": {
+    "event_free": 2912,
+    "incomplete_followup": 2859,
+    "competing_death": 1219,
+    "acute_recurrent_mi": 555
+  },
+  "existing_endpoint_code_class_counts": {
+    "acute_code_present": 494,
+    "icd9_412_only": 1339
+  },
+  "acute_code_definition": "ICD-9 410* or ICD-10 I21*/I22* on an admission present in mi_admissions.parquet",
+  "followup_origin": "index discharge",
+  "followup_horizon": "existing per-row followup_horizon_end (12 months)",
+  "same_day_imprecise_death_order": "event_order_uncertain and censored for the descriptive CIF",
+  "scientific_decision": "C - retain exploratory status",
+  "reason": "The treatment is admission-level in-hospital exposure with no verified timing relative to discharge, and the existing outcome includes admissions coded only with ICD-9 412; acute-code classification is not clinical adjudication.",
+  "treatment_timing_limitation": "The cohort summary notes that no machine-readable prescription/EMAR target-class artifact is available for admission-level linkage; statin_during has no medication timestamp in the saved cohort.",
+  "next_modeling_action": "Validate acute MI episodes and medication exposure timing before estimating a competing-risk-aware causal effect; do not reinterpret statin_during as discharge initiation."
+}

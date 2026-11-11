@@ -1,0 +1,46 @@
+{
+  "data_dir": "causal_models\\data\\statin_recurrent_mi_forest_splits",
+  "output_dir": "causal_models\\outputs\\causal_forest",
+  "source_cohort_path": "causal_models\\data\\statin_recurrent_mi_cohort.parquet",
+  "outcome": "recurrent_mi",
+  "treatment": "statin_during",
+  "eligibility": "prior_mi",
+  "features": [
+    "anchor_age",
+    "sex_male",
+    "diabetes",
+    "hypertension",
+    "ckd",
+    "aspirin_before",
+    "beta_blocker_before",
+    "acei_before"
+  ],
+  "sensitivity_features": [
+    "anchor_age",
+    "sex_male",
+    "diabetes",
+    "hypertension",
+    "ckd",
+    "statin_before",
+    "aspirin_before",
+    "beta_blocker_before",
+    "acei_before"
+  ],
+  "seed": 2026,
+  "cv_folds": 3,
+  "bootstrap_replicates": 500,
+  "temporal_order_validated": false,
+  "recurrence_outcome_validated": false,
+  "allow_exploratory_estimation": true,
+  "n_jobs": 4,
+  "forest_specs": [
+    {
+      "max_depth": 8,
+      "min_samples_leaf": 10
+    },
+    {
+      "max_depth": 12,
+      "min_samples_leaf": 20
+    }
+  ]
+}

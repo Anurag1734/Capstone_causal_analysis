@@ -1,0 +1,21 @@
+{
+  "n": 499,
+  "mean": 0.03224159856939487,
+  "median": 0.03433178696588295,
+  "standard_deviation": 0.045838578111430925,
+  "quantiles": {
+    "p10": -0.03017732319003152,
+    "p25": 0.005544423697929896,
+    "p50": 0.03433178696588295,
+    "p75": 0.06027654507643265,
+    "p90": 0.08187973367491155
+  },
+  "individual_interval_95_mean_lower": -0.07435765419609784,
+  "individual_interval_95_mean_upper": 0.13884085133488752,
+  "population_ate_95_interval": [
+    -0.0770340606514765,
+    0.1415172577902662
+  ],
+  "population_ate": 0.03224159856939487,
+  "note": "Individual CATE intervals are the stored forest prediction intervals; the population interval is the Phase 11 forest ATE interval. CATE spread alone is not evidence of clinically meaningful heterogeneity."
+}

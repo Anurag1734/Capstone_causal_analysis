@@ -1,0 +1,47 @@
+{
+  "treated_index_admissions": 2986,
+  "known_missing_treatment_not_reconstructed": 2889,
+  "exposure_source_status": {
+    "emar": "raw_emar_filtered_to_existing_statin_during_cohort",
+    "prescriptions": "raw_prescription_orders_filtered_to_existing_statin_during_cohort"
+  },
+  "timestamped_admin_admissions_linked": 1505,
+  "first_admin_within_admission_n": 1500,
+  "first_admin_within_admission_percent": 50.234427327528465,
+  "acute_episode_validation": {
+    "candidate_first_acute_admissions": 555,
+    "unique_patients": 555,
+    "diagnosis_combinations_available": 555,
+    "candidate_events_with_index_admission_acute_code": 233,
+    "events_within_1_day": 14,
+    "events_within_7_days": 103,
+    "events_within_30_days": 226,
+    "patients_with_additional_acute_coded_admission_within_7_days": 12,
+    "patients_with_additional_acute_coded_admission_within_30_days": 54,
+    "additional_acute_admission_count_distribution_30d": {
+      "0": 501,
+      "1": 52,
+      "2": 2
+    },
+    "candidate_events_with_transfer_proxy": 136,
+    "classification_counts": {
+      "candidate distinct acute MI": 211,
+      "possible transfer/readmission for the same episode": 167,
+      "possible continuation of index MI episode": 114,
+      "uncertain episode classification": 63
+    },
+    "clinical_documentation_available": false,
+    "clinical_adjudication_available": false,
+    "interpretation": "Diagnosis combinations and admission chronology support screening for proximity and possible transfers only. No clinical documentation in the supplied local artifacts adjudicates a distinct recurrent infarction."
+  },
+  "recommendation": "CONDITIONAL GO for in-hospital exposure observational comparisons only; pause causal effect estimation pending endpoint and confounding validation; NO-GO for discharge-initiation intervention.",
+  "emar_administration_rows": 7608,
+  "emar_distinct_medication_names": 6,
+  "emar_administration_rows_within_index_admission": 7574,
+  "emar_administration_rows_before_admission": 33,
+  "emar_administration_rows_after_discharge": 1,
+  "prescription_order_rows": 3837,
+  "prescription_orders_starting_within_index_admission": 3609,
+  "median_hours_admission_to_first_administration": 13.45,
+  "median_hours_first_administration_to_discharge": 78.55
+}

@@ -1,0 +1,24 @@
+{
+  "phase11_artifact_directory": "C:\\Users\\anura\\OneDrive\\Desktop\\capstone2\\causal_models\\outputs\\causal_forest",
+  "source_cohort": "C:\\Users\\anura\\OneDrive\\Desktop\\capstone2\\causal_models\\data\\statin_recurrent_mi_cohort.parquet",
+  "patient_level_split_directory": "C:\\Users\\anura\\OneDrive\\Desktop\\capstone2\\causal_models\\data\\statin_recurrent_mi_forest_splits",
+  "test_split_unchanged": true,
+  "cohort_or_treatment_rebuilt": false,
+  "forest_refit": false,
+  "bootstrap_replicates": 1000,
+  "bootstrap_seed": 20261212,
+  "truncation_quantiles": {
+    "p01_p99": [
+      0.01,
+      0.99
+    ],
+    "p05_p95": [
+      0.05,
+      0.95
+    ]
+  },
+  "treatment_weight_truncation": "within treatment arm",
+  "combined_weight_truncation": "within treatment arm",
+  "censoring_weight_truncation": "globally among observed-outcome cases",
+  "common_support_trimming": false
+}

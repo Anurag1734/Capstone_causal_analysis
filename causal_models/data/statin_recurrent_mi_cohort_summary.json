@@ -1,0 +1,53 @@
+{
+  "followup_horizon_months": 12,
+  "index_admissions": 7545,
+  "unique_patients": 7545,
+  "eligible_prior_mi_patients": 7545,
+  "survived_to_index_discharge": 7545,
+  "treatment_known_admissions": 4656,
+  "treated_statin_during": 2986,
+  "control_no_statin_during": 1670,
+  "treatment_missing": 2889,
+  "recurrent_mi_events": 1833,
+  "competing_deaths_before_mi": 994,
+  "event_free_through_horizon": 2158,
+  "incomplete_followup": 2560,
+  "event_order_uncertain": 0,
+  "followup_complete": 4985,
+  "followup_incomplete_or_uncertain": 2560,
+  "endpoint_missing_due_to_incomplete_or_uncertain_followup": 2560,
+  "observation_end_missing": 0,
+  "observation_end_before_index": 2,
+  "prescription_and_emar_joined": false,
+  "medication_source_note": "Treatment indicators are retained as supplied in the processed master. No machine-readable prescription/EMAR target-class artifact is available in the current workspace for admission-level linkage.",
+  "index_admission_rule": "Earliest admission per patient that survives to discharge and starts after the discharge of at least one earlier MI-coded admission.",
+  "endpoint_rule": "MI-coded admission strictly after index discharge and within the follow-up horizon; death before recurrence is a competing event; unobserved incomplete follow-up is not coded as outcome zero.",
+  "source_split_sizes": {
+    "train": {
+      "ecg_rows": 262813,
+      "patients": 69479,
+      "admissions": 133771
+    },
+    "validation": {
+      "ecg_rows": 56319,
+      "patients": 14888,
+      "admissions": 28676
+    },
+    "test": {
+      "ecg_rows": 56798,
+      "patients": 14889,
+      "admissions": 28922
+    }
+  },
+  "master_admissions_with_features": 191369,
+  "master_patients_with_features": 99256,
+  "forest_split_admissions": {
+    "train": 4882,
+    "validation": 1037,
+    "test": 1075,
+    "not_in_existing_master_splits": 551,
+    "model_ready_complete_case_admissions": 3230
+  },
+  "index_admissions_with_master_baseline_features": 4656,
+  "index_admissions_without_master_baseline_features": 2889
+}
