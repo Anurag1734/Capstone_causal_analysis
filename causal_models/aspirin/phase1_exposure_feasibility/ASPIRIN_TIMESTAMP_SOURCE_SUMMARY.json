@@ -1,0 +1,49 @@
+{
+  "source_root": "C:\\Users\\anura\\OneDrive\\Desktop\\Capstone\\Causal_Model_for_ECG_analysis_on_MI\\data\\Compressed\\mimic-iv-2.2",
+  "source_tables": {
+    "emar_detail": {
+      "rows_scanned": 54744789,
+      "aspirin_match_rows_scanned": 337362
+    },
+    "emar": {
+      "rows_scanned": 26850359,
+      "aspirin_or_detail_match_rows_scanned": 336841
+    }
+  },
+  "eligible_prior_mi_index_admissions": 7545,
+  "index_admissions_with_aspirin_emar_record": 2540,
+  "index_admissions_with_administered_event": 2509,
+  "index_admissions_with_valid_administered_charttime": 2509,
+  "aspirin_emar_rows_linked_to_index_admissions": 12903,
+  "aspirin_emar_rows_with_valid_charttime": 12903,
+  "administered_rows": 12057,
+  "administered_rows_with_valid_charttime": 12057,
+  "administered_rows_with_invalid_or_missing_charttime": 0,
+  "event_status_counts": {
+    "administered": 12057,
+    "not given": 588,
+    "delayed administered": 118,
+    "hold dose": 91,
+    "administered in other location": 17,
+    "<blank>": 17,
+    "delayed": 11,
+    "in other location": 4
+  },
+  "duplicate_emar_event_key_rows": 0,
+  "first_administration_timing_by_index_admission": {
+    "within_index_admission": 2241,
+    "before_index_admission": 268
+  },
+  "index_admissions_with_first_admin_time": 2509,
+  "index_admissions_without_first_admin_time": 5036,
+  "first_administration_timing_among_aspirin_before_positive_admissions": {
+    "within_index_admission": 21
+  },
+  "first_admin_within_index_admission_n": 2241,
+  "emar_event_row_timing": {
+    "within_index_admission": 12594,
+    "before_index_admission": 307,
+    "after_index_discharge": 2
+  },
+  "interpretation": "Only eMAR rows with event_txt exactly 'Administered' and a valid charttime count as documented administration evidence. First-event categories are relative to the existing index admission interval; they do not establish outpatient use, adherence, or randomized treatment assignment."
+}
